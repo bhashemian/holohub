@@ -1821,7 +1821,10 @@
             "holoscan_sdk": {
                 "minimum_required_version": "0.6.0",
                 "tested_versions": [
-                    "0.6.0"
+                    "0.6.0",
+                    "1.0.3",
+                    "2.0.0",
+                    "2.1.0"
                 ]
             },
             "platforms": [
@@ -1841,7 +1844,7 @@
                 "workdir": "holohub_bin"
             }
         },
-        "readme": "# TAO PeopleNet Detection Model on V4L2 Video Stream\n\nUse the TAO PeopleNet available on [NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/models/peoplenet) to detect faces and people in a V4L2 supported video stream. HoloViz is used to draw bounding boxes around the detections.\n\n**Prerequisite**: Download the PeopleNet ONNX model from the NGC website:\n```sh\nwget --content-disposition 'https://api.ngc.nvidia.com/v2/models/org/nvidia/team/tao/peoplenet/pruned_quantized_decrypted_v2.3.3/files?redirect=true&path=resnet34_peoplenet_int8.onnx' -O applications/tao_peoplenet/resnet34_peoplenet_int8.onnx\n```\n\n## Requirements\n\n### Containerized Development\n\nIf using a container outside the Holoscan SDK `run` script, add `--group-add video` and `--device /dev/video0:/dev/video0` (or the ID of whatever device you'd like to use) to the `docker run` command to make your camera device available in the container.\n\n### Local Development\n\nInstall the following dependency:\n```sh\nsudo apt-get install libv4l-dev=1.18.0-2build1\n```\n\nIf you do not have permissions to open the video device, do:\n```sh\n sudo usermod -aG video $USER\n```\n\n## Run Instructions\n\nRun with:\n```sh\n./run launch tao_peoplenet\n```",
+        "readme": "# TAO PeopleNet Detection Model on V4L2 Video Stream\n\nUse the TAO PeopleNet available on [NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/models/peoplenet) to detect faces and people in a V4L2 supported video stream. HoloViz is used to draw bounding boxes around the detections.\n\n## Model\n\nThis application uses the TAO PeopleNet model from [NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/models/peoplenet) for face and person classification.\nThe model is downloaded when building the application.\n\n## Data\n\nThis application downloads a pre-recorded video from [Pexels](https://www.pexels.com/video/a-woman-showing-her-ballet-skill-in-turning-one-footed-5385885/) when the application is built for use with this application.  Please review the [license terms](https://www.pexels.com/license/) from Pexels.\n\n> **_NOTE:_** The user is responsible for checking if the dataset license is fit for the intended purpose.\n\n## Input\n\nThis app currently supports three different input options:\n\n1. v4l2 compatible input device (default, see V4L2 Support below)\n2. pre-recorded video (see Video Replayer Support below)\n\n## Run Instructions\n\n## V4L2 Support\n\nThis application supports v4l2 compatible devices as input.  To run this application with your v4l2 compatible device,\nplease plug in your input device and run:\n```sh\n./dev_container build_and_run tao_peoplenet\n```\n\nBy default, this application expects the input device to be mounted at `/dev/video0`.  If this is not the case, please update\n`applications/tao_peoplenet/tao_peoplenet.yaml` and set it to use the corresponding input device before\nrunning the application.  You can also override the default input device on the command line by running:\n```sh\n./dev_container build_and_run tao_peoplenet --run_args \"--video_device /dev/video0\"\n```\n\n## Video Replayer Support\n\nIf you don't have a v4l2 compatible device plugged in, you may also run this application on a pre-recorded video.\nTo launch the application using the Video Stream Replayer as the input source, run:\n\n```sh\n./dev_container build_and_run tao_peopelnet --run_args \"--source replayer\"\n```\n",
         "application_name": "tao_peoplenet",
         "source_folder": "applications",
         "build_and_run": "./dev_container build_and_run tao_peoplenet --language python"
