@@ -1214,15 +1214,16 @@
                 }
             ],
             "language": "C++",
-            "version": "2.0",
+            "version": "2.1",
             "changelog": {
                 "1.0": "Initial Release",
-                "2.0": "Upgrade to GXF 4.0"
+                "2.0": "Upgrade to GXF 4.0",
+                "2.1": "Import h.264 GXF Codelets/Components as Holoscan Operators/Resources"
             },
             "holoscan_sdk": {
-                "minimum_required_version": "2.0.0",
+                "minimum_required_version": "2.1.0",
                 "tested_versions": [
-                    "2.0.0"
+                    "2.1.0"
                 ]
             },
             "platforms": [
@@ -1256,14 +1257,82 @@
                 ]
             },
             "run": {
-                "command": "./h264_endoscopy_tool_tracking h264_endoscopy_tool_tracking.yaml --data <holohub_data_dir>/endoscopy",
+                "command": "<holohub_app_bin>/h264_endoscopy_tool_tracking h264_endoscopy_tool_tracking.yaml --data <holohub_data_dir>/endoscopy",
                 "workdir": "holohub_app_bin"
             }
         },
-        "readme": "# H.264 Endoscopy Tool Tracking Application\n\nThe application showcases how to use H.264 video source as input to and output\nfrom the Holoscan pipeline. This application is a modified version of Endoscopy\nTool Tracking reference application in Holoscan SDK that supports H.264\nelementary streams as the input and output.\n\n_The H.264 video decode operators do not adjust framerate as it reads the\nelementary stream input. As a result the video stream can be displayed as\nquickly as the decoding can be performed. This application uses\n`PeriodicCondition` to play video at the same speed as the source video._\n\n## Requirements\n\nThis application is configured to use H.264 elementary stream from endoscopy\nsample data as input. The recording of the output can be enabled by setting\n`record_output` flag in the config file to `true`. If the `record_output` flag\nin the config file is set to `true`, the output of the pipeline is again\nrecorded to a H.264 elementary stream on the disk, file name / path for this\ncan be specified in the 'h264_endoscopy_tool_tracking.yaml' file.\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded when building the application.\n\n## Building And Running H.264 Endoscopy Tool Tracking Application\n\nFollow steps in README.md from parents directory to build and run the Holohub\ndev container. Once inside the Holohub dev container, follow steps mentioned\nbelow to build and run H.264 Endoscopy Tool Tracking application.\n\n## Building the application\n\nOnce inside Holohub dev container, run below command from a top level Holohub\ndirectory.\n\n```bash\n./run build h264_endoscopy_tool_tracking\n```\n\n## Running the application\n\n* Running the application from the top level Holohub directory\n\n```bash\n./run launch h264_endoscopy_tool_tracking\n```\n\n* Running the application `h264_endoscopy_tool_tracking` from the build directory.\n\n```bash\ncd <build_dir>/applications/h264/h264_endoscopy_tool_tracking/ \\\n  && ./h264_endoscopy_tool_tracking --data <HOLOHUB_DATA_DIR>/endoscopy\n```\n\n## Enable recording of the output\n\nThe recording of the output can be enabled by setting `record_output` flag in\nthe config file\n`<build_dir>/applications/h264/endoscopy_tool_tracking/h264_endoscopy_tool_tracking.yaml`\nto `true`.\n\n",
+        "readme": "# H.264 Endoscopy Tool Tracking Application\n\nThe application showcases how to use H.264 video source as input to and output\nfrom the Holoscan pipeline. This application is a modified version of Endoscopy\nTool Tracking reference application in Holoscan SDK that supports H.264\nelementary streams as the input and output.\n\n_The H.264 video decode operators do not adjust framerate as it reads the\nelementary stream input. As a result the video stream can be displayed as\nquickly as the decoding can be performed. This application uses\n`PeriodicCondition` to play video at the same speed as the source video._\n\n## Requirements\n\nThis application is configured to use H.264 elementary stream from endoscopy\nsample data as input. The recording of the output can be enabled by setting\n`record_output` flag in the config file to `true`. If the `record_output` flag\nin the config file is set to `true`, the output of the pipeline is again\nrecorded to a H.264 elementary stream on the disk, file name / path for this\ncan be specified in the 'h264_endoscopy_tool_tracking.yaml' file.\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded when building the application.\n\n## Building and Running H.264 Endoscopy Tool Tracking Application\n\n* Building and running the application from the top level Holohub directory:\n\n```bash\n# C++ version\n./dev_container build_and_run h264_endoscopy_tool_tracking --docker_file applications/h264/Dockerfile --language cpp\n\n# Python version\n./dev_container build_and_run h264_endoscopy_tool_tracking --docker_file applications/h264/Dockerfile --language python\n```\n\nImportant: on aarch64, applications also need tegra folder mounted inside the container and\nthe `LD_LIBRARY_PATH` environment variable should be updated to include\ntegra folder path.\n\nOpen and edit the [Dockerfile](../Dockerfile) and uncomment line 66:\n\n```bash\n# Uncomment the following line for aarch64 support\nENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/aarch64-linux-gnu/tegra/\n```\n\n\n## Enable recording of the output\n\nThe recording of the output can be enabled by setting `record_output` flag in\nthe config file\n`<build_dir>/applications/h264/endoscopy_tool_tracking/h264_endoscopy_tool_tracking.yaml`\nto `true`.\n\n",
         "application_name": "h264_endoscopy_tool_tracking",
         "source_folder": "applications",
         "build_and_run": "./dev_container build_and_run h264_endoscopy_tool_tracking --language cpp"
+    },
+    {
+        "metadata": {
+            "name": "H.264 Endoscopy Tool Tracking",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "Python",
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Endoscopy",
+                "Video Decoding",
+                "Video Encoding"
+            ],
+            "ranking": 1,
+            "dependencies": {
+                "operators": [
+                    {
+                        "name": "videodecoder",
+                        "version": "1.2.0"
+                    },
+                    {
+                        "name": "videodecoderio",
+                        "version": "1.2.0"
+                    },
+                    {
+                        "name": "videoencoder",
+                        "version": "1.2.0"
+                    },
+                    {
+                        "name": "videoencoderio",
+                        "version": "1.2.0"
+                    }
+                ],
+                "data": [
+                    {
+                        "name": "Holoscan Sample App Data for AI-based Endoscopy Tool Tracking",
+                        "description": "This resource contains the convolutional LSTM model for tool tracking in laparoscopic videos by Nwoye et. al [1], and a sample surgical video.",
+                        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data",
+                        "version": "20230222"
+                    }
+                ]
+            },
+            "run": {
+                "command": "python3 <holohub_app_source>/h264_endoscopy_tool_tracking.py --data <holohub_data_dir>/endoscopy",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# H.264 Endoscopy Tool Tracking Application\n\nThe application showcases how to use H.264 video source as input to and output\nfrom the Holoscan pipeline. This application is a modified version of Endoscopy\nTool Tracking reference application in Holoscan SDK that supports H.264\nelementary streams as the input and output.\n\n_The H.264 video decode operators do not adjust framerate as it reads the\nelementary stream input. As a result the video stream can be displayed as\nquickly as the decoding can be performed. This application uses\n`PeriodicCondition` to play video at the same speed as the source video._\n\n## Requirements\n\nThis application is configured to use H.264 elementary stream from endoscopy\nsample data as input. The recording of the output can be enabled by setting\n`record_output` flag in the config file to `true`. If the `record_output` flag\nin the config file is set to `true`, the output of the pipeline is again\nrecorded to a H.264 elementary stream on the disk, file name / path for this\ncan be specified in the 'h264_endoscopy_tool_tracking.yaml' file.\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded when building the application.\n\n## Building and Running H.264 Endoscopy Tool Tracking Application\n\n* Building and running the application from the top level Holohub directory:\n\n```bash\n# C++ version\n./dev_container build_and_run h264_endoscopy_tool_tracking --docker_file applications/h264/Dockerfile --language cpp\n\n# Python version\n./dev_container build_and_run h264_endoscopy_tool_tracking --docker_file applications/h264/Dockerfile --language python\n```\n\nImportant: on aarch64, applications also need tegra folder mounted inside the container and\nthe `LD_LIBRARY_PATH` environment variable should be updated to include\ntegra folder path.\n\nOpen and edit the [Dockerfile](../Dockerfile) and uncomment line 66:\n\n```bash\n# Uncomment the following line for aarch64 support\nENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/aarch64-linux-gnu/tegra/\n```\n\n\n## Enable recording of the output\n\nThe recording of the output can be enabled by setting `record_output` flag in\nthe config file\n`<build_dir>/applications/h264/endoscopy_tool_tracking/h264_endoscopy_tool_tracking.yaml`\nto `true`.\n\n",
+        "application_name": "h264_endoscopy_tool_tracking",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run h264_endoscopy_tool_tracking --language python"
     },
     {
         "metadata": {
@@ -1278,12 +1347,13 @@
             "version": "2.0",
             "changelog": {
                 "1.0": "Initial Release",
-                "2.0": "Upgrade to GXF 4.0"
+                "2.0": "Upgrade to GXF 4.0",
+                "2.1": "Import h.264 GXF Codelets/Components as Holoscan Operators/Resources"
             },
             "holoscan_sdk": {
-                "minimum_required_version": "2.0.0",
+                "minimum_required_version": "2.1.0",
                 "tested_versions": [
-                    "2.0.0"
+                    "2.1.0"
                 ]
             },
             "platforms": [
@@ -1312,7 +1382,7 @@
                 "workdir": "holohub_app_bin"
             }
         },
-        "readme": "# H.264 Video Decode Reference Application\n\nThis is a minimal reference application demonstrating usage of H.264 video\ndecode operators. This application makes use of H.264 elementary stream reader\noperator for reading H.264 elementary stream input and uses Holoviz operator\nfor rendering decoded data to the native window.\n\n_The H.264 video decode operators do not adjust framerate as it reads the\nelementary stream input. As a result the video stream can be displayed as\nquickly as the decoding can be performed. This application uses\n`PeriodicCondition` to play video at the same speed as the source video._\n\n## Requirements\n\nThis application is configured to use H.264 elementary stream from endoscopy\nsample data as input. To use any other stream, the filename / path for the\ninput file can be specified in the 'h264_video_decode.yaml' file.\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded when building the application.\n\n## Building And Running H.264 Endoscopy Tool Tracking Application\n\nFollow steps in README.md from parents directory to build and run the Holohub\ndev container. Once inside the Holohub dev container, follow steps mentioned\nbelow to build and run H.264 Endoscopy Tool Tracking application.\n\n## Building the application\n\nOnce inside Holohub dev container, run below command from a top level Holohub\ndirectory.\n\n```bash\n./run build h264_video_decode\n```\n\n## Running the application\n\n* Running the application from the top level Holohub directory\n\n```bash\n./run launch h264_video_decode\n```\n\n* Running the application `h264_video_decode` from the build directory.\n\n```bash\ncd <build_dir>/applications/h264/h264_video_decode/ \\\n  && ./h264_video_decode --data <HOLOHUB_DATA_DIR>/endoscopy\n```\n",
+        "readme": "# H.264 Video Decode Reference Application\n\nThis is a minimal reference application demonstrating usage of H.264 video\ndecode operators. This application makes use of H.264 elementary stream reader\noperator for reading H.264 elementary stream input and uses Holoviz operator\nfor rendering decoded data to the native window.\n\n_The H.264 video decode operators do not adjust framerate as it reads the\nelementary stream input. As a result the video stream can be displayed as\nquickly as the decoding can be performed. This application uses\n`PeriodicCondition` to play video at the same speed as the source video._\n\n## Requirements\n\nThis application is configured to use H.264 elementary stream from endoscopy\nsample data as input. To use any other stream, the filename / path for the\ninput file can be specified in the 'h264_video_decode.yaml' file.\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded when building the application.\n\n## Building and Running H.264 Endoscopy Tool Tracking Application\n\n* Building and running the application from the top level Holohub directory:\n\n```bash\n# C++ version\n./dev_container build_and_run h264_video_decode --docker_file applications/h264/Dockerfile\n```\n\nImportant: on aarch64, applications also need tegra folder mounted inside the container and\nthe `LD_LIBRARY_PATH` environment variable should be updated to include\ntegra folder path.\n\nOpen and edit the [Dockerfile](../Dockerfile) and uncomment line 66:\n\n```bash\n# Uncomment the following line for aarch64 support\nENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/aarch64-linux-gnu/tegra/\n```",
         "application_name": "h264_video_decode",
         "source_folder": "applications",
         "build_and_run": "./dev_container build_and_run h264_video_decode --language cpp"
@@ -4345,98 +4415,6 @@
     },
     {
         "metadata": {
-            "name": "video_encoder_context",
-            "authors": [
-                {
-                    "name": "Holoscan Team",
-                    "affiliation": "NVIDIA"
-                }
-            ],
-            "version": "1.0",
-            "changelog": {
-                "1.0": "Initial Release"
-            },
-            "holoscan_sdk": {
-                "minimum_required_version": "0.6.0",
-                "tested_versions": [
-                    "0.6.0"
-                ]
-            },
-            "platforms": [
-                "amd64",
-                "arm64"
-            ],
-            "tags": [
-                "video",
-                "encoder",
-                "context"
-            ],
-            "ranking": 1,
-            "dependencies": {
-                "gxf_extensions": [
-                    {
-                        "name": "videoencoder",
-                        "version": "1.0"
-                    },
-                    {
-                        "name": "videoencoderio",
-                        "version": "1.0"
-                    }
-                ]
-            }
-        },
-        "readme": "### Video Encoder Context\n\nThe `video_encoder_context` is used to hold common variables and underlying context. The encoder context handle is passed to both `holoscan::ops::VideoEncoderRequestOp` and `holoscan::ops::VideoEncoderResponseOp`.\n\n#### `holoscan::ops::VideoEncoderContext`\n\nA class used to hold common variables and underlying context required by `holoscan::ops::VideoEncoderRequestOp` and `holoscan::ops::VideoEncoderResponseOp`.\n\nThis implementation is based on the GXF Component `nvidia::gxf::VideoEncoderContext`.\n\n##### Parameters\n\n- **`async_scheduling_term`**: Asynchronous scheduling condition required to get/set event state.\n  - type: `std::shared_ptr<holoscan::AsynchronousCondition>`\n\n",
-        "application_name": "video_encoder_context",
-        "source_folder": "operators"
-    },
-    {
-        "metadata": {
-            "name": "video_encoder_response",
-            "authors": [
-                {
-                    "name": "Holoscan Team",
-                    "affiliation": "NVIDIA"
-                }
-            ],
-            "version": "1.0",
-            "changelog": {
-                "1.0": "Initial Release"
-            },
-            "holoscan_sdk": {
-                "minimum_required_version": "0.6.0",
-                "tested_versions": [
-                    "0.6.0"
-                ]
-            },
-            "platforms": [
-                "amd64",
-                "arm64"
-            ],
-            "tags": [
-                "video",
-                "encoder",
-                "response"
-            ],
-            "ranking": 1,
-            "dependencies": {
-                "gxf_extensions": [
-                    {
-                        "name": "videoencoder",
-                        "version": "1.0"
-                    },
-                    {
-                        "name": "videoencoderio",
-                        "version": "1.0"
-                    }
-                ]
-            }
-        },
-        "readme": "### Video Encoder Response\n\nThe `video_encoder_response` handles the output of the encoded YUV frames.\n\n#### `holoscan::ops::VideoEncoderResponseOp`\n\nOperator class to handle the output of the encoded YUV frames.\n\nThis implementation is based on `nvidia::gxf::VideoEncoderResponse`.\n\n##### Parameters\n\n- **`output_transmitter`**: Transmitter to send the compressed data.\n  - type: `holoscan::IOSpec*`\n- **`pool`**: Memory pool for allocating output data.\n  - type: `std::shared_ptr<Allocator>`\n- **`videoencoder_context`**: Encoder context Handle.\n  - type: `std::shared_ptr<holoscan::ops::VideoEncoderContext>`\n- **`outbuf_storage_type`**: Output Buffer Storage(memory) type used by this allocator. Can be 0: kHost, 1: kDevice. Default: 1.\n  - type: `uint32_t`\n\n",
-        "application_name": "video_encoder_response",
-        "source_folder": "operators"
-    },
-    {
-        "metadata": {
             "name": "video_encoder_request",
             "authors": [
                 {
@@ -4483,143 +4461,6 @@
     },
     {
         "metadata": {
-            "name": "video_decoder_context",
-            "authors": [
-                {
-                    "name": "Holoscan Team",
-                    "affiliation": "NVIDIA"
-                }
-            ],
-            "version": "1.0",
-            "changelog": {
-                "1.0": "Initial Release"
-            },
-            "holoscan_sdk": {
-                "minimum_required_version": "0.6.0",
-                "tested_versions": [
-                    "0.6.0"
-                ]
-            },
-            "platforms": [
-                "amd64",
-                "arm64"
-            ],
-            "tags": [
-                "video",
-                "decoder",
-                "context"
-            ],
-            "ranking": 1,
-            "dependencies": {
-                "gxf_extensions": [
-                    {
-                        "name": "videodecoder",
-                        "version": "1.0"
-                    },
-                    {
-                        "name": "videodecoderio",
-                        "version": "1.0"
-                    }
-                ]
-            }
-        },
-        "readme": "### Video Decoder Context\n\nThe `video_decoder_context` is used to hold common variables and underlying context. The decoder context handle is passed to both `holoscan::ops::VideoDecoderRequestOp` and `holoscan::ops::VideoDecoderResponseOp`.\n\n#### `holoscan::ops::VideoDecoderContext`\n\nA class used to hold common variables and underlying context required by `holoscan::ops::VideoDecoderRequestOp` and `holoscan::ops::VideoDecoderResponseOp`.\n\nThis implementation is based on the GXF Component `nvidia::gxf::VideoDecoderContext`.\n\n##### Parameters\n\n- **`async_scheduling_term`**: Asynchronous scheduling condition required to get/set event state.\n  - type: `std::shared_ptr<holoscan::AsynchronousCondition>`\n\n",
-        "application_name": "video_decoder_context",
-        "source_folder": "operators"
-    },
-    {
-        "metadata": {
-            "name": "video_decoder_response",
-            "authors": [
-                {
-                    "name": "Holoscan Team",
-                    "affiliation": "NVIDIA"
-                }
-            ],
-            "version": "1.0",
-            "changelog": {
-                "1.0": "Initial Release"
-            },
-            "holoscan_sdk": {
-                "minimum_required_version": "0.6.0",
-                "tested_versions": [
-                    "0.6.0"
-                ]
-            },
-            "platforms": [
-                "amd64",
-                "arm64"
-            ],
-            "tags": [
-                "video",
-                "decoder",
-                "response"
-            ],
-            "ranking": 1,
-            "dependencies": {
-                "gxf_extensions": [
-                    {
-                        "name": "videodecoder",
-                        "version": "1.0"
-                    },
-                    {
-                        "name": "videodecoderio",
-                        "version": "1.0"
-                    }
-                ]
-            }
-        },
-        "readme": "### Video Decoder Response\n\nThe `video_decoder_response` handles the output of the decoded H264 bit stream.\n\n#### `holoscan::ops::VideoDecoderResponseOp`\n\nOperator class to handle the output of the decoded H264 bit stream.\n\nThis implementation is based on `nvidia::gxf::VideoDecoderResponse`.\n\n##### Parameters\n\n- **`output_transmitter`**: Transmitter to send the yuv data.\n  - type: `holoscan::IOSpec*`\n- **`pool`**: Memory pool for allocating output data.\n  - type: `std::shared_ptr<Allocator>`\n- **`outbuf_storage_type`**: Output Buffer Storage(memory) type used by this allocator. Can be 0: kHost, 1: kDevice.\n  - type: `uint32_t`\n- **`videodecoder_context`**: Decoder context Handle.\n  - type: `std::shared_ptr<holoscan::ops::VideoDecoderContext>`\n",
-        "application_name": "video_decoder_response",
-        "source_folder": "operators"
-    },
-    {
-        "metadata": {
-            "name": "video_decoder_request",
-            "authors": [
-                {
-                    "name": "Holoscan Team",
-                    "affiliation": "NVIDIA"
-                }
-            ],
-            "version": "1.0",
-            "changelog": {
-                "1.0": "Initial Release"
-            },
-            "holoscan_sdk": {
-                "minimum_required_version": "0.6.0",
-                "tested_versions": [
-                    "0.6.0"
-                ]
-            },
-            "platforms": [
-                "amd64",
-                "arm64"
-            ],
-            "tags": [
-                "video",
-                "decoder"
-            ],
-            "ranking": 1,
-            "dependencies": {
-                "gxf_extensions": [
-                    {
-                        "name": "videodecoder",
-                        "version": "1.0"
-                    },
-                    {
-                        "name": "videodecoderio",
-                        "version": "1.0"
-                    }
-                ]
-            }
-        },
-        "readme": "### Video Decoder Request\n\nThe `video_decoder_request` handles the input for the H264 bit stream decode.\n\n#### `holoscan::ops::VideoDecoderRequestOp`\n\nOperator class to handle the input for the H264 bit stream decode.\n\nThis implementation is based on `nvidia::gxf::VideoDecoderRequest`.\n\n##### Parameters\n\n- **`input_frame`**: Receiver to get the input image.\n  - type: `holoscan::IOSpec*`\n- **`inbuf_storage_type`**: Input Buffer storage type, 0:kHost, 1:kDevice.\n  - type: `uint32_t`\n- **`async_scheduling_term`**: Asynchronous scheduling condition.\n  - type: `std::shared_ptr<holoscan::AsynchronousCondition>`\n- **`videodecoder_context`**: Decoder context Handle.\n  - type: `std::shared_ptr<holoscan::ops::VideoDecoderContext>`\n- **`codec`**: Video codec to use,  0:H264, only H264 supported. Default:0.\n  - type: `uint32_t`\n- **`disableDPB`**: Enable low latency decode, works only for IPPP case.\n  - type: `uint32_t`\n- **`output_format`**: Output frame video format, nv12pl and yuv420planar are supported.\n  - type: `std::string`\n",
-        "application_name": "video_decoder_request",
-        "source_folder": "operators"
-    },
-    {
-        "metadata": {
             "name": "videomaster",
             "authors": [
                 {
@@ -4657,72 +4498,6 @@
         },
         "readme": "# VideoMaster GXF Operator\n\nThis library contains two operators:\n- videomaster_source: get signal from capture card\n- videomaster_transmitter: generate signal\n\nThese operators wrap the GXF extension to provide support for VideoMaster SDK.\n\n## Requirements\n\nThis operator requires the VideoMaster SDK from Deltacast.\n\n## Building the operator\n\nAs part of Holohub, running CMake on Holohub and point to Holoscan SDK install tree.\n\nThe path to the VideoMaster SDK is also mandatory and can be given through the VideoMaster_SDK_DIR parameter.\n",
         "application_name": "deltacast_videomaster",
-        "source_folder": "operators"
-    },
-    {
-        "metadata": {
-            "name": "video_read_bitstream",
-            "authors": [
-                {
-                    "name": "Holoscan Team",
-                    "affiliation": "NVIDIA"
-                }
-            ],
-            "version": "1.0",
-            "changelog": {
-                "1.0": "Initial Release"
-            },
-            "holoscan_sdk": {
-                "minimum_required_version": "0.5.0",
-                "tested_versions": [
-                    "0.5.0"
-                ]
-            },
-            "platforms": [
-                "amd64",
-                "arm64"
-            ],
-            "tags": [
-                "video"
-            ],
-            "ranking": 1,
-            "dependencies": {}
-        },
-        "readme": "### Video Bit Stream Reader\n\nThe `video_read_bitstream` reads h264 bit stream from specified input file.\n\n#### `holoscan::ops::VideoReadBitstreamOp`\n\nOperator class to read H264 video bit stream.\n\nThis implementation is based on `nvidia::gxf::VideoReadBitStream`.\n\n##### Parameters\n\n- **`output_transmitter`**: Transmitter to send the compressed data\n  - type: `holoscan::IOSpec*`\n- **`input_file_path`**: Path to image file\n  - type: `std::string`\n- **`pool`**: Memory pool for allocating output data\n  - type: `std::shared_ptr<Allocator>`\n- **`outbuf_storage_type`**: Output Buffer storage type, 0:kHost, 1:kDevice\n  - type: `int32_t`\n",
-        "application_name": "video_read_bitstream",
-        "source_folder": "operators"
-    },
-    {
-        "metadata": {
-            "name": "video_write_bitstream",
-            "authors": [
-                {
-                    "name": "Holoscan Team",
-                    "affiliation": "NVIDIA"
-                }
-            ],
-            "version": "1.0",
-            "changelog": {
-                "1.0": "Initial Release"
-            },
-            "holoscan_sdk": {
-                "minimum_required_version": "0.5.0",
-                "tested_versions": [
-                    "0.5.0"
-                ]
-            },
-            "platforms": [
-                "amd64",
-                "arm64"
-            ],
-            "tags": [
-                "video"
-            ],
-            "ranking": 1,
-            "dependencies": {}
-        },
-        "readme": "### Video Bit Stream Writer\n\nThe `video_write_bitstream` writes bit stream to the disk at specified output\npath.\n\n#### `holoscan::ops::VideoWriteBitstreamOp`\n\nOperator class to write video bit stream to the disk.\n\nThis implementation is based on `nvidia::gxf::VideoWriteBitstream`.\n\n##### Parameters\n\n- **`output_video_path`**: The file path of the output video\n  - type: `std::string`\n- **`frame_width`**: The width of the output video\n  - type: `int`\n- **`frame_height`**: The height of the output video\n  - type: `int`\n- **`inbuf_storage_type`**: Input Buffer storage type, 0:kHost, 1:kDevice\n  - type: `int`\n- **`data_receiver`**: Receiver to get the data\n  - type: `holoscan::IOSpec*`\n",
-        "application_name": "video_write_bitstream",
         "source_folder": "operators"
     },
     {
