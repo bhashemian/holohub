@@ -1657,6 +1657,43 @@
     },
     {
         "metadata": {
+            "name": "Intel RealSense Camera Visualizer",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "C++",
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [],
+            "ranking": 0,
+            "dependencies": {},
+            "run": {
+                "command": "<holohub_app_bin>/realsense_visualizer",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# RealSense Visualizer\n\nVisualizes frames captured from an Intel RealSense camera.\n![](screenshot.png)<br>\n\n# Build and Run\nThis application requires an Intel RealSense camera.\n\nAt the top level of the holohub run the following command:\n\n```bash\n./dev_container build_and_run realsense_visualizer\n```\n",
+        "application_name": "realsense_visualizer",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run realsense_visualizer --language cpp"
+    },
+    {
+        "metadata": {
             "name": "DDS Video",
             "authors": [
                 {
@@ -3811,6 +3848,38 @@
         },
         "readme": "# HoloHub Operators\n\nThis directory contains operators for the Holoscan Platform.\n\n# Contributing to HoloHub Operators\n\nPlease review the [CONTRIBUTING.md file](https://github.com/nvidia-holoscan/holohub/blob/main/CONTRIBUTING.md) guidelines to contribute operators.\n",
         "application_name": "mesh_to_usd",
+        "source_folder": "operators"
+    },
+    {
+        "metadata": {
+            "name": "Intel RealSense Camera Operator",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "C++",
+            "version": "0.1.0",
+            "changelog": {
+                "0.1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [],
+            "ranking": 1,
+            "dependencies": {}
+        },
+        "readme": "# Intel RealSense Camera Operator\n\n## Overview\n\nCaptures frames from an Intel RealSense camera.\n",
+        "application_name": "realsense_camera",
         "source_folder": "operators"
     },
     {
