@@ -1382,10 +1382,61 @@
                 "workdir": "holohub_app_bin"
             }
         },
-        "readme": "# H.264 Video Decode Reference Application\n\nThis is a minimal reference application demonstrating usage of H.264 video\ndecode operators. This application makes use of H.264 elementary stream reader\noperator for reading H.264 elementary stream input and uses Holoviz operator\nfor rendering decoded data to the native window.\n\n_The H.264 video decode operators do not adjust framerate as it reads the\nelementary stream input. As a result the video stream can be displayed as\nquickly as the decoding can be performed. This application uses\n`PeriodicCondition` to play video at the same speed as the source video._\n\n## Requirements\n\nThis application is configured to use H.264 elementary stream from endoscopy\nsample data as input. To use any other stream, the filename / path for the\ninput file can be specified in the 'h264_video_decode.yaml' file.\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded when building the application.\n\n## Building and Running H.264 Endoscopy Tool Tracking Application\n\n* Building and running the application from the top level Holohub directory:\n\n```bash\n# C++ version\n./dev_container build_and_run h264_video_decode --docker_file applications/h264/Dockerfile\n```\n\nImportant: on aarch64, applications also need tegra folder mounted inside the container and\nthe `LD_LIBRARY_PATH` environment variable should be updated to include\ntegra folder path.\n\nOpen and edit the [Dockerfile](../Dockerfile) and uncomment line 66:\n\n```bash\n# Uncomment the following line for aarch64 support\nENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/aarch64-linux-gnu/tegra/\n```",
+        "readme": "# H.264 Video Decode Reference Application\n\nThis is a minimal reference application demonstrating usage of H.264 video\ndecode operators. This application makes use of H.264 elementary stream reader\noperator for reading H.264 elementary stream input and uses Holoviz operator\nfor rendering decoded data to the native window.\n\n_The H.264 video decode operators do not adjust framerate as it reads the\nelementary stream input. As a result the video stream can be displayed as\nquickly as the decoding can be performed. This application uses\n`PeriodicCondition` to play video at the same speed as the source video._\n\n## Requirements\n\nThis application is configured to use H.264 elementary stream from endoscopy\nsample data as input. To use any other stream, the filename / path for the\ninput file can be specified in the 'h264_video_decode.yaml' file.\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded when building the application.\n\n## Building and Running H.264 Endoscopy Tool Tracking Application\n\n* Building and running the application from the top level Holohub directory:\n\n```bash\n# C++ version\n./dev_container build_and_run h264_video_decode --docker_file applications/h264/Dockerfile --language cpp\n\n# Python version\n./dev_container build_and_run h264_video_decode --docker_file applications/h264/Dockerfile --language python\n\n```\n\nImportant: on aarch64, applications also need tegra folder mounted inside the container and\nthe `LD_LIBRARY_PATH` environment variable should be updated to include\ntegra folder path.\n\nOpen and edit the [Dockerfile](../Dockerfile) and uncomment line 66:\n\n```bash\n# Uncomment the following line for aarch64 support\nENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/aarch64-linux-gnu/tegra/\n```",
         "application_name": "h264_video_decode",
         "source_folder": "applications",
         "build_and_run": "./dev_container build_and_run h264_video_decode --language cpp"
+    },
+    {
+        "metadata": {
+            "name": "H.264 Video Decode Reference Application",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "Python",
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "H264",
+                "Video Decoding"
+            ],
+            "ranking": 1,
+            "dependencies": {
+                "operators": [
+                    {
+                        "name": "videodecoder",
+                        "version": "1.2.0"
+                    },
+                    {
+                        "name": "videodecoderio",
+                        "version": "1.2.0"
+                    }
+                ]
+            },
+            "run": {
+                "command": "python3 <holohub_app_source>/h264_video_decode.py --data <holohub_data_dir>/endoscopy",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# H.264 Video Decode Reference Application\n\nThis is a minimal reference application demonstrating usage of H.264 video\ndecode operators. This application makes use of H.264 elementary stream reader\noperator for reading H.264 elementary stream input and uses Holoviz operator\nfor rendering decoded data to the native window.\n\n_The H.264 video decode operators do not adjust framerate as it reads the\nelementary stream input. As a result the video stream can be displayed as\nquickly as the decoding can be performed. This application uses\n`PeriodicCondition` to play video at the same speed as the source video._\n\n## Requirements\n\nThis application is configured to use H.264 elementary stream from endoscopy\nsample data as input. To use any other stream, the filename / path for the\ninput file can be specified in the 'h264_video_decode.yaml' file.\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded when building the application.\n\n## Building and Running H.264 Endoscopy Tool Tracking Application\n\n* Building and running the application from the top level Holohub directory:\n\n```bash\n# C++ version\n./dev_container build_and_run h264_video_decode --docker_file applications/h264/Dockerfile --language cpp\n\n# Python version\n./dev_container build_and_run h264_video_decode --docker_file applications/h264/Dockerfile --language python\n\n```\n\nImportant: on aarch64, applications also need tegra folder mounted inside the container and\nthe `LD_LIBRARY_PATH` environment variable should be updated to include\ntegra folder path.\n\nOpen and edit the [Dockerfile](../Dockerfile) and uncomment line 66:\n\n```bash\n# Uncomment the following line for aarch64 support\nENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/aarch64-linux-gnu/tegra/\n```",
+        "application_name": "h264_video_decode",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run h264_video_decode --language python"
     },
     {
         "metadata": {
