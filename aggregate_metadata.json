@@ -2359,6 +2359,53 @@
     },
     {
         "metadata": {
+            "name": "Florence-2",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "Python",
+            "version": "1.0.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Multimodal Model",
+                "Vision Model"
+            ],
+            "ranking": 1,
+            "dependencies": {
+                "PySide6": {
+                    "version": "6.7.2"
+                },
+                "flash-attn": {
+                    "version": "2.5.9"
+                }
+            },
+            "run": {
+                "command": "python3 <holohub_app_source>/qt_app.py",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# \ud83d\udcf7\ud83e\udd16 Florence-2\n\nThis application demonstrates how to run the [Florence-2](https://arxiv.org/abs/2311.06242) models on a live video feed with the possibility of changing the task and optional prompt via a QT UI.\n\n\n\n<p align=\"center\">\n  <img src=\"./demo.gif\" alt=\"Holoscan VILA Live\">\n</p>\n\nNote: This demo currently uses [Florence-2-large-ft](https://huggingface.co/microsoft/Florence-2-large-ft), but any of the Florence-2 models should work as long as the correct URLs and names are used in [Dockerfile](./Dockerfile) and [config.yaml](./config.yaml):\n- [Florence-2-large-ft](https://huggingface.co/microsoft/Florence-2-large-ft)\n- [Florence-2-large](https://huggingface.co/microsoft/Florence-2-large)\n- [Florence-2-base-ft](https://huggingface.co/microsoft/Florence-2-base-ft)\n- [Florence-2-base](https://huggingface.co/microsoft/Florence-2-base)\n\n## \u2699\ufe0f Setup Instructions\nThe app defaults to using the video device at `/dev/video0`\n\n> Note: You can use a USB webcam as the video source, or an MP4 video by following the instructions for the [V4L2_Camera](https://github.com/nvidia-holoscan/holoscan-sdk/tree/main/examples/v4l2_camera#use-with-v4l2-loopback-devices) example app.\n\nTo debug if this is the correct device download `v4l2-ctl`:\n```bash\nsudo apt-get install v4l-utils\n```\nTo check for your devices run:\n```bash\nv4l2-ctl --list-devices\n```\nThis command will output something similar to this:\n```bash\nNVIDIA Tegra Video Input Device (platform:tegra-camrtc-ca):\n        /dev/media0\n\nvi-output, lt6911uxc 2-0056 (platform:tegra-capture-vi:0):\n        /dev/video0\n\nDummy video device (0x0000) (platform:v4l2loopback-000):\n        /dev/video3\n```\nDetermine your desired video device and edit the source device in [config.yaml](config.yaml)\n\n## \ud83d\ude80 Build and Run Instructions\nFrom the Holohub main directory run the following command:\n```bash\n./dev_container build_and_run florence-2\n```\nNote: The first build will take **~1.5 hours** if you're on ARM64. This is largely due to building [Flash Attention 2](https://github.com/Dao-AILab/flash-attention) since pre-built wheels are not distributed for ARM64 platforms.\n\n## \ud83d\udcbb Supported Hardware\n- IGX w/ dGPU\n- x86 w/ dGPU\n> Note: iGPU is not yet supported. This app can be built on iGPU devices and the florence2_app.py will run, however, the full QT UI app is not yet supported for iGPU.",
+        "application_name": "florence-2-vision",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run florence-2-vision --language python"
+    },
+    {
+        "metadata": {
             "name": "Holoscan XR Demo Application",
             "authors": [
                 {
