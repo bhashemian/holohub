@@ -3197,6 +3197,104 @@
     },
     {
         "metadata": {
+            "name": "Endoscopy Tool Tracking Distributed",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "C++",
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Endoscopy",
+                "Tracking"
+            ],
+            "ranking": 0,
+            "dependencies": {
+                "data": [
+                    {
+                        "name": "Holoscan Sample App Data for AI-based Endoscopy Tool Tracking",
+                        "description": "This resource contains the convolutional LSTM model for tool tracking in laparoscopic videos by Nwoye et. al [1], and a sample surgical video.",
+                        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data",
+                        "version": "20230222"
+                    }
+                ]
+            },
+            "run": {
+                "command": "<holohub_app_bin>/endoscopy_tool_tracking_distributed --data <holohub_data_dir>/endoscopy",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# Distributed Endoscopy Tool Tracking\n\nThis application is similar to the Endoscopy Tool Tracking application, but the distributed version divides the application into three fragments:\n\n1. Video Input: get video input from a pre-recorded video file.\n2. Inference: run the inference using LSTM and run the post-processing script.\n3. Visualization: display input video and inference results.\n\nBased on an LSTM (long-short term memory) stateful model, these applications demonstrate the use of custom components for tool tracking, including composition and rendering of text, tool position, and mask (as heatmap) combined with the original video stream.\n\n### Requirements\n\nThe provided applications are configured to use a pre-recorded endoscopy video (replayer).\n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded and converted to the correct format when building the application.\nIf you want to manually convert the video data, please refer to the instructions for using the [convert_video_to_gxf_entities](https://github.com/nvidia-holoscan/holoscan-sdk/tree/main/scripts#convert_video_to_gxf_entitiespy) script.\n\n### Run Instructions\n\nRun the following command to start the application.  This will run the app with a pre-recorded video as input:\n\n```sh\n./dev_container build_and_run endoscopy_tool_tracking_distributed --language cpp\n```\n",
+        "application_name": "endoscopy_tool_tracking_distributed",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run endoscopy_tool_tracking_distributed --language cpp"
+    },
+    {
+        "metadata": {
+            "name": "Endoscopy Tool Tracking Distributed",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "Python",
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Endoscopy",
+                "Tracking"
+            ],
+            "ranking": 1,
+            "dependencies": {
+                "data": [
+                    {
+                        "name": "Holoscan Sample App Data for AI-based Endoscopy Tool Tracking",
+                        "description": "This resource contains the convolutional LSTM model for tool tracking in laparoscopic videos by Nwoye et. al [1], and a sample surgical video.",
+                        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data",
+                        "version": "20230222"
+                    }
+                ]
+            },
+            "run": {
+                "command": "python3 <holohub_app_source>/endoscopy_tool_tracking.py --data <holohub_data_dir>/endoscopy",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# Distributed Endoscopy Tool Tracking\n\nThis application is similar to the Endoscopy Tool Tracking application, but the distributed version divides the application into three fragments:\n\n1. Video Input: get video input from a pre-recorded video file.\n2. Inference: run the inference using LSTM and run the post-processing script.\n3. Visualization: display input video and inference results.\n\nBased on an LSTM (long-short term memory) stateful model, these applications demonstrate the use of custom components for tool tracking, including composition and rendering of text, tool position, and mask (as heatmap) combined with the original video stream.\n\n### Requirements\n\n- Python 3.8+\n- The provided applications are configured to use a pre-recorded endoscopy video (replayer). \n\n### Data\n\n[\ud83d\udce6\ufe0f (NGC) Sample App Data for AI-based Endoscopy Tool Tracking](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara-holoscan/resources/holoscan_endoscopy_sample_data)\n\nThe data is automatically downloaded and converted to the correct format when building the application.\nIf you want to manually convert the video data, please refer to the instructions for using the [convert_video_to_gxf_entities](https://github.com/nvidia-holoscan/holoscan-sdk/tree/main/scripts#convert_video_to_gxf_entitiespy) script.\n\n### Run Instructions\n\n### Run Instructions\n\nRun the following command to start the application.  This will run the app with a pre-recorded video as input:\n\n```sh\n./dev_container build_and_run endoscopy_tool_tracking_distributed --language python\n```\n",
+        "application_name": "endoscopy_tool_tracking_distributed",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run endoscopy_tool_tracking_distributed --language python"
+    },
+    {
+        "metadata": {
             "name": "Endoscopy Out of Body Detection Pipeline in C++",
             "authors": [
                 {
