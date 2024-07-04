@@ -1,6 +1,58 @@
 [
     {
         "metadata": {
+            "name": "Real-Time Face and Text Deidentification App",
+            "authors": [
+                {
+                    "name": "Wendell Hom",
+                    "affiliation": "NVIDIA"
+                },
+                {
+                    "name": "Jonathan McLeod",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "Python",
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Computer Vision",
+                "Detection"
+            ],
+            "ranking": 2,
+            "dependencies": {
+                "model": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/models/peoplenet",
+                "libraries": [
+                    {
+                        "name": "easyocr",
+                        "version": "1.7.1"
+                    }
+                ]
+            },
+            "run": {
+                "command": "python3 <holohub_app_source>/video_deidentification.py",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# Real-Time Face and Text Deidentification\n<center> <img src=\"./docs/video_deid.gif\" ></center>\n\nThis sample application demonstrates the use of face and text detection models to do real-time video deidentification.\nRegions identified to be face or text are blurred out from the final image.\n\n> **_NOTE:_** This application is a demonstration of real-time face and text deidentification and is not meant to be used in critical applications\nthat has zero error tolerance.  The models used in this sample application have limitations, e.g., in detecting faces and text that are\npartially occluded, in low lighting situations, when there is motion blur, etc.\n\n## Models\n\nThis application uses TAO PeopleNet model from [NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/models/peoplenet) for detecting faces.\nThe model is downloaded when building the application.\n\nFor text detection, this application uses [EasyOCR](https://github.com/JaidedAI/EasyOCR) python library which uses Character Region Awareness for Text Detection [(CRAFT)](https://github.com/clovaai/CRAFT-pytorch).\n\n## Data\n\nThis application downloads a pre-recorded video from [Pexels](https://www.pexels.com/video/young-traveler-walking-in-the-streets-of-milan-5271997/) when the application is built for use with this application.  Please review the [license terms](https://www.pexels.com/license/) from Pexels.\n\n> **_NOTE:_** The user is responsible for checking if the dataset license is fit for the intended purpose.\n\n## Input\n\nThis app currently supports three different input options:\n\n1. v4l2 compatible input device (default, see V4L2 Support below)\n2. pre-recorded video (see Video Replayer Support below)\n\n## Run Instructions\n\n## V4L2 Support\n\nThis application supports v4l2 compatible devices as input.  To run this application with your v4l2 compatible device,\nplease plug in your input device and run:\n```sh\n./dev_container build_and_run video_deidentification\n```\n\nBy default, this application expects the input device to be mounted at `/dev/video0`.  If this is not the case, please update\n`applications/video_deidentification/video_deidentification.yaml` and set it to use the corresponding input device before\nrunning the application.  You can also override the default input device on the command line by running:\n```sh\n./dev_container build_and_run video_deidentification --run_args \"--video_device /dev/video0\"\n```\n\n## Video Replayer Support\n\nIf you don't have a v4l2 compatible device plugged in, you may also run this application on a pre-recorded video.\nTo launch the application using the Video Stream Replayer as the input source, run:\n\n```sh\n./dev_container build_and_run video_deidentification --run_args \"--source replayer\"\n```\n",
+        "application_name": "video_deidentification",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run video_deidentification --language python"
+    },
+    {
+        "metadata": {
             "name": "Volume Rendering",
             "authors": [
                 {
