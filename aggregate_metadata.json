@@ -63,12 +63,13 @@
             "language": "C++",
             "version": "1.0.0",
             "changelog": {
-                "1.0": "Initial Release"
+                "1.0": "Initial Release",
+                "2.0": "Update to Holoscan SDK 2.1"
             },
             "holoscan_sdk": {
-                "minimum_required_version": "0.6.0",
+                "minimum_required_version": "2.1.0",
                 "tested_versions": [
-                    "0.6.0"
+                    "2.1.0"
                 ]
             },
             "platforms": [
@@ -87,10 +88,51 @@
                 "workdir": "holohub_bin"
             }
         },
-        "readme": "# Volume rendering using ClaraViz\n\n![](screenshot.png)<br>\n\nThis application loads a medical CT scan and renders it in real time at interactive frame rates using ClaraViz (https://github.com/NVIDIA/clara-viz).\n\nThe application uses the `VolumeLoaderOp` operator to load the medical volume data, the `VolumeRendererOp` operator to render the volume and the `HolovizOp` operator to display the result and handle the camera movement.\n\n### Data\n\nYou can find CT scan datasets for use with this application from [embodi3d](https://www.embodi3d.com/).\n\nDatasets are bundled with a default ClaraViz JSON configuration file for volume rendering. See [`VolumeRendererOp` documentation](/operators/volume_renderer/README.md#configuration) for details on configuration schema.\n\nSee [`VolumeLoaderOp` documentation](/operators/volume_loader/README.md#supported-formats) for supported volume formats.\n\n## Build Instructions\n\nTo build this application, use the ```run``` script:\n\n```bash\n  ./run build volume_rendering\n```\n\n## Run Instructions\n\nFrom the build directory, run the command:\n\n```bash\n  ./run launch volume_rendering\n```\n\nThe path of the volume configuration file, volume density file and volume mask file can be passed to the application.\n\nYou can use the following command to get more information on command line parameters for this application:\n\n```bash\n./run launch volume_rendering --extra_args -h\n```\n",
+        "readme": "# Volume rendering using ClaraViz\n\n![](screenshot.png)<br>\n\nThis application loads a medical CT scan and renders it in real time at interactive frame rates using ClaraViz (https://github.com/NVIDIA/clara-viz).\n\nThe application uses the `VolumeLoaderOp` operator to load the medical volume data, the `VolumeRendererOp` operator to render the volume and the `HolovizOp` operator to display the result and handle the camera movement.\n\n### Data\n\nYou can find CT scan datasets for use with this application from [embodi3d](https://www.embodi3d.com/).\n\nDatasets are bundled with a default ClaraViz JSON configuration file for volume rendering. See [`VolumeRendererOp` documentation](/operators/volume_renderer/README.md#configuration) for details on configuration schema.\n\nSee [`VolumeLoaderOp` documentation](/operators/volume_loader/README.md#supported-formats) for supported volume formats.\n\n## Build and Run Instructions\n\nTo build and run this application, use the ```dev_container``` script:\n\n```bash\n# C++\n ./dev_container build_and_run volume_rendering --language cpp\n\n # Python\n  ./dev_container build_and_run volume_rendering --language python\n```\n\nThe path of the volume configuration file, volume density file and volume mask file can be passed to the application.\n\nYou can use the following command to get more information on command line parameters for this application:\n\n```bash\n./dev_container build_and_run volume_rendering --language [cpp|python] --run_args --usages\n```\n",
         "application_name": "volume_rendering",
         "source_folder": "applications",
         "build_and_run": "./dev_container build_and_run volume_rendering --language cpp"
+    },
+    {
+        "metadata": {
+            "name": "Volume Rendering",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "Python",
+            "version": "1.0.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.1.0",
+                "tested_versions": [
+                    "2.1.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Volume",
+                "Render",
+                "ClaraViz"
+            ],
+            "ranking": 1,
+            "dependencies": {},
+            "run": {
+                "command": "python3 volume_rendering.py",
+                "workdir": "holohub_app_source"
+            }
+        },
+        "readme": "# Volume rendering using ClaraViz\n\n![](screenshot.png)<br>\n\nThis application loads a medical CT scan and renders it in real time at interactive frame rates using ClaraViz (https://github.com/NVIDIA/clara-viz).\n\nThe application uses the `VolumeLoaderOp` operator to load the medical volume data, the `VolumeRendererOp` operator to render the volume and the `HolovizOp` operator to display the result and handle the camera movement.\n\n### Data\n\nYou can find CT scan datasets for use with this application from [embodi3d](https://www.embodi3d.com/).\n\nDatasets are bundled with a default ClaraViz JSON configuration file for volume rendering. See [`VolumeRendererOp` documentation](/operators/volume_renderer/README.md#configuration) for details on configuration schema.\n\nSee [`VolumeLoaderOp` documentation](/operators/volume_loader/README.md#supported-formats) for supported volume formats.\n\n## Build and Run Instructions\n\nTo build and run this application, use the ```dev_container``` script:\n\n```bash\n# C++\n ./dev_container build_and_run volume_rendering --language cpp\n\n # Python\n  ./dev_container build_and_run volume_rendering --language python\n```\n\nThe path of the volume configuration file, volume density file and volume mask file can be passed to the application.\n\nYou can use the following command to get more information on command line parameters for this application:\n\n```bash\n./dev_container build_and_run volume_rendering --language [cpp|python] --run_args --usages\n```\n",
+        "application_name": "volume_rendering",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run volume_rendering --language python"
     },
     {
         "metadata": {
@@ -4164,7 +4206,7 @@
             "ranking": 1,
             "dependencies": {}
         },
-        "readme": "# Volume Loader\n\nThe `volume_loader` operator reads 3D volumes from the specified input file.\n\n## Supported Formats\n\nThe operator supports these medical volume file formats:\n* [MHD (MetaImage)](https://itk.org/Wiki/ITK/MetaIO/Documentation)\n  * Detached-header format only (`.mhd` + `.raw`)\n* [NIFTI](https://nifti.nimh.nih.gov/)\n* [NRRD (Nearly Raw Raster Data)](https://teem.sourceforge.net/nrrd/format.html)\n  * [Detached-header format](https://teem.sourceforge.net/nrrd/format.html#detached) only (`.nhdr` + `.raw`)\n\nYou must convert your data to one of these formats to load it with `VolumeLoaderOp`. Some third party open source\ntools for volume file format conversion include:\n- Command Line Tools\n  - the [Insight Toolkit (ITK)](https://itk.org/) ([PyPI](https://pypi.org/project/itk/), [Image IO Examples](https://examples.itk.org/src/io/imagebase/))\n  - [SimpleITK](https://simpleitk.org/) ([PyPI](https://pypi.org/project/SimpleITK/))\n  - [Utah NRRD Utilities (unu)](https://teem.sourceforge.net/unrrdu/)\n- GUI Applications\n  - [3D Slicer](https://www.slicer.org/)\n  - [ImageJ](https://imagej.net/)\n\n## API\n\n#### `holoscan::ops::VolumeLoaderOp`\n\nOperator class to read a volume.\n\n##### Parameters\n\n- **`file_name`**: Volume data file name\n  - type: `std::string`\n- **`allocator`**: Allocator used to allocate the volume data\n  - type: `std::shared_ptr<Allocator>`\n\n##### Outputs\n\n- **`volume`**: Output volume data\n  - type: `nvidia::gxf::Tensor`\n- **`spacing`**: Physical size of each volume element\n  - type: `std::array<float, 3>`\n- **`permute_axis`**: Volume axis permutation of data space to world space, e.g. if x and y of a volume is swapped this is {1, 0, 2}\n  - type: `std::array<uint32_t, 3>`\n- **`flip_axes`**: Volume axis flipping from data space to world space, e.g. if x is flipped this is {true, false, false}\n  - type: `std::array<bool, 3>`\n- **`extent`**: Physical size of the the volume in world space\n  - type: `std::array<float, 3>`\n",
+        "readme": "# Volume Loader\n\nThe `volume_loader` operator reads 3D volumes from the specified input file.\n\n## Supported Formats\n\nThe operator supports these medical volume file formats:\n* [MHD (MetaImage)](https://itk.org/Wiki/ITK/MetaIO/Documentation)\n  * Detached-header format only (`.mhd` + `.raw`)\n* [NIFTI](https://nifti.nimh.nih.gov/)\n* [NRRD (Nearly Raw Raster Data)](https://teem.sourceforge.net/nrrd/format.html)\n  * [Attached-header format](https://teem.sourceforge.net/nrrd/format.html) (`.nrrd`)\n  * [Detached-header format](https://teem.sourceforge.net/nrrd/format.html#detached) (`.nhdr` + `.raw`)\n\nYou must convert your data to one of these formats to load it with `VolumeLoaderOp`. Some third party open source\ntools for volume file format conversion include:\n- Command Line Tools\n  - the [Insight Toolkit (ITK)](https://itk.org/) ([PyPI](https://pypi.org/project/itk/), [Image IO Examples](https://examples.itk.org/src/io/imagebase/))\n  - [SimpleITK](https://simpleitk.org/) ([PyPI](https://pypi.org/project/SimpleITK/))\n  - [Utah NRRD Utilities (unu)](https://teem.sourceforge.net/unrrdu/)\n- GUI Applications\n  - [3D Slicer](https://www.slicer.org/)\n  - [ImageJ](https://imagej.net/)\n\n## API\n\n#### `holoscan::ops::VolumeLoaderOp`\n\nOperator class to read a volume.\n\n##### Parameters\n\n- **`file_name`**: Volume data file name\n  - type: `std::string`\n- **`allocator`**: Allocator used to allocate the volume data\n  - type: `std::shared_ptr<Allocator>`\n\n##### Outputs\n\n- **`volume`**: Output volume data\n  - type: `nvidia::gxf::Tensor`\n- **`spacing`**: Physical size of each volume element\n  - type: `std::array<float, 3>`\n- **`permute_axis`**: Volume axis permutation of data space to world space, e.g. if x and y of a volume is swapped this is {1, 0, 2}\n  - type: `std::array<uint32_t, 3>`\n- **`flip_axes`**: Volume axis flipping from data space to world space, e.g. if x is flipped this is {true, false, false}\n  - type: `std::array<bool, 3>`\n- **`extent`**: Physical size of the the volume in world space\n  - type: `std::array<float, 3>`\n",
         "application_name": "volume_loader",
         "source_folder": "operators"
     },
