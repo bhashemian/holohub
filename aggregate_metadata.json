@@ -3064,8 +3064,10 @@
                 "2.0": "Update to Holoscan SDK 2.1"
             },
             "holoscan_sdk": {
-                "minimum_required_version": "2.1.0",
+                "minimum_required_version": "1.0.3",
                 "tested_versions": [
+                    "1.0.3",
+                    "2.0.0",
                     "2.1.0"
                 ]
             },
@@ -3105,8 +3107,10 @@
                 "1.0": "Initial Release"
             },
             "holoscan_sdk": {
-                "minimum_required_version": "2.1.0",
+                "minimum_required_version": "1.0.3",
                 "tested_versions": [
+                    "1.0.3",
+                    "2.0.0",
                     "2.1.0"
                 ]
             },
@@ -5232,7 +5236,10 @@
             "holoscan_sdk": {
                 "minimum_required_version": "0.6.0",
                 "tested_versions": [
-                    "0.6.0"
+                    "0.6.0",
+                    "1.0.3",
+                    "2.0.0",
+                    "2.1.0"
                 ]
             },
             "platforms": [
@@ -5309,9 +5316,11 @@
                 "2.0": "Updates for compatibility with XR operators"
             },
             "holoscan_sdk": {
-                "minimum_required_version": "2.0.0",
+                "minimum_required_version": "1.0.3",
                 "tested_versions": [
-                    "2.0.0"
+                    "1.0.3",
+                    "2.0.0",
+                    "2.1.0"
                 ]
             },
             "platforms": [
