@@ -206,6 +206,47 @@
     },
     {
         "metadata": {
+            "name": "Imaging using NVIDIA Inference Microservice (NIM)",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "Python",
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "1.0.0",
+                "tested_versions": [
+                    "1.0.0",
+                    "2.0.2"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "OpenAI API",
+                "NIM"
+            ],
+            "ranking": 1,
+            "dependencies": {},
+            "run": {
+                "command": "python3 <holohub_app_source>/app.py",
+                "workdir": "holohub_app_bin"
+            }
+        },
+        "readme": "# NVIDIA NIM Imaging with Vista-3D\n\nThis sample application demonstrates the use of the Vista-3D NVIDIA Inference Microservice (NIM).\n\nThe application instructs the Vista-3D NIM API to process the given dataset and then downloads and extracts the results of a segmentation NRRD file onto a local directory.\n\n### Quick Start\n\n1. Add API key in `nvidia_nim.yaml`\n2. `./dev_container build_and_run nvidia_nim_chat`\n\n## Configuring the sample application\n\nUse the `nvidia_nim.yaml` configuration file to configure the sample application:\n\n### Connection Information\n\n```\nnim:\n  base_url: https://integrate.api.nvidia.com/v1\n  api_key:\n\n```\n\n`base_url`: The URL of your NIM instance. Defaults to NVIDIA hosted NIMs.\n`api_key`: Your API key to access NVIDIA hosted NIMs.\n\n\n## Build and Run the sample application\n\n```\n# Build the Docker images from the root directory of Holohub\n./dev_container build_and_run nvidia_nim_imaging\n```\n\n## Display the Results\n\nIn this section we will show how to view the sample data and segmentation results returned from Vista-3D.\n\n1. Download 3D Slicer: https://download.slicer.org/\n2. Decompress and launch 3D Slicer\n   ```\n   tar -xvzf Slicer-5.6.2-linux-amd64.tar.gz\n   ```\n3. Locate the sample data volume and the segmentation results in `build/nvidia_nim_imaging/applications/nvidia_nim/nvidia_nim_imaging`\n   ```\n   drwxr-xr-x 3 vicchang domain-users     4096 Jul  3 11:41 ./\n   drwxr-xr-x 4 vicchang domain-users     4096 Jul  3 11:40 ../\n   -rw-r--r-- 1 vicchang vicchang 27263336 Jul 23 14:22 example-1_seg.nrrd\n   -rw-r--r-- 1 vicchang vicchang 33037057 Jul 23 14:21 sample.nii.gz\n   ```\n5. In 3D Slicer, click *File*, *Add Data* and click *Choose File(s) to Add*.\n   From the *Add Data into the scene* dialog, find and add the `sample.nii.gz` file and the `example-1_seg.nrrd` file.\n   For the `sample.nrrd` file, select *Segmentation* and click *Ok*.\n   ![](./assets/3d-slicer-1.png)\n6. 3D Slicer shall display the volume and the segmentation results as shown below:\n   ![](./assets/3d-slicer-2.png)",
+        "application_name": "nvidia_nim_imaging",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run nvidia_nim_imaging --language python"
+    },
+    {
+        "metadata": {
             "name": "Streaming Synthetic Aperture Radar",
             "authors": [
                 {
@@ -4490,6 +4531,39 @@
         },
         "readme": "# HoloHub Operators\n\nThis directory contains operators for the Holoscan Platform.\n\n# Contributing to HoloHub Operators\n\nPlease review the [CONTRIBUTING.md file](https://github.com/nvidia-holoscan/holohub/blob/main/CONTRIBUTING.md) guidelines to contribute operators.\n",
         "application_name": "prohawk_video_processing",
+        "source_folder": "operators"
+    },
+    {
+        "metadata": {
+            "name": "unzip",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.0.1",
+                "tested_versions": [
+                    "2.0.1"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "unzip"
+            ],
+            "ranking": 2,
+            "dependencies": {}
+        },
+        "readme": "### Unzip Operator\n\nThe `unzip` operator decompresses a zip compressed file into its original contents.\n\n##### Parameters\n\n- **`filter`**: File filter for the decompressed files to be copied to the `output_path`\n  - type: `str`\n- **`output_path`**: The directory where the unzipped files will be stored.\n  - type: `str`\n",
+        "application_name": "unzip",
         "source_folder": "operators"
     },
     {
