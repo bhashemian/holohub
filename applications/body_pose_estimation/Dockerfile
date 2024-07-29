@@ -26,12 +26,16 @@ ARG DEBIAN_FRONTEND=noninteractive
 #
 # Install required apt packages and python modules
 #
-RUN apt-get update \
-    && apt-get install -y libgl1
+RUN apt-get update && \
+    apt-get install -y \
+    libgl1 \
+    qt6-base-dev \
+    libxcb-cursor0
 
 RUN pip3 install \
     ultralytics \
-    onnx
+    onnx \
+    PySide6
 
 # --------------------------------------------------------------------------
 #

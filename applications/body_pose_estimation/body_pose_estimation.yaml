@@ -65,8 +65,8 @@ holoviz:
     - name: boxes
       type: rectangles
       line_width: 4
-      color: [0.0, 1.0, 0.0, 1.0]
-      opacity: 0
+      color: [0.0, 0.0, 1.0, 1.0]
+      opacity: 1
     - name: noses
       type: points
       color: [1.0, 0.0, 0.0, 1.0]

@@ -125,6 +125,7 @@ class PostprocessorOp(Operator):
         spec.param("iou_threshold", 0.5)
         spec.param("score_threshold", 0.5)
         spec.param("image_dim", None)
+        spec.param("visible", set(["boxes", "bodypose"]))
 
     def get_keypoints(self, detection):
         # Keypoints to be returned including our own "neck" keypoint
@@ -235,7 +236,11 @@ class PostprocessorOp(Operator):
         # Create output message
         out_message = Entity(context)
         for output in self.outputs:
-            out_message.add(hs.as_tensor(out[output] / self.image_dim), output)
+            if (output == "boxes" and "boxes" in self.visible) or (output != "boxes" and "bodypose" in self.visible):
+                out_message.add(hs.as_tensor(out[output] / self.image_dim), output)
+            else:
+                out_message.add(hs.as_tensor(cp.full_like(out[output], -1)), output)
+
         op_output.emit(out_message, "out")
 
     def nms(self, inputs, scores):
@@ -331,7 +336,11 @@ class PostprocessorOp(Operator):
 
 
 class BodyPoseEstimationApp(Application):
-    def __init__(self, data, source="v4l2", video_device="none"):
+    def set_parameters(self, visible):
+        if visible is not None:
+            self.postprocessor_op.visible = visible
+
+    def __init__(self, data="none", source="v4l2", video_device="none"):
         """Initialize the body pose estimation application"""
 
         super().__init__()
@@ -435,6 +444,8 @@ class BodyPoseEstimationApp(Application):
             allocator=pool,
             **postprocessor_args,
         )
+
+        self.postprocessor_op = postprocessor
 
         holoviz_args = self.kwargs("holoviz")
         if enable_dds_publisher:
