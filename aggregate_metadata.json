@@ -1537,6 +1537,98 @@
     },
     {
         "metadata": {
+            "name": "Imaging AI Whole Body Segmentation",
+            "authors": [
+                {
+                    "name": "Ming Qin",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "Python",
+            "version": "1.0.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.3.0",
+                "tested_versions": [
+                    "2.3.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Radiology Imaging",
+                "DICOM",
+                "DICOM SEG",
+                "Segmentation by AI",
+                "Total segmentator",
+                "MONAI",
+                "MONAI Model Zoo"
+            ],
+            "ranking": 1,
+            "dependencies": {
+                "python-packages": {
+                    "holoscan": {
+                        "version": "2.3.0",
+                        "license-url": "https://github.com/nvidia-holoscan/holoscan-sdk/blob/main/LICENSE.txt"
+                    },
+                    "highdicom": {
+                        "version": "0.18.2",
+                        "license-url": "https://github.com/ImagingDataCommons/highdicom/blob/master/LICENSE"
+                    },
+                    "monai": {
+                        "version": "1.0.0",
+                        "license-url": "https://github.com/Project-MONAI/MONAI/blob/dev/LICENSE"
+                    },
+                    "nibabel": {
+                        "version": "3.2.1",
+                        "license-url": "https://nipy.org/nibabel/legal.html"
+                    },
+                    "numpy": {
+                        "version": "1.21.6",
+                        "license-url": "https://github.com/numpy/numpy/blob/main/LICENSE.txt"
+                    },
+                    "Pillow": {
+                        "version": "8.0.0",
+                        "license-url": "https://github.com/python-pillow/Pillow/blob/main/LICENSE"
+                    },
+                    "pydicom": {
+                        "version": "2.3.0",
+                        "license-url": "https://github.com/pydicom/pydicom/blob/main/LICENSE"
+                    },
+                    "SimpleITK": {
+                        "version": "2.0.0",
+                        "license-url": "https://github.com/SimpleITK/SimpleITK/blob/master/LICENSE"
+                    },
+                    "scikit-image": {
+                        "version": "0.17.2",
+                        "license-url": "https://github.com/scikit-image/scikit-image/blob/main/LICENSE.txt"
+                    },
+                    "torch": {
+                        "version": "1.2.0",
+                        "license-url": "https://github.com/pytorch/pytorch/blob/main/LICENSE"
+                    },
+                    "typeguard": {
+                        "version": "3.0.0",
+                        "license-url": "https://github.com/agronholm/typeguard/blob/master/LICENSE"
+                    }
+                }
+            },
+            "run": {
+                "command": "python3 <holohub_app_source>/app.py",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# AI Segmentation using MONAI re-trained TotalSegmentator model and CT DICOM images as input\n\nThis application uses MONAI re-trained TotalSegmentator model to segment 104 body parts from a DICOM series of a CT scan. It is implemented using Holohub DICOM processing operators and PyTorch inference operators.\n\nThe input is a DICOM CT Series, and the segmentation results are saved as DICOM Segmentation in Part10 storage format, as well as in NIfTI format. The workflow is summarized below,\n- load DICOM studies\n- select series with application defined rules\n- convert DICOM pixel data to 3D volume image\n- use MONAI SDK to transform input/output and perform inference\n- write results as DICOM Segmentation OID instance, re-using study level metadata from the original DICOM study so that the new instance and series can be associated with the original study\n\nThe following is the screenshot of the 3D volume rendering of the segmentation results in NIfTI format.\n\n<img src=\"resources/segments_3D.png\" alt=\"isolated\" width=\"800\"/>\n\nThe following is the screenshot of a slice of the segmentation saved in DICOM segmentation instance (without color coding the segments).\n\n<img src=\"resources/segments_DICOM_slice.png\" alt=\"isolated\" width=\"800\"/>\n\n## Requirements\n\n- On a [Holohub supported platform](../../README.md#supported-platforms)\n- Python 3.8+\n- Python packages on [Pypi](https://pypi.org), including but not limited to torch, monai, nibabel, pydicom, highdicom, and others as specified in the requirements file\n- Nvidia GPU with at least 14GB memory, for a 200 slice CT series\n\n\n## Model\n\nThis application uses the [MONAI whole-body segmentation model](https://github.com/Project-MONAI/model-zoo/tree/dev/models/wholeBody_ct_segmentation).\n\n## Data\n\nThe input for this application is a folder of DICOM image files from a CT series. For testing, CT scan images can be downloaded from [The Cancer Imaging Archive](https://nbia.cancerimagingarchive.net/nbia-search/), subject to [Data Usage Policies and Restrictions](https://www.cancerimagingarchive.net/data-usage-policies-and-restrictions/)\n\nOne such data set, a CT Abdomen series described as `ABD/PANC_3.0_B31f`, is copied and made available [here](https://urm.nvidia.com/artifactory/sw-holoscan-generic/test_data/dicom/TCIA_CT_ABDOMEN/), though access is currently restricted to Nvidia internal use.\n\n**_Note_**:\nBefore the test DICOM data is made publicly accessible, please download the DICOM files manually and save them in a folder, preferably named `data/imaging_ai_segmentator/dicom` under the project root, as this folder name is used in the examples in the following steps. Manual download scripts are shown in [`Run the Application in Dev Environment`](#run-the-application-in-dev-environment)\n\n### Data Citation\n\nNational Cancer Institute Clinical Proteomic Tumor Analysis Consortium (CPTAC). (2018). The Clinical Proteomic Tumor Analysis Consortium Cutaneous Melanoma Collection (CPTAC-CM) (Version 11) [Dataset]. The Cancer Imaging Archive. https://doi.org/10.7937/K9/TCIA.2018.ODU24GZE\n\n\n## Run Instructions\n\nThere are a number of ways to build and run this application, as well as packaging this application as a Holoscan Application Package. The following sections describe each in detail.\n\n### Quick Start Using Holohub Container\n\nThis is the simplest and fastest way to see the application in action running as a container. As of now, the input DICOM files must be first downloaded and saved in the folder `$PWD/data/imaging_ai_segmentator/dicom`, whereas the PyTorch model is automatically downloaded when container image is built.\n\nUse the following to build and run the application:\n\n```bash\nmkdir -p output\nrm -rf output/*\n./dev_container build_and_run imaging_ai_segmentator --container_args \"-v $PWD/output:/var/holoscan/output -v $PWD/data/imaging_ai_segmentator/dicom:/var/holoscan/input\"\n```\n\nOnce the command completes, please check the output folder for the results, e.g.\n```\noutput\n\u251c\u2500\u2500 1.2.826.0.1.3680043.10.511.3.57591117750107235783166330094310669.dcm\n\u2514\u2500\u2500 saved_images_folder\n    \u2514\u2500\u2500 1.3.6.1.4.1.14519.5.2.1.7085.2626\n        \u251c\u2500\u2500 1.3.6.1.4.1.14519.5.2.1.7085.2626.nii\n        \u2514\u2500\u2500 1.3.6.1.4.1.14519.5.2.1.7085.2626_seg.nii\n\n2 directories, 3 files\n```\n\n**_Note_**\nIt takes quite a few minutes when this command is run the first time.\n\n### Run the Application in Dev Environment\n\nIt is strongly recommended a Python virtual environment is used for running the application in dev environment.\n\nThis application only has Python implementation depending on a set of Python packages from [Pypi](https://pypi.org), however, a `build_and_install` step is needed to automate organizing Python code and downloading the model.\n\n\nSet up the Holohub environment, if not already done\n```bash\n./run setup\n```\n\nSet the environment variables for the application\n```bash\nsource applications/imaging_ai_segmentator/env_settings.sh\n```\n\nDownload images of a CT series from [TCIA](https://nbia.cancerimagingarchive.net/nbia-search/)\n(The following example shows downloading from the Holohub artifactory)\n\n```bash\nwget --no-parent -r -l 1  \"https://urm.nvidia.com/artifactory/sw-holoscan-generic/test_data/dicom/TCIA_CT_ABDOMEN/\"\nrm -f -r $HOLOSCAN_INPUT_PATH\nmkdir -p $HOLOSCAN_INPUT_PATH\ncp -r urm.nvidia.com/artifactory/sw-holoscan-generic/test_data/dicom/TCIA_CT_ABDOMEN/ $HOLOSCAN_INPUT_PATH\n```\n\nOptionally download the AI model from [MONAI Model Zoo](https://github.com/Project-MONAI/model-zoo/tree/dev/models/wholeBody_ct_segmentation), or wait till the build step to have it downloaded automatically\n\n```bash\nmkdir -p $HOLOSCAN_MODEL_PATH\npip install gdown\npython -m gdown https://drive.google.com/uc?id=1PHpFWboimEXmMSe2vBra6T8SaCMC2SHT -O $HOLOSCAN_MODEL_PATH/model.pt\n```\n\nInstall Python packages required by the application\n```bash\npip install -r applications/imaging_ai_segmentator/requirements.txt\n```\n\nBuild and install the application\n```bash\n./dev_container build_and_install imaging_ai_segmentator\n```\n\nRun the application\n```bash\nrm -f -r $HOLOSCAN_OUTPUT_PATH\npython install/imaging_ai_segmentator/app.py\n```\n\n**_Note_**\nIf desired, run the application with explicitly input, output, and/or model folder path, for example\n```bash\nrm -f -r ./output\npython install/imaging_ai_segmentator/app.py -m $HOLOSCAN_MODEL_PATH -i $HOLOSCAN_INPUT_PATH -o ./output\n```\n\nCheck output\n```bash\nls $HOLOSCAN_OUTPUT_PATH\n```\n\nThere should be a DICOM segmentation file with randomized file name. There should also a `saved_images_folder` containing folder named after the input DICOM series' instance UID, which in turn contains the input and segmentation image files in NIfTI format, e.g.\n```bash\napplications/imaging_ai_segmentator/output\n\u251c\u2500\u2500 1.2.826.0.1.3680043.10.511.3.64271669147396658491950188504278234.dcm\n\u2514\u2500\u2500 saved_images_folder\n    \u2514\u2500\u2500 1.3.6.1.4.1.14519.5.2.1.7085.2626\n        \u251c\u2500\u2500 1.3.6.1.4.1.14519.5.2.1.7085.2626.nii\n        \u2514\u2500\u2500 1.3.6.1.4.1.14519.5.2.1.7085.2626_seg.nii\n```\n\n### Run the Application in Dev Container\n\nIn this mode, there is no need to `build` and `install`. The Python code will run in its source folders, and both the model and input DICOM files need to be downloaded manually with the scripts provided below.\n\nAlso, the `PYTHONPATH` environment variable must be set to locate the necessary Holohub medical imaging operators. The AI model and input DICOM file paths need defined via environment variables, namely `HOLOSCAN_MODEL_PATH` and `HOLOSCAN_INPUT_PATH` respectively, otherwise they must be provided explicitly as command options.\n\n\nFirst [Build and launch the Holohub Container](../../README.md#container-build-recommended), landing in `/workspace/holohub`\n\nSet the `PYTHONPATH` to include the Holohub source folder\n```bash\nexport PYTHONPATH=$PYTHONPATH:$PWD\n```\n\nSet the environment variables for the application\n```bash\nsource applications/imaging_ai_segmentator/env_settings.sh\n```\n\nDownload images of a CT series from [TCIA](https://nbia.cancerimagingarchive.net/nbia-search/)\n(The following example shows downloading from the Holohub artifactory)\n\n```bash\nwget --no-parent -r -l 1  \"https://urm.nvidia.com/artifactory/sw-holoscan-generic/test_data/dicom/TCIA_CT_ABDOMEN/\"\nrm -f -r $HOLOSCAN_INPUT_PATH\nmkdir -p $HOLOSCAN_INPUT_PATH\ncp -r urm.nvidia.com/artifactory/sw-holoscan-generic/test_data/dicom/TCIA_CT_ABDOMEN/ $HOLOSCAN_INPUT_PATH\n```\n\nDownload the AI model from [MONAI Model Zoo](https://github.com/Project-MONAI/model-zoo/tree/dev/models/wholeBody_ct_segmentation), or wait till the build step to have it downloaded automatically\n\n```bash\nmkdir -p $HOLOSCAN_MODEL_PATH\npip install gdown\npython -m gdown https://drive.google.com/uc?id=1PHpFWboimEXmMSe2vBra6T8SaCMC2SHT -O $HOLOSCAN_MODEL_PATH/model.pt\n```\n\nInstall Python packages required by the application\n```bash\npip install -r applications/imaging_ai_segmentator/requirements.txt\n```\nRun the application\n```bash\nrm -f -r $HOLOSCAN_OUTPUT_PATH\npython applications/imaging_ai_segmentator/\n```\n\nCheck output\n```bash\nls $HOLOSCAN_OUTPUT_PATH\n```\n\n## Packaging the Application for Distribution\n\nWith Holoscan CLI, an applications built with Holoscan SDK can be packaged into a Holoscan Application Package (HAP), which is essentially a Open Container Initiative compliant container image. An HAP is well suited to be distributed for deployment on hosting platforms, be a Docker Compose, Kubernetes, or else. Please refer to [Packaging Holoscan Applications](https://docs.nvidia.com/holoscan/sdk-user-guide/holoscan_packager.html) in the User Guide for more information.\n\nThis example application provides all the necessary contents for HAP packaging, and the specific commands are revealed by the specific commands.\n\n**_Note_**\n\nThe prerequisite is that the application `build_and_install` has been performed to stage the source and AI model files for packaging.\n\n```\nsource applications/imaging_ai_segmentator/packageHAP.sh\n```\n",
+        "application_name": "imaging_ai_segmentator",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run imaging_ai_segmentator --language python"
+    },
+    {
+        "metadata": {
             "name": "Body Pose Estimation",
             "authors": [
                 {
@@ -4961,6 +5053,44 @@
         },
         "readme": "# Volume Renderer\n\nThe `volume_renderer` operator renders a volume using ClaraViz (https://github.com/NVIDIA/clara-viz).\n\n## `holoscan::ops::VolumeRenderer`\n\nOperator class to render a volume.\n\n### Parameters\n\n- **`config_file`**: Config file path. The content of the file is passed to `clara::viz::JsonInterface::SetSettings()` at initialization time. See [Configuration](#configuration) for details.\n  - type: `std::string`\n- **`allocator`**: Allocator used to allocate render buffer outputs when no pre-allocated color or depth buffer is passed to `color_buffer_in` or `depth_buffer_in`. Allocator needs to be capable to allocate device memory.\n  - type: `std::shared_ptr<Allocator>`\n- **`alloc_width`**: Width of the render buffer to allocate when no pre-allocated buffers are provided.\n  - type: `uint32_t`\n- **`alloc_height`**: Height of the render buffer to allocate when no pre-allocated buffers are provided.\n  - type: `uint32_t`\n\n### Inputs\n\nAll inputs are optional.\n\n- **`volume_pose`**: Transform the volume.\n  - type: `nvidia::gxf::Pose3D`\n- **`crop_box`**: Volume crop box. Each `nvidia::gxf::Vector2f` contains the min and max values in range `[0, 1]` of the x, y and z axes of the volume.\n  - type: `std::array<nvidia::gxf::Vector2f, 3>`\n- **`depth_range`**: The distance to the near and far frustum planes.\n  - type: `nvidia::gxf::Vector2f`\n- **`left_camera_pose`**: Camera pose for the left camera when rendering in stereo mode.\n  - type: `nvidia::gxf::Pose3D`\n- **`right_camera_pose`**: Camera pose for the right camera when rendering in stereo mode.\n  - type: `nvidia::gxf::Pose3D`\n- **`left_camera_model`**: Camera model for the left camera when rendering in stereo mode.\n  - type: `nvidia::gxf::CameraModel`\n- **`right_camera_model`**: Camera model for the right camera when rendering in stereo mode.\n  - type: `nvidia::gxf::CameraModel`\n- **`camera_matrix`**: Camera pose when not rendering in stereo mode.\n  - type: `std::array<float, 16>`\n- **`color_buffer_in`**: Buffer to store the rendered color data to, format needs to be 8 bit per component RGBA and buffer needs to be in device memory.\n  - type: `nvidia::gxf::VideoBuffer`\n- **`depth_buffer_in`**: Buffer to store the rendered depth data to, format needs to be 32 bit float single component buffer needs to be in device memory.\n  - type: `nvidia::gxf::VideoBuffer`\n- **`density_volume`**: Density volume data. Needs to be a 3D single component array. Supported data types are signed|unsigned 8|16|32 bit integer and 32 bit floating point.\n  - type: `nvidia::gxf::Tensor`\n- **`density_spacing`**: Physical size of each density volume element.\n  - type: `std::array<float, 3>`\n- **`density_permute_axis`**: Density volume axis permutation of data space to world space, e.g. if x and y of a volume is swapped this is {1, 0, 2}.\n  - type: `std::array<uint32_t, 3>`\n- **`density_flip_axes`**: Density volume axis flipping from data space to world space, e.g. if x is flipped this is {true, false, false}.\n  - type: `std::array<bool, 3>`\n- **`mask_volume`**: Mask volume data. Needs to be a 3D single component array. Supported data types are signed|unsigned 8|16|32 bit integer and 32 bit floating point.\n  - type: `nvidia::gxf::Tensor`\n- **`mask_spacing`**: Physical size of each mask volume element.\n  - type: `std::array<float, 3>`\n- **`mask_permute_axis`**: Mask volume axis permutation of data space to world space, e.g. if x and y of a volume is swapped this is {1, 0, 2}.\n  - type: `std::array<uint32_t, 3>`\n- **`mask_flip_axes`**: Mask volume axis flipping from data space to world space, e.g. if x is flipped this is {true, false, false}.\n  - type: `std::array<bool, 3>`\n\n### Outputs\n\n- **`color_buffer_out`**: Buffer with rendered color data, format is 8 bit per component RGBA and buffer is in device memory.\n  - type: `nvidia::gxf::VideoBuffer`\n- **`depth_buffer_out`**: Buffer with rendered depth data, format is be 32 bit float single component and buffer is in device memory.\n  - type: `nvidia::gxf::VideoBuffer`\n\n## Configuration\n\nThe renderer accepts a [ClaraViz](https://github.com/NVIDIA/clara-viz) JSON configuration file at startup to control rendering settings, including\n- camera parameters;\n- transfer functions;\n- lighting;\n- and more.\n\nThe ClaraViz JSON configuration file exists in addition to and independent of a Holoscan SDK `.yaml` configuration file that may be passed to an application.\n\nSee the [`volume_rendering_xr` application](../../applications/volume_rendering_xr/configs) for a sample configuration file. Visit the [ClaraViz `render_server.proto` gRPC specification](https://github.com/NVIDIA/clara-viz/blob/main/src/protos/nvidia/claraviz/cinematic/v1/render_server.proto) for insight into configuration file field values.\n\n### Transfer Functions\n\nUsually CT datasets are stored in [Hounsfield scale](https://en.wikipedia.org/wiki/Hounsfield_scale). The renderer maps these values in Hounsfield scale to opacity in order to display the volume. These mappings are called transfer functions. Multiple transfer functions for different input value regions can be defined. Transfer functions also include material properties like diffuse, specular and emissive color. The range of input values the transfer function is applied to is in normalized input range `[0, 1]`.\n\n### Segmentation (Mask) Volume\n\nDifferent organs often have very similar Hounsfield values, therefore additionally an segmentation volume is supported. The segmentation volume contains an integer index for each element of the volume. Transfer functions can be restricted on specific segmentation indices. The segmentation volume can, for example, be generated using [TotalSegmentator](https://github.com/wasserth/TotalSegmentator).\n\n### Creating a Configuration File\n\nConfiguration files are typically specific to a given dataset or modality, and are tailored to a specific voxel intensity range.\nIt may be necessary to create a new configuration file when working with a new dataset in order to produce a meaningful rendering.\n\nThere are two options to create a configuration file for a new dataset:\n- Copy from an existing configuration file as a reference and modify parameters manually. An example configuration file is available in the [`volume_rendering_xr` application config folder](../../applications/volume_rendering_xr/configs/).\n- Use `VolumeRendererOp` to deduce settings for the input dataset. Follow these steps:\n  1. Use the HoloHub [`volume_rendering` app](../../applications/volume_rendering/) or a similar application that will load an input dataset and pass it to `VolumeRendererOp`.\n  2. Configure application settings via a Holoscan SDK YAML file or command line settings to run with the following values:\n    - Set the `VolumeRendererOp` `config_file` parameter to an empty string to indicate no default config file is present;\n    - Set the `VolumeRendererOp` `write_config_file` parameter to the desired output JSON configuration filepath.\n  3. Run the application with the desired input volume. The operator will deduce settings and write out the JSON file to reuse on subsequent runs via the `config_file` parameter.\n",
         "application_name": "volume_renderer",
+        "source_folder": "operators"
+    },
+    {
+        "metadata": {
+            "name": "medical_imaging",
+            "authors": [
+                {
+                    "name": "Holoscan SDK Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "version": "1.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "1.0.3",
+                "tested_versions": [
+                    "2.2.0"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Medeical Imaging",
+                "DICOM",
+                "AI",
+                "Inference",
+                "MONAI",
+                "STL"
+            ],
+            "ranking": 2,
+            "dependencies": {}
+        },
+        "readme": "### Medical Imaging Processing and Inference Operators\n\nThis set of operators accelerate the development of medical imaging AI inference application with DICOM imaging network integration by providing the following,\n\n- application classes to automate the inference with MONAI Bundle as well as normal TorchScript models\n- classes to load supported AI model from files to detected devices, GPU or CPU\n- classes to parse runtime options and well-known environment variables\n- DICOM study parsing and selection classes, as well as DICOM instance to volume image conversion\n- DICOM instance writers to encapsulate AI inference results in these DICOM OID,\n  - DICOM Segmentation\n  - DICOM Basic Text Structured Report\n  - DICOM Encapsulated PDF\n- Surface mesh generation and storage in STL format\n- Visualization with [Clara-Viz](https://pypi.org/project/clara-viz/) integration, as needed\n\n#### Requirements\n\nThis set of operators depends on [Holoscan SDK Python package](https://pypi.org/project/holoscan/), as well as directly on the following,\n- [highdicom](https://pypi.org/project/highdicom/)\n- [monai](https://pypi.org/project/monai/)\n- [nibabel](https://pypi.org/project/nibabel/)\n- [numpy](https://pypi.org/project/numpy/)\n- [numpy-stl](https://pypi.org/project/numpy-stl/)\n- [Pillow](https://pypi.org/project/pillow/)\n- [pydicom](https://pypi.org/project/pydicom/)\n- [PyPDF2](https://pypi.org/project/PyPDF2/)\n- [scikit-image](https://pypi.org/project/scikit-image/)\n- [SimpleITK](https://pypi.org/project/SimpleITK/)\n- [torch](https://pypi.org/project/torch/)\n- [trimesh](https://pypi.org/project/trimesh/)\n- [typeguard](https://pypi.org/project/typeguard/)\n\n#### Notices\n\nMany of this set of operators are `Derivative Works` of [MONAI Deploy App SDK](https://github.com/Project-MONAI/monai-deploy) under its [Apache-2.0 license](https://github.com/Project-MONAI/monai-deploy/blob/main/LICENSE), and Nvidia employees have been the main contributors to MONAI Deploy App SDK.\n\nThe dependency packages' licences can be viewed at their respective links as shown in the above section.",
+        "application_name": "medical_imaging",
         "source_folder": "operators"
     },
     {
