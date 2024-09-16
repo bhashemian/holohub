@@ -1948,11 +1948,11 @@
             "ranking": 1,
             "dependencies": {},
             "run": {
-                "command": "<holohub_app_bin>/holoviz/{{ cookiecutter.project_slug }}",
+                "command": "<holohub_app_bin>/{{ cookiecutter.project_slug }}",
                 "workdir": "holohub_bin"
             }
         },
-        "readme": "# {{ cookiecutter.project_name }}\n\n![]({{ cookiecutter.project_slug }}.png)<br>\n\n{%- if cookiecutter.example == \"sRGB\" %}\nThis application demonstrates the handling of the sRGB color space supported by the Holoviz operator.\n\nThe Holoviz operator can convert sRGB input images to linear color space before rendering and also can convert from linear color space to sRGB before writing to the frame buffer.\n\nsRGB color space can be enabled for input images and for the frame buffer independently. By default, the sRGB color space is disabled for both.\n\nBy default, the Holoviz operator is auto detecting the input image format. Auto detection always assumes linear color space for input images. To change this to sRGB color space explicitly set the `image_format_` member of the input spec for that input image to a format ending with `SRGB`:\n\n```cpp\n    // By default the image format is auto detected. Auto detection assumes linear color space,\n    // but we provide an sRGB encoded image. Create an input spec and change the image format to\n    // sRGB.\n    ops::HolovizOp::InputSpec input_spec(\"image\", ops::HolovizOp::InputType::COLOR);\n    input_spec.image_format_ = ops::HolovizOp::ImageFormat::R8G8B8_SRGB;\n\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        Arg(\"tensors\", std::vector<ops::HolovizOp::InputSpec>{input_spec}));\n```\n\nBy default, the frame buffer is using linear color space. To use the sRGB color space, set the `framebuffer_srbg` argument of the Holoviz operator to `true`:\n\n```cpp\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        // enable the sRGB frame buffer\n        Arg(\"framebuffer_srbg\", true));\n```\n\n{%- endif %}\n{%- if cookiecutter.example == \"vsync\" %}\nThis application demonstrates the capability of the Holoviz operator to wait for the vertical blank of the display before updating the current image. It prints the displayed frames per second to the console, if sync to vertical blank is enabled the frames per second are capped to the display refresh rate.\n\nTo enable syncing to vertical blank set the `vsync` parameter of the Holoviz operator to `true`:\n\n```cpp\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        // enable synchronization to vertical blank\n        Arg(\"vsync\", true));\n```\n\nBy default, the Holoviz operator is not syncing to the vertical blank of the display.\n{%- endif %}\n\n## Run Instructions\n\nTo build and start the application:\n\n```bash\n./dev_container build_and_run {{ cookiecutter.project_slug }}\n```\n",
+        "readme": "# {{ cookiecutter.project_name }}\n\n![]({{ cookiecutter.project_slug }}.png)\n\n{%- if cookiecutter.example == \"sRGB\" %}\nThis application demonstrates the handling of the sRGB color space supported by the Holoviz operator.\n\nThe Holoviz operator can convert sRGB input images to linear color space before rendering and also can convert from linear color space to sRGB before writing to the frame buffer.\n\nsRGB color space can be enabled for input images and for the frame buffer independently. By default, the sRGB color space is disabled for both.\n\nBy default, the Holoviz operator is auto detecting the input image format. Auto detection always assumes linear color space for input images. To change this to sRGB color space explicitly set the `image_format_` member of the input spec for that input image to a format ending with `SRGB`:\n\n```cpp\n    // By default the image format is auto detected. Auto detection assumes linear color space,\n    // but we provide an sRGB encoded image. Create an input spec and change the image format to\n    // sRGB.\n    ops::HolovizOp::InputSpec input_spec(\"image\", ops::HolovizOp::InputType::COLOR);\n    input_spec.image_format_ = ops::HolovizOp::ImageFormat::R8G8B8_SRGB;\n\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        Arg(\"tensors\", std::vector<ops::HolovizOp::InputSpec>{input_spec}));\n```\n\nBy default, the frame buffer is using linear color space. To use the sRGB color space, set the `framebuffer_srbg` argument of the Holoviz operator to `true`:\n\n```cpp\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        // enable the sRGB frame buffer\n        Arg(\"framebuffer_srbg\", true));\n```\n\n{%- elif cookiecutter.example == \"vsync\" %}\nThis application demonstrates the capability of the Holoviz operator to wait for the vertical blank of the display before updating the current image. It prints the displayed frames per second to the console, if sync to vertical blank is enabled the frames per second are capped to the display refresh rate.\n\nTo enable syncing to vertical blank set the `vsync` parameter of the Holoviz operator to `true`:\n\n```cpp\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        // enable synchronization to vertical blank\n        Arg(\"vsync\", true));\n```\n\nBy default, the Holoviz operator is not syncing to the vertical blank of the display.\n{%- elif cookiecutter.example == \"YUV\" %}\nThis application demonstrates the capability of the Holoviz operator to display images in YUV (aka YCbCr) format.\n\nHoloviz supports multiple YUV formats including 420 and 422, 8 and 16 bit, single plane and multi plane. It supports BT.601, BT.709 and BT.2020 color conversions, narrow and full range and cosited even and midpoint chroma downsample positions.\n\nThe application creates a GXF video buffer containing YUV 420 BT.601 extended range data.\n\nThe YUV image properties are specified using a input spec structure:\n\n```cpp\n    ops::HolovizOp::InputSpec input_spec(\"image\", ops::HolovizOp::InputType::COLOR);\n\n    // Set the YUV image format, model conversion and range for the input tensor.\n    input_spec.image_format_ = ops::HolovizOp::ImageFormat::Y8_U8V8_2PLANE_420_UNORM;\n    input_spec.yuv_model_conversion_ = ops::HolovizOp::YuvModelConversion::YUV_601;\n    input_spec.yuv_range_ = ops::HolovizOp::YuvRange::ITU_FULL;\n\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        Arg(\"tensors\", std::vector<ops::HolovizOp::InputSpec>{input_spec}));\n```\n\n{%- endif %}\n\n## Run Instructions\n\nTo build and start the application:\n\n```bash\n./dev_container build_and_run {{ cookiecutter.project_slug }}\n```\n",
         "application_name": "{{cookiecutter.project_slug}}",
         "source_folder": "applications",
         "build_and_run": "./dev_container build_and_run {{cookiecutter.project_slug}} --language cpp"
@@ -1987,11 +1987,11 @@
             "ranking": 1,
             "dependencies": {},
             "run": {
-                "command": "<holohub_app_bin>/holoviz/holoviz_srgb",
+                "command": "<holohub_app_bin>/holoviz_srgb",
                 "workdir": "holohub_bin"
             }
         },
-        "readme": "# Holoviz sRGB\n\n![](holoviz_srgb.png)<br>\nThis application demonstrates the handling of the sRGB color space supported by the Holoviz operator.\n\nThe Holoviz operator can convert sRGB input images to linear color space before rendering and also can convert from linear color space to sRGB before writing to the frame buffer.\n\nsRGB color space can be enabled for input images and for the frame buffer independently. By default, the sRGB color space is disabled for both.\n\nBy default, the Holoviz operator is auto detecting the input image format. Auto detection always assumes linear color space for input images. To change this to sRGB color space explicitly set the `image_format_` member of the input spec for that input image to a format ending with `SRGB`:\n\n```cpp\n    // By default the image format is auto detected. Auto detection assumes linear color space,\n    // but we provide an sRGB encoded image. Create an input spec and change the image format to\n    // sRGB.\n    ops::HolovizOp::InputSpec input_spec(\"image\", ops::HolovizOp::InputType::COLOR);\n    input_spec.image_format_ = ops::HolovizOp::ImageFormat::R8G8B8_SRGB;\n\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        Arg(\"tensors\", std::vector<ops::HolovizOp::InputSpec>{input_spec}));\n```\n\nBy default, the frame buffer is using linear color space. To use the sRGB color space, set the `framebuffer_srbg` argument of the Holoviz operator to `true`:\n\n```cpp\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        // enable the sRGB frame buffer\n        Arg(\"framebuffer_srbg\", true));\n```\n\n## Run Instructions\n\nTo build and start the application:\n\n```bash\n./dev_container build_and_run holoviz_srgb\n```\n",
+        "readme": "# Holoviz sRGB\n\n![](holoviz_srgb.png)\nThis application demonstrates the handling of the sRGB color space supported by the Holoviz operator.\n\nThe Holoviz operator can convert sRGB input images to linear color space before rendering and also can convert from linear color space to sRGB before writing to the frame buffer.\n\nsRGB color space can be enabled for input images and for the frame buffer independently. By default, the sRGB color space is disabled for both.\n\nBy default, the Holoviz operator is auto detecting the input image format. Auto detection always assumes linear color space for input images. To change this to sRGB color space explicitly set the `image_format_` member of the input spec for that input image to a format ending with `SRGB`:\n\n```cpp\n    // By default the image format is auto detected. Auto detection assumes linear color space,\n    // but we provide an sRGB encoded image. Create an input spec and change the image format to\n    // sRGB.\n    ops::HolovizOp::InputSpec input_spec(\"image\", ops::HolovizOp::InputType::COLOR);\n    input_spec.image_format_ = ops::HolovizOp::ImageFormat::R8G8B8_SRGB;\n\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        Arg(\"tensors\", std::vector<ops::HolovizOp::InputSpec>{input_spec}));\n```\n\nBy default, the frame buffer is using linear color space. To use the sRGB color space, set the `framebuffer_srbg` argument of the Holoviz operator to `true`:\n\n```cpp\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        // enable the sRGB frame buffer\n        Arg(\"framebuffer_srbg\", true));\n```\n\n## Run Instructions\n\nTo build and start the application:\n\n```bash\n./dev_container build_and_run holoviz_srgb\n```\n",
         "application_name": "holoviz_srgb",
         "source_folder": "applications",
         "build_and_run": "./dev_container build_and_run holoviz_srgb --language cpp"
@@ -2026,14 +2026,53 @@
             "ranking": 1,
             "dependencies": {},
             "run": {
-                "command": "<holohub_app_bin>/holoviz/holoviz_vsync",
+                "command": "<holohub_app_bin>/holoviz_vsync",
                 "workdir": "holohub_bin"
             }
         },
-        "readme": "# Holoviz vsync\n\n![](holoviz_vsync.png)<br>\nThis application demonstrates the capability of the Holoviz operator to wait for the vertical blank of the display before updating the current image. It prints the displayed frames per second to the console, if sync to vertical blank is enabled the frames per second are capped to the display refresh rate.\n\nTo enable syncing to vertical blank set the `vsync` parameter of the Holoviz operator to `true`:\n\n```cpp\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        // enable synchronization to vertical blank\n        Arg(\"vsync\", true));\n```\n\nBy default, the Holoviz operator is not syncing to the vertical blank of the display.\n\n## Run Instructions\n\nTo build and start the application:\n\n```bash\n./dev_container build_and_run holoviz_vsync\n```\n",
+        "readme": "# Holoviz vsync\n\n![](holoviz_vsync.png)\nThis application demonstrates the capability of the Holoviz operator to wait for the vertical blank of the display before updating the current image. It prints the displayed frames per second to the console, if sync to vertical blank is enabled the frames per second are capped to the display refresh rate.\n\nTo enable syncing to vertical blank set the `vsync` parameter of the Holoviz operator to `true`:\n\n```cpp\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        // enable synchronization to vertical blank\n        Arg(\"vsync\", true));\n```\n\nBy default, the Holoviz operator is not syncing to the vertical blank of the display.\n\n## Run Instructions\n\nTo build and start the application:\n\n```bash\n./dev_container build_and_run holoviz_vsync\n```\n",
         "application_name": "holoviz_vsync",
         "source_folder": "applications",
         "build_and_run": "./dev_container build_and_run holoviz_vsync --language cpp"
+    },
+    {
+        "metadata": {
+            "name": "Holoviz YUV",
+            "authors": [
+                {
+                    "name": "Holoscan Team",
+                    "affiliation": "NVIDIA"
+                }
+            ],
+            "language": "C++",
+            "version": "1.0.0",
+            "changelog": {
+                "1.0": "Initial Release"
+            },
+            "holoscan_sdk": {
+                "minimum_required_version": "2.4",
+                "tested_versions": [
+                    "2.4"
+                ]
+            },
+            "platforms": [
+                "amd64",
+                "arm64"
+            ],
+            "tags": [
+                "Holoviz YUV"
+            ],
+            "ranking": 1,
+            "dependencies": {},
+            "run": {
+                "command": "<holohub_app_bin>/holoviz_yuv",
+                "workdir": "holohub_bin"
+            }
+        },
+        "readme": "# Holoviz YUV\n\n![](holoviz_yuv.png)\nThis application demonstrates the capability of the Holoviz operator to display images in YUV (aka YCbCr) format.\n\nHoloviz supports multiple YUV formats including 420 and 422, 8 and 16 bit, single plane and multi plane. It supports BT.601, BT.709 and BT.2020 color conversions, narrow and full range and cosited even and midpoint chroma downsample positions.\n\nThe application creates a GXF video buffer containing YUV 420 BT.601 extended range data.\n\nThe YUV image properties are specified using a input spec structure:\n\n```cpp\n    ops::HolovizOp::InputSpec input_spec(\"image\", ops::HolovizOp::InputType::COLOR);\n\n    // Set the YUV image format, model conversion and range for the input tensor.\n    input_spec.image_format_ = ops::HolovizOp::ImageFormat::Y8_U8V8_2PLANE_420_UNORM;\n    input_spec.yuv_model_conversion_ = ops::HolovizOp::YuvModelConversion::YUV_601;\n    input_spec.yuv_range_ = ops::HolovizOp::YuvRange::ITU_FULL;\n\n    auto holoviz = make_operator<ops::HolovizOp>(\n        \"holoviz\",\n        Arg(\"tensors\", std::vector<ops::HolovizOp::InputSpec>{input_spec}));\n```\n\n## Run Instructions\n\nTo build and start the application:\n\n```bash\n./dev_container build_and_run holoviz_yuv\n```\n",
+        "application_name": "holoviz_yuv",
+        "source_folder": "applications",
+        "build_and_run": "./dev_container build_and_run holoviz_yuv --language cpp"
     },
     {
         "metadata": {
