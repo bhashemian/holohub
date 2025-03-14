@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://nvidia-holoscan.github.io/holohub/">
+        <link rel="canonical" href="https://nvidia-holoscan.github.io/holohub/applications/webrtc_video_client/">
       
       
+        <link rel="prev" href="../webrtc_holoviz_server/">
       
-        <link rel="next" href="workflows/">
+      
+        <link rel="next" href="../webrtc_video_server/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
-        <title>Holoscan Reference Applications</title>
+        <title>WebRTC Video Client - Holoscan Reference Applications</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,17 +48,17 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="assets/css/color-schemes.css">
+      <link rel="stylesheet" href="../../assets/css/color-schemes.css">
     
-      <link rel="stylesheet" href="assets/css/fonts.css">
+      <link rel="stylesheet" href="../../assets/css/fonts.css">
     
-      <link rel="stylesheet" href="assets/css/custom-material.css">
+      <link rel="stylesheet" href="../../assets/css/custom-material.css">
     
-      <link rel="stylesheet" href="assets/css/jupyter-themes.css">
+      <link rel="stylesheet" href="../../assets/css/jupyter-themes.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -91,6 +93,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#webrtc-video-client" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -105,7 +112,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Holoscan Reference Applications" class="md-header__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
+    <a href="../.." title="Holoscan Reference Applications" class="md-header__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
       
   
   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -133,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              WebRTC Video Client
             
           </span>
         </div>
@@ -240,11 +247,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -263,7 +268,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="workflows/" class="md-tabs__link">
+        <a href="../../workflows/" class="md-tabs__link">
           
   
     
@@ -279,11 +284,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="applications/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
     
@@ -303,7 +310,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="operators/" class="md-tabs__link">
+        <a href="../../operators/" class="md-tabs__link">
           
   
     
@@ -323,7 +330,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="tutorials/" class="md-tabs__link">
+        <a href="../../tutorials/" class="md-tabs__link">
           
   
     
@@ -343,7 +350,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="benchmarks/" class="md-tabs__link">
+        <a href="../../benchmarks/" class="md-tabs__link">
           
   
     
@@ -367,9 +374,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -380,7 +385,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Holoscan Reference Applications" class="md-nav__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
+    <a href="../.." title="Holoscan Reference Applications" class="md-nav__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
       
   
   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -415,17 +420,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -435,7 +433,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -470,7 +467,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="workflows/" class="md-nav__link ">
+            <a href="../../workflows/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -504,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workflows/ai_surgical_video/" class="md-nav__link">
+      <a href="../../workflows/ai_surgical_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -530,6 +527,8 @@
       
   
   
+    
+  
   
   
     
@@ -666,19 +665,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="applications/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -690,13 +692,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Applications
@@ -712,7 +714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/asr_to_llm/" class="md-nav__link">
+      <a href="../asr_to_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/body_pose_estimation/" class="md-nav__link">
+      <a href="../body_pose_estimation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -756,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/colonoscopy_segmentation/" class="md-nav__link">
+      <a href="../colonoscopy_segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -778,7 +780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cuda_quantum/" class="md-nav__link">
+      <a href="../cuda_quantum/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -800,7 +802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cunumeric_integration/" class="md-nav__link">
+      <a href="../cunumeric_integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -822,7 +824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/deltacast_transmitter/" class="md-nav__link">
+      <a href="../deltacast_transmitter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -844,7 +846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/depth_anything_v2/" class="md-nav__link">
+      <a href="../depth_anything_v2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_depth_estimation/" class="md-nav__link">
+      <a href="../endoscopy_depth_estimation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -888,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/florence-2-vision/" class="md-nav__link">
+      <a href="../florence-2-vision/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -910,7 +912,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/fm_asr/" class="md-nav__link">
+      <a href="../fm_asr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holochat/" class="md-nav__link">
+      <a href="../holochat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -954,7 +956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/hyperspectral_segmentation/" class="md-nav__link">
+      <a href="../hyperspectral_segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/imaging_ai_segmentator/" class="md-nav__link">
+      <a href="../imaging_ai_segmentator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -998,7 +1000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/monai_endoscopic_tool_seg/" class="md-nav__link">
+      <a href="../monai_endoscopic_tool_seg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1020,7 +1022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/network_radar_pipeline/" class="md-nav__link">
+      <a href="../network_radar_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1042,7 +1044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/object_detection_torch/" class="md-nav__link">
+      <a href="../object_detection_torch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orthorectification_with_optix/" class="md-nav__link">
+      <a href="../orthorectification_with_optix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1086,7 +1088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/psd_pipeline/" class="md-nav__link">
+      <a href="../psd_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1108,7 +1110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/pva_video_filter/" class="md-nav__link">
+      <a href="../pva_video_filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1130,7 +1132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/qt_video_replayer/" class="md-nav__link">
+      <a href="../qt_video_replayer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1152,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/realsense_visualizer/" class="md-nav__link">
+      <a href="../realsense_visualizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1174,7 +1176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/sam2/" class="md-nav__link">
+      <a href="../sam2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1196,7 +1198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/sdr_fm_demodulation/" class="md-nav__link">
+      <a href="../sdr_fm_demodulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1218,7 +1220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_pdw_pipeline/" class="md-nav__link">
+      <a href="../simple_pdw_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1240,7 +1242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/speech_to_text_llm/" class="md-nav__link">
+      <a href="../speech_to_text_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ssd_detection_endoscopy_tools/" class="md-nav__link">
+      <a href="../ssd_detection_endoscopy_tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1284,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/stereo_vision/" class="md-nav__link">
+      <a href="../stereo_vision/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1306,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/synthetic_aperture_radar/" class="md-nav__link">
+      <a href="../synthetic_aperture_radar/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1328,7 +1330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/tao_peoplenet/" class="md-nav__link">
+      <a href="../tao_peoplenet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1350,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/velodyne_lidar_app/" class="md-nav__link">
+      <a href="../velodyne_lidar_app/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1372,7 +1374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/video_deidentification/" class="md-nav__link">
+      <a href="../video_deidentification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1394,7 +1396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/vila_live/" class="md-nav__link">
+      <a href="../vila_live/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1416,7 +1418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering_xr/" class="md-nav__link">
+      <a href="../volume_rendering_xr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1438,7 +1440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/vpi_stereo/" class="md-nav__link">
+      <a href="../vpi_stereo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1460,7 +1462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/webrtc_holoviz_server/" class="md-nav__link">
+      <a href="../webrtc_holoviz_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1479,10 +1481,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="applications/webrtc_video_client/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    WebRTC Video Client
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1492,6 +1515,61 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-line-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Arguments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1504,7 +1582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/webrtc_video_server/" class="md-nav__link">
+      <a href="../webrtc_video_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1526,7 +1604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/xr_hello_holoscan/" class="md-nav__link">
+      <a href="../xr_hello_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1548,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/yolo_model_deployment/" class="md-nav__link">
+      <a href="../yolo_model_deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1615,7 +1693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/adv_networking_bench/cpp/" class="md-nav__link">
+      <a href="../adv_networking_bench/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1637,7 +1715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/adv_networking_bench/python/" class="md-nav__link">
+      <a href="../adv_networking_bench/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1712,7 +1790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/aja_video_capture/cpp/" class="md-nav__link">
+      <a href="../aja_video_capture/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1734,7 +1812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/aja_video_capture/python/" class="md-nav__link">
+      <a href="../aja_video_capture/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1809,7 +1887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/basic_networking_ping/cpp/" class="md-nav__link">
+      <a href="../basic_networking_ping/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1831,7 +1909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/basic_networking_ping/python/" class="md-nav__link">
+      <a href="../basic_networking_ping/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1906,7 +1984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cvcuda_basic/cpp/" class="md-nav__link">
+      <a href="../cvcuda_basic/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1928,7 +2006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cvcuda_basic/python/" class="md-nav__link">
+      <a href="../cvcuda_basic/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2001,7 +2079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/dds/dds_video/" class="md-nav__link">
+      <a href="../dds/dds_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2121,7 +2199,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_h264_endoscopy_tool_tracking/" class="md-nav__link">
+      <a href="../distributed/grpc/grpc_h264_endoscopy_tool_tracking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,7 +2266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../distributed/grpc/grpc_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2210,7 +2288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../distributed/grpc/grpc_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2338,7 +2416,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../distributed/ucx/ucx_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2360,7 +2438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../distributed/ucx/ucx_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2435,7 +2513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../distributed/ucx/ucx_h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2457,7 +2535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../distributed/ucx/ucx_h264_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2548,7 +2626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ehr_query_llm/fhir/" class="md-nav__link">
+      <a href="../ehr_query_llm/fhir/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2570,7 +2648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ehr_query_llm/lmm/" class="md-nav__link">
+      <a href="../ehr_query_llm/lmm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2645,7 +2723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_out_of_body_detection/cpp/" class="md-nav__link">
+      <a href="../endoscopy_out_of_body_detection/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2667,7 +2745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_out_of_body_detection/python/" class="md-nav__link">
+      <a href="../endoscopy_out_of_body_detection/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2742,7 +2820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2764,7 +2842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2884,7 +2962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../h264/h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2906,7 +2984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../h264/h264_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2981,7 +3059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_video_decode/cpp/" class="md-nav__link">
+      <a href="../h264/h264_video_decode/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3003,7 +3081,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_video_decode/python/" class="md-nav__link">
+      <a href="../h264/h264_video_decode/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3086,7 +3164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/high_speed_endoscopy/cpp/" class="md-nav__link">
+      <a href="../high_speed_endoscopy/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3108,7 +3186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/high_speed_endoscopy/python/" class="md-nav__link">
+      <a href="../high_speed_endoscopy/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3189,7 +3267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_hdr/" class="md-nav__link">
+      <a href="../holoviz/holoviz_hdr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3211,7 +3289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_srgb/" class="md-nav__link">
+      <a href="../holoviz/holoviz_srgb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3233,7 +3311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_ui/" class="md-nav__link">
+      <a href="../holoviz/holoviz_ui/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3255,7 +3333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_vsync/" class="md-nav__link">
+      <a href="../holoviz/holoviz_vsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3277,7 +3355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_yuv/" class="md-nav__link">
+      <a href="../holoviz/holoviz_yuv/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3354,7 +3432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/evt_cam_calibration/" class="md-nav__link">
+      <a href="../laser_detection_latency/evt_cam_calibration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3376,7 +3454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/laser_detection/" class="md-nav__link">
+      <a href="../laser_detection_latency/laser_detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3398,7 +3476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/usb_cam_calibration/" class="md-nav__link">
+      <a href="../laser_detection_latency/usb_cam_calibration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3473,7 +3551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/matlab_gpu_coder/matlab_beamform/" class="md-nav__link">
+      <a href="../matlab_gpu_coder/matlab_beamform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3495,7 +3573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/matlab_gpu_coder/matlab_image_processing/" class="md-nav__link">
+      <a href="../matlab_gpu_coder/matlab_image_processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3570,7 +3648,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_endoscopy/cpp/" class="md-nav__link">
+      <a href="../multiai_endoscopy/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3592,7 +3670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_endoscopy/python/" class="md-nav__link">
+      <a href="../multiai_endoscopy/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3667,7 +3745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_ultrasound/cpp/" class="md-nav__link">
+      <a href="../multiai_ultrasound/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3689,7 +3767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_ultrasound/python/" class="md-nav__link">
+      <a href="../multiai_ultrasound/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3766,7 +3844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_chat/" class="md-nav__link">
+      <a href="../nvidia_nim/nvidia_nim_chat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3788,7 +3866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_imaging/" class="md-nav__link">
+      <a href="../nvidia_nim/nvidia_nim_imaging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3810,7 +3888,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_nvclip/" class="md-nav__link">
+      <a href="../nvidia_nim/nvidia_nim_nvclip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3885,7 +3963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/openigtlink_3dslicer/cpp/" class="md-nav__link">
+      <a href="../openigtlink_3dslicer/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3907,7 +3985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/openigtlink_3dslicer/python/" class="md-nav__link">
+      <a href="../openigtlink_3dslicer/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4029,7 +4107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_in_out_body/cpp/" class="md-nav__link">
+      <a href="../orsi/orsi_in_out_body/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4051,7 +4129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_in_out_body/python/" class="md-nav__link">
+      <a href="../orsi/orsi_in_out_body/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4126,7 +4204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_multi_ai_ar/cpp/" class="md-nav__link">
+      <a href="../orsi/orsi_multi_ai_ar/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4148,7 +4226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_multi_ai_ar/python/" class="md-nav__link">
+      <a href="../orsi/orsi_multi_ai_ar/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4223,7 +4301,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_segmentation_ar/cpp/" class="md-nav__link">
+      <a href="../orsi/orsi_segmentation_ar/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4245,7 +4323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_segmentation_ar/python/" class="md-nav__link">
+      <a href="../orsi/orsi_segmentation_ar/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4328,7 +4406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/prohawk_video_replayer/cpp/" class="md-nav__link">
+      <a href="../prohawk_video_replayer/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4350,7 +4428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/prohawk_video_replayer/python/" class="md-nav__link">
+      <a href="../prohawk_video_replayer/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4425,7 +4503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_radar_pipeline/cpp/" class="md-nav__link">
+      <a href="../simple_radar_pipeline/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4447,7 +4525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_radar_pipeline/python/" class="md-nav__link">
+      <a href="../simple_radar_pipeline/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4522,7 +4600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ultrasound_segmentation/cpp/" class="md-nav__link">
+      <a href="../ultrasound_segmentation/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4544,7 +4622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ultrasound_segmentation/python/" class="md-nav__link">
+      <a href="../ultrasound_segmentation/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4619,7 +4697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering/cpp/" class="md-nav__link">
+      <a href="../volume_rendering/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4641,7 +4719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering/python/" class="md-nav__link">
+      <a href="../volume_rendering/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4799,7 +4877,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="operators/" class="md-nav__link ">
+            <a href="../../operators/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4833,7 +4911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/.md/" class="md-nav__link">
+      <a href="../../operators/.md/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4855,7 +4933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrFrameOp/" class="md-nav__link">
+      <a href="../../operators/XrFrameOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4877,7 +4955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformControlOp/" class="md-nav__link">
+      <a href="../../operators/XrTransformControlOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4899,7 +4977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformOp/" class="md-nav__link">
+      <a href="../../operators/XrTransformOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4921,7 +4999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformRenderOp/" class="md-nav__link">
+      <a href="../../operators/XrTransformRenderOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4943,7 +5021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/advanced_network/" class="md-nav__link">
+      <a href="../../operators/advanced_network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4965,7 +5043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/aja_source/" class="md-nav__link">
+      <a href="../../operators/aja_source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4987,7 +5065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/apriltag_detector/" class="md-nav__link">
+      <a href="../../operators/apriltag_detector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5009,7 +5087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/base/" class="md-nav__link">
+      <a href="../../operators/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5031,7 +5109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/basic_network/" class="md-nav__link">
+      <a href="../../operators/basic_network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5053,7 +5131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/begin_frame/" class="md-nav__link">
+      <a href="../../operators/begin_frame/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5075,7 +5153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/convert_depth/" class="md-nav__link">
+      <a href="../../operators/convert_depth/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5097,7 +5175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/cvcuda_holoscan_interop/" class="md-nav__link">
+      <a href="../../operators/cvcuda_holoscan_interop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5119,7 +5197,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/data_writer/" class="md-nav__link">
+      <a href="../../operators/data_writer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5141,7 +5219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_shapes_subscriber/" class="md-nav__link">
+      <a href="../../operators/dds_shapes_subscriber/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5163,7 +5241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_video_publisher/" class="md-nav__link">
+      <a href="../../operators/dds_video_publisher/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5185,7 +5263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_video_subscriber/" class="md-nav__link">
+      <a href="../../operators/dds_video_subscriber/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5207,7 +5285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/deltacast_videomaster/" class="md-nav__link">
+      <a href="../../operators/deltacast_videomaster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5229,7 +5307,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/ehr_query_llm/" class="md-nav__link">
+      <a href="../../operators/ehr_query_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5251,7 +5329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/emergent_source/" class="md-nav__link">
+      <a href="../../operators/emergent_source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5273,7 +5351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/end_frame/" class="md-nav__link">
+      <a href="../../operators/end_frame/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5295,7 +5373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/fft/" class="md-nav__link">
+      <a href="../../operators/fft/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5317,7 +5395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/grpc_operators/" class="md-nav__link">
+      <a href="../../operators/grpc_operators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5339,7 +5417,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/high_rate_psd/" class="md-nav__link">
+      <a href="../../operators/high_rate_psd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5361,7 +5439,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/low_rate_psd/" class="md-nav__link">
+      <a href="../../operators/low_rate_psd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5383,7 +5461,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/lstm_tensor_rt_inference/" class="md-nav__link">
+      <a href="../../operators/lstm_tensor_rt_inference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5405,7 +5483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/medical_imaging/" class="md-nav__link">
+      <a href="../../operators/medical_imaging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5427,7 +5505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/mesh_to_usd/" class="md-nav__link">
+      <a href="../../operators/mesh_to_usd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5449,7 +5527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/npp_filter/" class="md-nav__link">
+      <a href="../../operators/npp_filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5471,7 +5549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/openigtlink/" class="md-nav__link">
+      <a href="../../operators/openigtlink/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5493,7 +5571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_format_converter/" class="md-nav__link">
+      <a href="../../operators/orsi_format_converter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5515,7 +5593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_segmentation_postprocessor/" class="md-nav__link">
+      <a href="../../operators/orsi_segmentation_postprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5537,7 +5615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_segmentation_preprocessor/" class="md-nav__link">
+      <a href="../../operators/orsi_segmentation_preprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5559,7 +5637,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_visualizer/" class="md-nav__link">
+      <a href="../../operators/orsi_visualizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5581,7 +5659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/prohawk_video_processing/" class="md-nav__link">
+      <a href="../../operators/prohawk_video_processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5603,7 +5681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/qt_video/" class="md-nav__link">
+      <a href="../../operators/qt_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5625,7 +5703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/realsense_camera/" class="md-nav__link">
+      <a href="../../operators/realsense_camera/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5647,7 +5725,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/tensor_to_video_buffer/" class="md-nav__link">
+      <a href="../../operators/tensor_to_video_buffer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5669,7 +5747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/tool_tracking_postprocessor/" class="md-nav__link">
+      <a href="../../operators/tool_tracking_postprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5691,7 +5769,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/unzip/" class="md-nav__link">
+      <a href="../../operators/unzip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5713,7 +5791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/video_encoder_request/" class="md-nav__link">
+      <a href="../../operators/video_encoder_request/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5735,7 +5813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/visualizer_icardio/" class="md-nav__link">
+      <a href="../../operators/visualizer_icardio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5757,7 +5835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/vita49_psd_packetizer/" class="md-nav__link">
+      <a href="../../operators/vita49_psd_packetizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5779,7 +5857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/volume_loader/" class="md-nav__link">
+      <a href="../../operators/volume_loader/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5801,7 +5879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/volume_renderer/" class="md-nav__link">
+      <a href="../../operators/volume_renderer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5823,7 +5901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/vtk_renderer/" class="md-nav__link">
+      <a href="../../operators/vtk_renderer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5845,7 +5923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/webrtc_client/" class="md-nav__link">
+      <a href="../../operators/webrtc_client/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5867,7 +5945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/webrtc_server/" class="md-nav__link">
+      <a href="../../operators/webrtc_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5889,7 +5967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/xr_basic_render/" class="md-nav__link">
+      <a href="../../operators/xr_basic_render/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5911,7 +5989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/yuan_qcap/" class="md-nav__link">
+      <a href="../../operators/yuan_qcap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5989,7 +6067,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="tutorials/" class="md-nav__link ">
+            <a href="../../tutorials/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6023,7 +6101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/cli_debugging/" class="md-nav__link">
+      <a href="../../tutorials/cli_debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6045,7 +6123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/creating-multi-node-applications/" class="md-nav__link">
+      <a href="../../tutorials/creating-multi-node-applications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6067,7 +6145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/cuda_mps/" class="md-nav__link">
+      <a href="../../tutorials/cuda_mps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6089,7 +6167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/dicom_to_usd_with_monai_and_holoscan/" class="md-nav__link">
+      <a href="../../tutorials/dicom_to_usd_with_monai_and_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6111,7 +6189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/gpu_direct_storage_on_holoscan/" class="md-nav__link">
+      <a href="../../tutorials/gpu_direct_storage_on_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6133,7 +6211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/gui_for_python_applications/" class="md-nav__link">
+      <a href="../../tutorials/gui_for_python_applications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6155,7 +6233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/high_performance_networking/" class="md-nav__link">
+      <a href="../../tutorials/high_performance_networking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6177,7 +6255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan-bootcamp/" class="md-nav__link">
+      <a href="../../tutorials/holoscan-bootcamp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6199,7 +6277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan-playground-on-aws/" class="md-nav__link">
+      <a href="../../tutorials/holoscan-playground-on-aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6221,7 +6299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan_container_vscode/" class="md-nav__link">
+      <a href="../../tutorials/holoscan_container_vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6243,7 +6321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/integrate_external_libs_into_pipeline/" class="md-nav__link">
+      <a href="../../tutorials/integrate_external_libs_into_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6265,7 +6343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/local-llama/" class="md-nav__link">
+      <a href="../../tutorials/local-llama/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6287,7 +6365,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/self_supervised_training/" class="md-nav__link">
+      <a href="../../tutorials/self_supervised_training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6309,7 +6387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/windows_vm/" class="md-nav__link">
+      <a href="../../tutorials/windows_vm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6369,7 +6447,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="benchmarks/" class="md-nav__link ">
+            <a href="../../benchmarks/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6403,7 +6481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/cpp/" class="md-nav__link">
+      <a href="../../benchmarks/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6425,7 +6503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/exclusive_display/" class="md-nav__link">
+      <a href="../../benchmarks/exclusive_display/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6447,7 +6525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/holoscan_flow_benchmarking/" class="md-nav__link">
+      <a href="../../benchmarks/holoscan_flow_benchmarking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6469,7 +6547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/python/" class="md-nav__link">
+      <a href="../../benchmarks/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6491,7 +6569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/release_benchmarking/" class="md-nav__link">
+      <a href="../../benchmarks/release_benchmarking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6521,8 +6599,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -6534,6 +6610,49 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Run Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-line-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Line Arguments
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -6546,52 +6665,80 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../tags/#tag:client" class="md-tag">Client</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:video" class="md-tag">Video</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:webrtc" class="md-tag">WebRTC</a>
+      
+    
+  </nav>
 
 
 
-
-  <h1>Home</h1>
-
-<p><strong>Holoscan Reference Applications</strong> is a central repository for the <a href="https://www.nvidia.com/en-us/clara/holoscan/">NVIDIA Holoscan</a> AI sensor processing community 
-to share reference applications, operators, tutorials and benchmarks.
-The repository hosts a variety of applications that demonstrate how to use Holoscan for streaming, imaging, and other AI-driven tasks across embedded, edge, and cloud environments. These applications serve as reference implementations, providing developers with examples of best practices and efficient coding techniques to build high-performance, low-latency AI applications. The repository is open to contributions from the community, encouraging developers to share their own applications and extensions to enhance the Holoscan ecosystem.</p>
-<div class="grid cards">
+<h1 id="webrtc-video-client"><a href="https://github.com/nvidia-holoscan/holohub/tree/main/applications/webrtc_video_client">WebRTC Video Client</a><a class="headerlink" href="#webrtc-video-client" title="Permanent link">&para;</a></h1>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5M8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0"/></svg></span> <strong>Authors:</strong> Holoscan Team (NVIDIA)<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.954 17H2.75A1.75 1.75 0 0 1 1 15.25V3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v11.5A1.75 1.75 0 0 1 21.25 17h-6.204c.171 1.375.805 2.652 1.769 3.757A.752.752 0 0 1 16.25 22h-8.5a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757M21.5 3.75a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h18.5a.25.25 0 0 0 .25-.25ZM13.537 17h-3.074c-.126 1.266-.564 2.445-1.223 3.5h5.52c-.659-1.055-1.098-2.234-1.223-3.5"/></svg></span> <strong>Supported platforms:</strong> amd64, arm64<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 7.25a.75.75 0 0 0-1.5 0v5.5c0 .27.144.518.378.651l3.5 2a.75.75 0 0 0 .744-1.302L12.5 12.315z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1M2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12"/></svg></span> <strong>Last modified:</strong> November 16, 2023<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.3 8.24a.75.75 0 0 1-.04 1.06L7.352 12l2.908 2.7a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 0 1 1.06.04m3.44 1.06a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.908-2.7z"/><path d="M2 3.75C2 2.784 2.784 2 3.75 2h16.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v16.5c0 .138.112.25.25.25h16.5a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25Z"/></svg></span> <strong>Language:</strong> Python<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> <strong>Latest version:</strong> 1.0.0<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.063 1.456a1.75 1.75 0 0 1 1.874 0l8.383 5.316a1.75 1.75 0 0 1 0 2.956l-8.383 5.316a1.75 1.75 0 0 1-1.874 0L2.68 9.728a1.75 1.75 0 0 1 0-2.956Zm1.071 1.267a.25.25 0 0 0-.268 0L3.483 8.039a.25.25 0 0 0 0 .422l8.383 5.316a.25.25 0 0 0 .268 0l8.383-5.316a.25.25 0 0 0 0-.422Z"/><path d="M1.867 12.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.75 1.75 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035"/><path d="M1.867 16.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.75 1.75 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035"/></svg></span> <strong>Minimum Holoscan SDK version:</strong> 0.6.0<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 8.807V3.5h-.563a.75.75 0 0 1 0-1.5h9.125a.75.75 0 0 1 0 1.5H16v5.307l5.125 9.301c.964 1.75-.302 3.892-2.299 3.892H5.174c-1.998 0-3.263-2.142-2.3-3.892ZM4.189 18.832a1.123 1.123 0 0 0 .985 1.668h13.652a1.123 1.123 0 0 0 .985-1.668L17.7 15H6.3ZM14.5 3.5h-5V9a.75.75 0 0 1-.093.362L7.127 13.5h9.746l-2.28-4.138A.75.75 0 0 1 14.5 9Z"/></svg></span> <strong>Tested Holoscan SDK versions:</strong> 0.6.0<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.296 1.924c.24-.656 1.168-.656 1.408 0l.717 1.958a11.25 11.25 0 0 0 6.697 6.697l1.958.717c.657.24.657 1.168 0 1.408l-1.958.717a11.25 11.25 0 0 0-6.697 6.697l-.717 1.958c-.24.657-1.168.657-1.408 0l-.717-1.958a11.25 11.25 0 0 0-6.697-6.697l-1.958-.717c-.656-.24-.656-1.168 0-1.408l1.958-.717a11.25 11.25 0 0 0 6.697-6.697z"/></svg></span> <strong>Contribution metric:</strong> Level 1 - Highly Reliable<br></p>
+<p><img alt="" src="https://github.com/nvidia-holoscan/holohub/blob/main/applications/webrtc_video_client/screenshot.png?raw=true" /><br></p>
+<p>This app receives video frames from a web cam connected to a browser and display them on the screen.</p>
+<p>The app starts a web server, the pipeline starts when a browser is connected to the web server and the <code>Start</code> button is pressed. The pipeline stops when the <code>Stop</code> button is pressed.</p>
+<p>The video resolution and video codec can be selected in browser.</p>
+<div class="highlight"><pre><span></span><code>flowchart LR
+    subgraph Server
+        WebRTCClientOp --&gt; HolovizOp
+        WebServer
+    end
+    subgraph Client
+        Webcam --&gt; Browser
+        Browser &lt;--&gt; WebRTCClientOp
+        Browser &lt;--&gt; WebServer
+    end
+</code></pre></div>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> When using VPN there might be a delay of several seconds between pressing the <code>Start</code> button and the first video frames are display. The reason for this is that the STUN server <code>stun.l.google.com:19302</code> used by default might not be available when VPN is active and the missing support for Trickle ICE in the used aiortc library. Trickle ICE is an optimization to speed up connection establishment. Normally, possible connections paths are tested one after another. If connections time out this is blocking the whole process. Trickle ICE checks each possible connection path in parallel so the connection timing out won't block the process.</p>
+</blockquote>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>The app is using <a href="https://docs.aiohttp.org/en/stable/">AIOHTTP</a> for the web server and <a href="https://github.com/aiortc/aiortc">AIORTC</a> for WebRTC. Install both using pip.</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>aiohttp<span class="w"> </span>aiortc
+</code></pre></div>
+<h2 id="run-instructions">Run Instructions<a class="headerlink" href="#run-instructions" title="Permanent link">&para;</a></h2>
+<p>Run the command:</p>
+<div class="highlight"><pre><span></span><code>./run<span class="w"> </span>launch<span class="w"> </span>webrtc_video_client
+</code></pre></div>
+<p>On the same machine open a browser and connect to <code>127.0.0.1:8080</code>.</p>
+<p>Select the video resolution and codec or keep the defaults.</p>
+<p>Press the <code>Start</code> button. Video frames are displayed. To stop, press the <code>Stop</code> button. Pressing <code>Start</code> again will continue the video.</p>
+<p>You can also connect from a different machine by connecting to the IP address the app is running on. Chrome disables features such as getUserMedia when it comes from an unsecured origin. <code>http://localhost</code> is considered as a secure origin by default, however if you use an origin that does not have an SSL/TLS certificate then Chrome will consider the origin as unsecured and disable getUserMedia.</p>
+<p>Solutions</p>
 <ul>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8 17 4-4h3.2c.4 1.2 1.5 2 2.8 2 1.7 0 3-1.3 3-3s-1.3-3-3-3c-1.3 0-2.4.8-2.8 2H12L8 7V3H3v5h3l4.2 4L6 16H3v5h5z"/></svg></span> <strong>Workflows</strong> (1)</p>
-<hr />
-<p>Reference workflows demonstrate how capabilities from applications and operators can be combined
-to achieve complex tasks.</p>
-<p><a class="md-button md-button" href="workflows">Browse Workflows</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m6 4h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m6 4h4v-4h-4M4 8h4V4H4z"/></svg></span> <strong>Applications</strong> (78)</p>
-<hr />
-<p>Reference applications demonstrate a specific capability of Holoscan or how a specific operator
-can be used to perform an optimize task.</p>
-<p><a class="md-button md-button" href="applications">Browse Applications</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.41 7.41 15 12l-4.59 4.6L9 15.18 12.18 12 9 8.82M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg></span> <strong>Operators</strong> (50)</p>
-<hr />
-<p>Operators perform a specific task.</p>
-<p><a class="md-button md-button" href="operators">Browse Operators</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5m-1-14c-1.36-.6-3.16-1-4.5-1-1.2 0-2.4.15-3.5.5v11.5c1.1-.35 2.3-.5 3.5-.5 1.34 0 3.14.4 4.5 1zM13 19c1.36-.6 3.16-1 4.5-1 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.34 0-3.14.4-4.5 1zm1-2.65c.96-.35 2.12-.52 3.5-.52 1.04 0 1.88.08 2.5.24v-1.5a13.9 13.9 0 0 0-6 .19zm0-2.66c.96-.35 2.12-.53 3.5-.53 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23-1.28 0-2.45.15-3.5.45zM14 11c.96-.33 2.12-.5 3.5-.5.91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23-1.32 0-2.5.15-3.5.46z"/></svg></span> <strong>Tutorials</strong> (14)</p>
-<hr />
-<p>Tutorials provide hands-on experience.</p>
-<p><a class="md-button md-button" href="tutorials">Browse Tutorials</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 17H7v-7h2zm4 0h-2V7h2zm4 0h-2v-4h2zm2 2H5V5h14v14.1M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"/></svg></span> <strong>Benchmarks</strong> (5)</p>
-<hr />
-<p>Benchmarks provide tools for assessing performance of Holoscan pipelines as well as reference benchmarks for specific releases</p>
-<p><a class="md-button md-button" href="benchmarks">Browse Benchmarks</a></p>
-</li>
+<li>Create an self-signed SSL/TLS certificate with <code>openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out MyCertificate.crt -keyout MyKey.key</code>. Pass the generated files to the <code>webrtc_client</code> using the <code>--cert-file</code> and <code>--key-file</code> arguments. Connect the browser to <code>https://{YOUR HOST IP}:8080</code>.</li>
+<li>Go to chrome://flags, search for the flag <code>unsafely-treat-insecure-origin-as-secure</code>, enter the origin you want to treat as secure such as <code>http://{YOUR HOST IP}:8080</code>, enable the feature and relaunch the browser.</li>
 </ul>
-</div>
+<h3 id="command-line-arguments">Command Line Arguments<a class="headerlink" href="#command-line-arguments" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>usage: webrtc_client.py [-h] [--cert-file CERT_FILE] [--key-file KEY_FILE] [--host HOST] [--port PORT] [--verbose VERBOSE]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --cert-file CERT_FILE
+                        SSL certificate file (for HTTPS)
+  --key-file KEY_FILE   SSL key file (for HTTPS)
+  --host HOST           Host for HTTP server (default: 0.0.0.0)
+  --port PORT           Port for HTTP server (default: 8080)
+  --verbose, -v
+</code></pre></div>
 
 
 
@@ -6606,8 +6753,6 @@ can be used to perform an optimize task.</p>
 
   
 
-
-  
 
 
 
@@ -6631,19 +6776,33 @@ can be used to perform an optimize task.</p>
   
     
       
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" hidden>
+          
+          <a href="../webrtc_holoviz_server/" class="md-footer__link md-footer__link--prev" aria-label="Previous: WebRTC Holoviz Server">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                WebRTC Holoviz Server
+              </div>
+            </div>
+          </a>
         
         
           
-          <a href="workflows/" class="md-footer__link md-footer__link--next" aria-label="Next: Workflows">
+          <a href="../webrtc_video_server/" class="md-footer__link md-footer__link--next" aria-label="Next: WebRTC Video Server">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Workflows
+                WebRTC Video Server
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6692,10 +6851,10 @@ can be used to perform an optimize task.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.path", "navigation.instant.prefetch", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.path", "navigation.instant.prefetch", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

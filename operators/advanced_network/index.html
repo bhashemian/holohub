@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://nvidia-holoscan.github.io/holohub/">
+        <link rel="canonical" href="https://nvidia-holoscan.github.io/holohub/operators/advanced_network/">
       
       
+        <link rel="prev" href="../XrTransformRenderOp/">
       
-        <link rel="next" href="workflows/">
+      
+        <link rel="next" href="../aja_source/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
-        <title>Holoscan Reference Applications</title>
+        <title>advanced_network - Holoscan Reference Applications</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,17 +48,17 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="assets/css/color-schemes.css">
+      <link rel="stylesheet" href="../../assets/css/color-schemes.css">
     
-      <link rel="stylesheet" href="assets/css/fonts.css">
+      <link rel="stylesheet" href="../../assets/css/fonts.css">
     
-      <link rel="stylesheet" href="assets/css/custom-material.css">
+      <link rel="stylesheet" href="../../assets/css/custom-material.css">
     
-      <link rel="stylesheet" href="assets/css/jupyter-themes.css">
+      <link rel="stylesheet" href="../../assets/css/jupyter-themes.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -91,6 +93,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#advanced-network-operator" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -105,7 +112,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Holoscan Reference Applications" class="md-header__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
+    <a href="../.." title="Holoscan Reference Applications" class="md-header__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
       
   
   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -133,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              advanced_network
             
           </span>
         </div>
@@ -240,11 +247,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -263,7 +268,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="workflows/" class="md-tabs__link">
+        <a href="../../workflows/" class="md-tabs__link">
           
   
     
@@ -283,7 +288,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="applications/" class="md-tabs__link">
+        <a href="../../applications/" class="md-tabs__link">
           
   
     
@@ -299,11 +304,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="operators/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
     
@@ -323,7 +330,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="tutorials/" class="md-tabs__link">
+        <a href="../../tutorials/" class="md-tabs__link">
           
   
     
@@ -343,7 +350,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="benchmarks/" class="md-tabs__link">
+        <a href="../../benchmarks/" class="md-tabs__link">
           
   
     
@@ -367,9 +374,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -380,7 +385,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Holoscan Reference Applications" class="md-nav__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
+    <a href="../.." title="Holoscan Reference Applications" class="md-nav__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
       
   
   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -415,17 +420,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -435,7 +433,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -470,7 +467,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="workflows/" class="md-nav__link ">
+            <a href="../../workflows/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -504,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workflows/ai_surgical_video/" class="md-nav__link">
+      <a href="../../workflows/ai_surgical_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,7 +675,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="applications/" class="md-nav__link ">
+            <a href="../../applications/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -712,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/asr_to_llm/" class="md-nav__link">
+      <a href="../../applications/asr_to_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/body_pose_estimation/" class="md-nav__link">
+      <a href="../../applications/body_pose_estimation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -756,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/colonoscopy_segmentation/" class="md-nav__link">
+      <a href="../../applications/colonoscopy_segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -778,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cuda_quantum/" class="md-nav__link">
+      <a href="../../applications/cuda_quantum/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -800,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cunumeric_integration/" class="md-nav__link">
+      <a href="../../applications/cunumeric_integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -822,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/deltacast_transmitter/" class="md-nav__link">
+      <a href="../../applications/deltacast_transmitter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -844,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/depth_anything_v2/" class="md-nav__link">
+      <a href="../../applications/depth_anything_v2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_depth_estimation/" class="md-nav__link">
+      <a href="../../applications/endoscopy_depth_estimation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -888,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/florence-2-vision/" class="md-nav__link">
+      <a href="../../applications/florence-2-vision/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -910,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/fm_asr/" class="md-nav__link">
+      <a href="../../applications/fm_asr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holochat/" class="md-nav__link">
+      <a href="../../applications/holochat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -954,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/hyperspectral_segmentation/" class="md-nav__link">
+      <a href="../../applications/hyperspectral_segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/imaging_ai_segmentator/" class="md-nav__link">
+      <a href="../../applications/imaging_ai_segmentator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -998,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/monai_endoscopic_tool_seg/" class="md-nav__link">
+      <a href="../../applications/monai_endoscopic_tool_seg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1020,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/network_radar_pipeline/" class="md-nav__link">
+      <a href="../../applications/network_radar_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1042,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/object_detection_torch/" class="md-nav__link">
+      <a href="../../applications/object_detection_torch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orthorectification_with_optix/" class="md-nav__link">
+      <a href="../../applications/orthorectification_with_optix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1086,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/psd_pipeline/" class="md-nav__link">
+      <a href="../../applications/psd_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1108,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/pva_video_filter/" class="md-nav__link">
+      <a href="../../applications/pva_video_filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1130,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/qt_video_replayer/" class="md-nav__link">
+      <a href="../../applications/qt_video_replayer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1152,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/realsense_visualizer/" class="md-nav__link">
+      <a href="../../applications/realsense_visualizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1174,7 +1171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/sam2/" class="md-nav__link">
+      <a href="../../applications/sam2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1196,7 +1193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/sdr_fm_demodulation/" class="md-nav__link">
+      <a href="../../applications/sdr_fm_demodulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1218,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_pdw_pipeline/" class="md-nav__link">
+      <a href="../../applications/simple_pdw_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1240,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/speech_to_text_llm/" class="md-nav__link">
+      <a href="../../applications/speech_to_text_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ssd_detection_endoscopy_tools/" class="md-nav__link">
+      <a href="../../applications/ssd_detection_endoscopy_tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1284,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/stereo_vision/" class="md-nav__link">
+      <a href="../../applications/stereo_vision/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1306,7 +1303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/synthetic_aperture_radar/" class="md-nav__link">
+      <a href="../../applications/synthetic_aperture_radar/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1328,7 +1325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/tao_peoplenet/" class="md-nav__link">
+      <a href="../../applications/tao_peoplenet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1350,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/velodyne_lidar_app/" class="md-nav__link">
+      <a href="../../applications/velodyne_lidar_app/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1372,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/video_deidentification/" class="md-nav__link">
+      <a href="../../applications/video_deidentification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1394,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/vila_live/" class="md-nav__link">
+      <a href="../../applications/vila_live/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1416,7 +1413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering_xr/" class="md-nav__link">
+      <a href="../../applications/volume_rendering_xr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1438,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/vpi_stereo/" class="md-nav__link">
+      <a href="../../applications/vpi_stereo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1460,7 +1457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/webrtc_holoviz_server/" class="md-nav__link">
+      <a href="../../applications/webrtc_holoviz_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1482,7 +1479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/webrtc_video_client/" class="md-nav__link">
+      <a href="../../applications/webrtc_video_client/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1504,7 +1501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/webrtc_video_server/" class="md-nav__link">
+      <a href="../../applications/webrtc_video_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1526,7 +1523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/xr_hello_holoscan/" class="md-nav__link">
+      <a href="../../applications/xr_hello_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1548,7 +1545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/yolo_model_deployment/" class="md-nav__link">
+      <a href="../../applications/yolo_model_deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1615,7 +1612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/adv_networking_bench/cpp/" class="md-nav__link">
+      <a href="../../applications/adv_networking_bench/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1637,7 +1634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/adv_networking_bench/python/" class="md-nav__link">
+      <a href="../../applications/adv_networking_bench/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1712,7 +1709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/aja_video_capture/cpp/" class="md-nav__link">
+      <a href="../../applications/aja_video_capture/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1734,7 +1731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/aja_video_capture/python/" class="md-nav__link">
+      <a href="../../applications/aja_video_capture/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1809,7 +1806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/basic_networking_ping/cpp/" class="md-nav__link">
+      <a href="../../applications/basic_networking_ping/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1831,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/basic_networking_ping/python/" class="md-nav__link">
+      <a href="../../applications/basic_networking_ping/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1906,7 +1903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cvcuda_basic/cpp/" class="md-nav__link">
+      <a href="../../applications/cvcuda_basic/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1928,7 +1925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cvcuda_basic/python/" class="md-nav__link">
+      <a href="../../applications/cvcuda_basic/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2001,7 +1998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/dds/dds_video/" class="md-nav__link">
+      <a href="../../applications/dds/dds_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2121,7 +2118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_h264_endoscopy_tool_tracking/" class="md-nav__link">
+      <a href="../../applications/distributed/grpc/grpc_h264_endoscopy_tool_tracking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,7 +2185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/distributed/grpc/grpc_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2210,7 +2207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/distributed/grpc/grpc_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2338,7 +2335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/distributed/ucx/ucx_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2360,7 +2357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/distributed/ucx/ucx_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2435,7 +2432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2457,7 +2454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2548,7 +2545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ehr_query_llm/fhir/" class="md-nav__link">
+      <a href="../../applications/ehr_query_llm/fhir/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2570,7 +2567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ehr_query_llm/lmm/" class="md-nav__link">
+      <a href="../../applications/ehr_query_llm/lmm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2645,7 +2642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_out_of_body_detection/cpp/" class="md-nav__link">
+      <a href="../../applications/endoscopy_out_of_body_detection/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2667,7 +2664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_out_of_body_detection/python/" class="md-nav__link">
+      <a href="../../applications/endoscopy_out_of_body_detection/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2742,7 +2739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2764,7 +2761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2884,7 +2881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/h264/h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2906,7 +2903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/h264/h264_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2981,7 +2978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_video_decode/cpp/" class="md-nav__link">
+      <a href="../../applications/h264/h264_video_decode/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3003,7 +3000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_video_decode/python/" class="md-nav__link">
+      <a href="../../applications/h264/h264_video_decode/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3086,7 +3083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/high_speed_endoscopy/cpp/" class="md-nav__link">
+      <a href="../../applications/high_speed_endoscopy/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3108,7 +3105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/high_speed_endoscopy/python/" class="md-nav__link">
+      <a href="../../applications/high_speed_endoscopy/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3189,7 +3186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_hdr/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_hdr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3211,7 +3208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_srgb/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_srgb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3233,7 +3230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_ui/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_ui/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3255,7 +3252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_vsync/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_vsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3277,7 +3274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_yuv/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_yuv/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3354,7 +3351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/evt_cam_calibration/" class="md-nav__link">
+      <a href="../../applications/laser_detection_latency/evt_cam_calibration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3376,7 +3373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/laser_detection/" class="md-nav__link">
+      <a href="../../applications/laser_detection_latency/laser_detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3398,7 +3395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/usb_cam_calibration/" class="md-nav__link">
+      <a href="../../applications/laser_detection_latency/usb_cam_calibration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3473,7 +3470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/matlab_gpu_coder/matlab_beamform/" class="md-nav__link">
+      <a href="../../applications/matlab_gpu_coder/matlab_beamform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3495,7 +3492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/matlab_gpu_coder/matlab_image_processing/" class="md-nav__link">
+      <a href="../../applications/matlab_gpu_coder/matlab_image_processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3570,7 +3567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_endoscopy/cpp/" class="md-nav__link">
+      <a href="../../applications/multiai_endoscopy/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3592,7 +3589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_endoscopy/python/" class="md-nav__link">
+      <a href="../../applications/multiai_endoscopy/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3667,7 +3664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_ultrasound/cpp/" class="md-nav__link">
+      <a href="../../applications/multiai_ultrasound/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3689,7 +3686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_ultrasound/python/" class="md-nav__link">
+      <a href="../../applications/multiai_ultrasound/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3766,7 +3763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_chat/" class="md-nav__link">
+      <a href="../../applications/nvidia_nim/nvidia_nim_chat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3788,7 +3785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_imaging/" class="md-nav__link">
+      <a href="../../applications/nvidia_nim/nvidia_nim_imaging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3810,7 +3807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_nvclip/" class="md-nav__link">
+      <a href="../../applications/nvidia_nim/nvidia_nim_nvclip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3885,7 +3882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/openigtlink_3dslicer/cpp/" class="md-nav__link">
+      <a href="../../applications/openigtlink_3dslicer/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3907,7 +3904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/openigtlink_3dslicer/python/" class="md-nav__link">
+      <a href="../../applications/openigtlink_3dslicer/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4029,7 +4026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_in_out_body/cpp/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_in_out_body/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4051,7 +4048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_in_out_body/python/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_in_out_body/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4126,7 +4123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_multi_ai_ar/cpp/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_multi_ai_ar/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4148,7 +4145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_multi_ai_ar/python/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_multi_ai_ar/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4223,7 +4220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_segmentation_ar/cpp/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_segmentation_ar/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4245,7 +4242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_segmentation_ar/python/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_segmentation_ar/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4328,7 +4325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/prohawk_video_replayer/cpp/" class="md-nav__link">
+      <a href="../../applications/prohawk_video_replayer/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4350,7 +4347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/prohawk_video_replayer/python/" class="md-nav__link">
+      <a href="../../applications/prohawk_video_replayer/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4425,7 +4422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_radar_pipeline/cpp/" class="md-nav__link">
+      <a href="../../applications/simple_radar_pipeline/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4447,7 +4444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_radar_pipeline/python/" class="md-nav__link">
+      <a href="../../applications/simple_radar_pipeline/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4522,7 +4519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ultrasound_segmentation/cpp/" class="md-nav__link">
+      <a href="../../applications/ultrasound_segmentation/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4544,7 +4541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ultrasound_segmentation/python/" class="md-nav__link">
+      <a href="../../applications/ultrasound_segmentation/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4619,7 +4616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering/cpp/" class="md-nav__link">
+      <a href="../../applications/volume_rendering/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4641,7 +4638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering/python/" class="md-nav__link">
+      <a href="../../applications/volume_rendering/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4675,6 +4672,8 @@
       
   
   
+    
+  
   
   
     
@@ -4787,19 +4786,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="operators/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4811,13 +4813,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Operators
@@ -4833,7 +4835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/.md/" class="md-nav__link">
+      <a href="../.md/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4855,7 +4857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrFrameOp/" class="md-nav__link">
+      <a href="../XrFrameOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4877,7 +4879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformControlOp/" class="md-nav__link">
+      <a href="../XrTransformControlOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4899,7 +4901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformOp/" class="md-nav__link">
+      <a href="../XrTransformOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4921,7 +4923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformRenderOp/" class="md-nav__link">
+      <a href="../XrTransformRenderOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4940,10 +4942,29 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="operators/advanced_network/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    advanced_network
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -4953,6 +4974,113 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-network-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Network Operator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Network Operator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Tuning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Structures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-api-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example API Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4965,7 +5093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/aja_source/" class="md-nav__link">
+      <a href="../aja_source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4987,7 +5115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/apriltag_detector/" class="md-nav__link">
+      <a href="../apriltag_detector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5009,7 +5137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/base/" class="md-nav__link">
+      <a href="../base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5031,7 +5159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/basic_network/" class="md-nav__link">
+      <a href="../basic_network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5053,7 +5181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/begin_frame/" class="md-nav__link">
+      <a href="../begin_frame/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5075,7 +5203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/convert_depth/" class="md-nav__link">
+      <a href="../convert_depth/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5097,7 +5225,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/cvcuda_holoscan_interop/" class="md-nav__link">
+      <a href="../cvcuda_holoscan_interop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5119,7 +5247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/data_writer/" class="md-nav__link">
+      <a href="../data_writer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5141,7 +5269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_shapes_subscriber/" class="md-nav__link">
+      <a href="../dds_shapes_subscriber/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5163,7 +5291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_video_publisher/" class="md-nav__link">
+      <a href="../dds_video_publisher/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5185,7 +5313,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_video_subscriber/" class="md-nav__link">
+      <a href="../dds_video_subscriber/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5207,7 +5335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/deltacast_videomaster/" class="md-nav__link">
+      <a href="../deltacast_videomaster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5229,7 +5357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/ehr_query_llm/" class="md-nav__link">
+      <a href="../ehr_query_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5251,7 +5379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/emergent_source/" class="md-nav__link">
+      <a href="../emergent_source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5273,7 +5401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/end_frame/" class="md-nav__link">
+      <a href="../end_frame/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5295,7 +5423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/fft/" class="md-nav__link">
+      <a href="../fft/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5317,7 +5445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/grpc_operators/" class="md-nav__link">
+      <a href="../grpc_operators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5339,7 +5467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/high_rate_psd/" class="md-nav__link">
+      <a href="../high_rate_psd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5361,7 +5489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/low_rate_psd/" class="md-nav__link">
+      <a href="../low_rate_psd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5383,7 +5511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/lstm_tensor_rt_inference/" class="md-nav__link">
+      <a href="../lstm_tensor_rt_inference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5405,7 +5533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/medical_imaging/" class="md-nav__link">
+      <a href="../medical_imaging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5427,7 +5555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/mesh_to_usd/" class="md-nav__link">
+      <a href="../mesh_to_usd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5449,7 +5577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/npp_filter/" class="md-nav__link">
+      <a href="../npp_filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5471,7 +5599,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/openigtlink/" class="md-nav__link">
+      <a href="../openigtlink/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5493,7 +5621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_format_converter/" class="md-nav__link">
+      <a href="../orsi_format_converter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5515,7 +5643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_segmentation_postprocessor/" class="md-nav__link">
+      <a href="../orsi_segmentation_postprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5537,7 +5665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_segmentation_preprocessor/" class="md-nav__link">
+      <a href="../orsi_segmentation_preprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5559,7 +5687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_visualizer/" class="md-nav__link">
+      <a href="../orsi_visualizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5581,7 +5709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/prohawk_video_processing/" class="md-nav__link">
+      <a href="../prohawk_video_processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5603,7 +5731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/qt_video/" class="md-nav__link">
+      <a href="../qt_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5625,7 +5753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/realsense_camera/" class="md-nav__link">
+      <a href="../realsense_camera/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5647,7 +5775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/tensor_to_video_buffer/" class="md-nav__link">
+      <a href="../tensor_to_video_buffer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5669,7 +5797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/tool_tracking_postprocessor/" class="md-nav__link">
+      <a href="../tool_tracking_postprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5691,7 +5819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/unzip/" class="md-nav__link">
+      <a href="../unzip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5713,7 +5841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/video_encoder_request/" class="md-nav__link">
+      <a href="../video_encoder_request/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5735,7 +5863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/visualizer_icardio/" class="md-nav__link">
+      <a href="../visualizer_icardio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5757,7 +5885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/vita49_psd_packetizer/" class="md-nav__link">
+      <a href="../vita49_psd_packetizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5779,7 +5907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/volume_loader/" class="md-nav__link">
+      <a href="../volume_loader/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5801,7 +5929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/volume_renderer/" class="md-nav__link">
+      <a href="../volume_renderer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5823,7 +5951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/vtk_renderer/" class="md-nav__link">
+      <a href="../vtk_renderer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5845,7 +5973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/webrtc_client/" class="md-nav__link">
+      <a href="../webrtc_client/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5867,7 +5995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/webrtc_server/" class="md-nav__link">
+      <a href="../webrtc_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5889,7 +6017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/xr_basic_render/" class="md-nav__link">
+      <a href="../xr_basic_render/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5911,7 +6039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/yuan_qcap/" class="md-nav__link">
+      <a href="../yuan_qcap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5989,7 +6117,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="tutorials/" class="md-nav__link ">
+            <a href="../../tutorials/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6023,7 +6151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/cli_debugging/" class="md-nav__link">
+      <a href="../../tutorials/cli_debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6045,7 +6173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/creating-multi-node-applications/" class="md-nav__link">
+      <a href="../../tutorials/creating-multi-node-applications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6067,7 +6195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/cuda_mps/" class="md-nav__link">
+      <a href="../../tutorials/cuda_mps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6089,7 +6217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/dicom_to_usd_with_monai_and_holoscan/" class="md-nav__link">
+      <a href="../../tutorials/dicom_to_usd_with_monai_and_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6111,7 +6239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/gpu_direct_storage_on_holoscan/" class="md-nav__link">
+      <a href="../../tutorials/gpu_direct_storage_on_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6133,7 +6261,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/gui_for_python_applications/" class="md-nav__link">
+      <a href="../../tutorials/gui_for_python_applications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6155,7 +6283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/high_performance_networking/" class="md-nav__link">
+      <a href="../../tutorials/high_performance_networking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6177,7 +6305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan-bootcamp/" class="md-nav__link">
+      <a href="../../tutorials/holoscan-bootcamp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6199,7 +6327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan-playground-on-aws/" class="md-nav__link">
+      <a href="../../tutorials/holoscan-playground-on-aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6221,7 +6349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan_container_vscode/" class="md-nav__link">
+      <a href="../../tutorials/holoscan_container_vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6243,7 +6371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/integrate_external_libs_into_pipeline/" class="md-nav__link">
+      <a href="../../tutorials/integrate_external_libs_into_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6265,7 +6393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/local-llama/" class="md-nav__link">
+      <a href="../../tutorials/local-llama/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6287,7 +6415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/self_supervised_training/" class="md-nav__link">
+      <a href="../../tutorials/self_supervised_training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6309,7 +6437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/windows_vm/" class="md-nav__link">
+      <a href="../../tutorials/windows_vm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6369,7 +6497,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="benchmarks/" class="md-nav__link ">
+            <a href="../../benchmarks/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6403,7 +6531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/cpp/" class="md-nav__link">
+      <a href="../../benchmarks/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6425,7 +6553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/exclusive_display/" class="md-nav__link">
+      <a href="../../benchmarks/exclusive_display/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6447,7 +6575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/holoscan_flow_benchmarking/" class="md-nav__link">
+      <a href="../../benchmarks/holoscan_flow_benchmarking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6469,7 +6597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/python/" class="md-nav__link">
+      <a href="../../benchmarks/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6491,7 +6619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/release_benchmarking/" class="md-nav__link">
+      <a href="../../benchmarks/release_benchmarking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6521,8 +6649,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -6535,6 +6661,101 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-network-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Network Operator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Network Operator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Tuning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-parameters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Parameters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-structures" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Structures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-api-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example API Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -6546,52 +6767,593 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../tags/#tag:dpdk" class="md-tag">DPDK</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:ethernet" class="md-tag">Ethernet</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:gpudirect" class="md-tag">GPUDirect</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:ip" class="md-tag">IP</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:network" class="md-tag">Network</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:networking" class="md-tag">Networking</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:rdma" class="md-tag">RDMA</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:udp" class="md-tag">UDP</a>
+      
+    
+  </nav>
 
 
 
+  <h1>advanced_network</h1>
 
-  <h1>Home</h1>
-
-<p><strong>Holoscan Reference Applications</strong> is a central repository for the <a href="https://www.nvidia.com/en-us/clara/holoscan/">NVIDIA Holoscan</a> AI sensor processing community 
-to share reference applications, operators, tutorials and benchmarks.
-The repository hosts a variety of applications that demonstrate how to use Holoscan for streaming, imaging, and other AI-driven tasks across embedded, edge, and cloud environments. These applications serve as reference implementations, providing developers with examples of best practices and efficient coding techniques to build high-performance, low-latency AI applications. The repository is open to contributions from the community, encouraging developers to share their own applications and extensions to enhance the Holoscan ecosystem.</p>
-<div class="grid cards">
+<h3 id="advanced-network-operator">Advanced Network Operator<a class="headerlink" href="#advanced-network-operator" title="Permanent link">&para;</a></h3>
+<p>The Advanced Network Operator provides a way for users to achieve the highest throughput and lowest latency
+for transmitting and receiving Ethernet frames out of and into their operators. Direct access to the NIC hardware
+is available in userspace using this operator, thus bypassing the kernel's networking stack entirely. With a
+properly tuned system the advanced network operator can achieve hundreds of Gbps with latencies in the low
+microseconds. Performance is highly dependent on system tuning, packet sizes, batch sizes, and other factors.
+The data may optionally be sent to the GPU using GPUDirect to prevent extra copies to and from the CPU.</p>
+<p>Since the kernel's networking stack is bypassed, the user is responsible for defining the protocols used
+over the network. In most cases Ethernet, IP, and UDP are ideal for this type of processing because of their
+simplicity, but any type of protocol can be implemented or used. The advanced network operator
+gives the option to use several primitives to remove the need for filling out these headers for basic packet types,
+but raw headers can also be constructed.</p>
+<h4 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h4>
 <ul>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8 17 4-4h3.2c.4 1.2 1.5 2 2.8 2 1.7 0 3-1.3 3-3s-1.3-3-3-3c-1.3 0-2.4.8-2.8 2H12L8 7V3H3v5h3l4.2 4L6 16H3v5h5z"/></svg></span> <strong>Workflows</strong> (1)</p>
-<hr />
-<p>Reference workflows demonstrate how capabilities from applications and operators can be combined
-to achieve complex tasks.</p>
-<p><a class="md-button md-button" href="workflows">Browse Workflows</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m6 4h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m6 4h4v-4h-4M4 8h4V4H4z"/></svg></span> <strong>Applications</strong> (78)</p>
-<hr />
-<p>Reference applications demonstrate a specific capability of Holoscan or how a specific operator
-can be used to perform an optimize task.</p>
-<p><a class="md-button md-button" href="applications">Browse Applications</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.41 7.41 15 12l-4.59 4.6L9 15.18 12.18 12 9 8.82M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg></span> <strong>Operators</strong> (50)</p>
-<hr />
-<p>Operators perform a specific task.</p>
-<p><a class="md-button md-button" href="operators">Browse Operators</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5m-1-14c-1.36-.6-3.16-1-4.5-1-1.2 0-2.4.15-3.5.5v11.5c1.1-.35 2.3-.5 3.5-.5 1.34 0 3.14.4 4.5 1zM13 19c1.36-.6 3.16-1 4.5-1 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.34 0-3.14.4-4.5 1zm1-2.65c.96-.35 2.12-.52 3.5-.52 1.04 0 1.88.08 2.5.24v-1.5a13.9 13.9 0 0 0-6 .19zm0-2.66c.96-.35 2.12-.53 3.5-.53 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23-1.28 0-2.45.15-3.5.45zM14 11c.96-.33 2.12-.5 3.5-.5.91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23-1.32 0-2.5.15-3.5.46z"/></svg></span> <strong>Tutorials</strong> (14)</p>
-<hr />
-<p>Tutorials provide hands-on experience.</p>
-<p><a class="md-button md-button" href="tutorials">Browse Tutorials</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 17H7v-7h2zm4 0h-2V7h2zm4 0h-2v-4h2zm2 2H5V5h14v14.1M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"/></svg></span> <strong>Benchmarks</strong> (5)</p>
-<hr />
-<p>Benchmarks provide tools for assessing performance of Holoscan pipelines as well as reference benchmarks for specific releases</p>
-<p><a class="md-button md-button" href="benchmarks">Browse Benchmarks</a></p>
+<li>Linux</li>
+<li>An NVIDIA NIC with a ConnectX-6 or later chip</li>
+<li>System tuning as described below</li>
+<li>DPDK 22.11</li>
+<li>MOFED 5.8-1.0.1.1 or later</li>
+<li>DOCA 2.7 or later</li>
+</ul>
+<h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>High Throughput</strong>: Hundreds of gigabits per second is possible with the proper hardware</li>
+<li><strong>Low Latency</strong>: With direct access to the NIC's ring buffers, most latency incurred is only PCIe latency</li>
+<li><strong>GPUDirect</strong>: Optionally send data directly from the NIC to GPU, or directly from the GPU to NIC. GPUDirect has two modes:</li>
+<li>Header-data split: Split the header portion of the packet to the CPU and the rest (payload) to the GPU. The split point is
+    configurable by the user. This option should be the preferred method in most cases since it's easy to use and still
+    gives near peak performance.</li>
+<li>Batched GPU: Receive batches of whole packets directly into the GPU memory. This option requires the GPU kernel to inspect
+    and determine how to handle packets. While performance may increase slightly over header-data split, this method
+    requires more effort and should only be used for advanced users.</li>
+<li><strong>GPUComms</strong>: Optionally control the send or receive communications from the GPU through the GPUDirect Async Kernel-Initiated network technology (enabled with the <a href="https://docs.nvidia.com/doca/sdk/doca+gpunetio/index.html">DOCA GPUNetIO</a> transport layer only).</li>
+<li><strong>Flow Configuration</strong>: Configure the NIC's hardware flow engine for configurable patterns. Currently only UDP source
+    and destination are supported.</li>
+</ul>
+<h4 id="limitations">Limitations<a class="headerlink" href="#limitations" title="Permanent link">&para;</a></h4>
+<p>The limitations below will be removed in a future release.</p>
+<ul>
+<li>Only UDP fill mode is supported</li>
+</ul>
+<h4 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h4>
+<p>Internally the advanced network operator can be implemented by different transport layers, each offering different features.
+The network transport layer must be specified at the beginning of the application using the ANO API.</p>
+<h5 id="dpdk">DPDK<a class="headerlink" href="#dpdk" title="Permanent link">&para;</a></h5>
+<p>DPDK is an open-source userspace packet processing library supported across platforms and vendors.
+While the DPDK interface is abstracted away from users of the advanced network operator,
+the method in which DPDK integrates with Holoscan is important for understanding how to achieve the highest performance and for debugging.</p>
+<p>When the advanced network operator is compiled/linked against a Holoscan application, an instance of the DPDK manager
+is created, waiting to accept configuration. When either an RX or TX advanced network operator is defined in a
+Holoscan application, their configuration is sent to the DPDK manager. Once all advanced network operators have initialized,
+the DPDK manager is told to initialize DPDK. At this point the NIC is configured using all parameters given by the operators.
+This step allocates all packet buffers, initializes the queues on the NIC, and starts the appropriate number of internal
+threads. The job of the internal threads is to take packets off or put packets onto the NIC as fast as possible. They
+act as a proxy between the advanced network operators and DPDK by handling packets faster than the operators may be
+able to.</p>
+<p>To achieve zero copy throughout the whole pipeline only pointers are passed between each entity above. When the user
+receives the packets from the network operator it's using the same buffers that the NIC wrote to either CPU or GPU
+memory. This architecture also implies that the user must explicitly decide when to free any buffers it's owning.
+Failure to free buffers will result in errors in the advanced network operators not being able to allocate buffers.</p>
+<h5 id="doca">DOCA<a class="headerlink" href="#doca" title="Permanent link">&para;</a></h5>
+<p>NVIDIA DOCA brings together a wide range of powerful APIs, libraries, and frameworks for programming and accelerating modern data center infrastructures​. The DOCA SDK composed by a variety of C/C++ API for different purposes​, exposing all the features supported by NVIDIA hardware and platforms. <a href="https://docs.nvidia.com/doca/sdk/doca+gpunetio/index.html">DOCA GPUNetIO</a> is one of the libraries included in the SDK and it enables the GPU to control, from a CUDA kernel, network communications directly interacting with the network card and completely removing the CPU from the critical data path.</p>
+<p>If the application wants to enable GPU communications, it must chose DOCA as transport layer. The behaviour of the DOCA transport layer is similar to the DPDK one except that the receive and send are executed by CUDA kernels. Specifically:
+- Receive: a persistent CUDA kernel is running on a dedicated stream and keeps receiving packets, providing packets' info to the application level. Due to the nature of the operator, the CUDA receiver kernel now is responsible only to receive packets but in a real-world application, it can be extended to receive and process in real-time network packets (DPI, filtering, decrypting, byte modification, etc..) before forwarding packets to the application.
+- Send: every time the application wants to send packets it launches one or more CUDA kernels to prepare data and create Ethernet packets and then (without the need of synchronizing) forward the send request to the operator. The operator then launches another CUDA kernel that in turn sends the packets (still no need to synchronize with the CPU). The whole pipeline is executed on the GPU. Due to the nature of the operator, the packets' creation and packets' send must be split in two CUDA kernels but in a real-word application, they can be merged into a single CUDA kernel responsible for both packet processing and packet sending.</p>
+<p>Please refer to the <a href="https://docs.nvidia.com/doca/sdk/doca+gpunetio/index.html">DOCA GPUNetIO</a> programming guide to correctly configure your system before using this transport layer.</p>
+<p>DOCA transport layer doesn't support the <code>split-boundary</code> option.</p>
+<p>To build and run the ANO Dockerfile with DOCA support, please follow the steps below:</p>
+<div class="highlight"><pre><span></span><code># To build Docker image
+./dev_container build --docker_file operators/advanced_network/Dockerfile --img holohub-doca:doca-28-ubuntu2204 --no-cache
+
+# Launch DOCA container
+./operators/advanced_network/run_doca.sh
+
+# To build operator + app from main dir
+./run build adv_networking_bench --configure-args &quot;-DANO_MGR=gpunetio&quot;
+
+# Run app
+./build/adv_networking_bench/applications/adv_networking_bench/cpp/adv_networking_bench adv_networking_bench_gpunetio_tx_rx.yaml
+</code></pre></div>
+<p><mark>Receiver side, CUDA Persistent kernel note</mark>
+To get the best performance on the receive side, the Advanced Network Operator must be built with with <code>RX_PERSISTENT_ENABLED</code> set to 1 which enables the CUDA receiver kernel to run persistently for the whole execution. For Holoscan internal reasons (not related to the DOCA library), a persistent CUDA kernel may cause issues on some applications on the receive side. This issue is still under investigation.
+If this happens, there are two options:
+- build the Advanced Network Operator with <code>RX_PERSISTENT_ENABLED</code> set to 0
+- keep the <code>RX_PERSISTENT_ENABLED</code> set to 1 and enable also MPS setting <code>MPS_ENABLED</code> to 1. Then, MPS should be enabled on the system:
+<div class="highlight"><pre><span></span><code>export CUDA_MPS_PIPE_DIRECTORY=/var
+export CUDA_MPS_LOG_DIRECTORY=/var
+sudo -E nvidia-cuda-mps-control -d
+sudo -E echo start_server -uid 0 | sudo -E nvidia-cuda-mps-control
+</code></pre></div></p>
+<p>This should solve all problems. Both <code>RX_PERSISTENT_ENABLED</code> and <code>MPS_ENABLED</code> are defined in <code>operators/advanced_network/managers/doca/adv_network_doca_mgr.h</code>.</p>
+<h5 id="rivermax">RIVERMAX<a class="headerlink" href="#rivermax" title="Permanent link">&para;</a></h5>
+<p>NVIDIA Rivermax SDK
+Optimized networking SDK for media and data streaming applications.
+NVIDIA® Rivermax® offers a unique IP-based solution for any media and data streaming use case.
+Rivermax together with NVIDIA GPU accelerated computing technologies unlocks innovation for a wide range of applications in Media and Entertainment (M&amp;E), Broadcast, Healthcare, Smart Cities and more.
+Rivermax leverages NVIDIA ConnectX® and BlueField® DPU hardware-streaming acceleration technology that enables direct data transfers to and from the GPU,
+delivering best-in-class throughput and latency with minimal CPU utilization for streaming workloads.
+Rivermax is the only fully-virtualized streaming solution that complies with the stringent timing and traffic flow requirements of the SMPTE ST 2110-21 specification.
+Rivermax enables the future of cloud-based software-defined broadcasting.
+Product release highlights, documentation, platform support, installation and usage guides can be found in the <a href="https://developer.nvidia.com/networking/rivermax-getting-started">Rivermax SDK Page</a>.
+Frequently asked questions, customers product highlights, Video link and more are available on the <a href="https://developer.nvidia.com/networking/rivermax">Rivermax Product Page</a>.
+While the Rivermax interface is abstracted away from users of the advanced network operator, the method in which Rivermax integrates with Holoscan
+is important for understanding how to achieve the highest performance and for debugging.</p>
+<p>When the advanced network operator is compiled/linked against a Holoscan application, an instance of the Rivermax manager is created, waiting to accept configuration.
+When either an RX or TX advanced network operator is defined in aHoloscan application, their configuration is sent to the Rivermax manager.
+Once all advanced network operators have initialized, the Rivermax manager is told to initialize Rivermax. At this point the NIC is configured using all parameters given by the operators.
+This step allocates all packet buffers, initializes the queues on the NIC, and starts the appropriate number of internal threads.
+The job of the internal threads is to take packets off or put packets onto the NIC as fast as possible.
+They act as a proxy between the advanced network operators and Rivermax by handling packets faster than the operators may be able to.</p>
+<p>To achieve zero copy throughout the whole pipeline only pointers are passed between each entity above.
+When the user receives the packets from the network operator it's using the same buffers that the NIC wrote to either CPU or GPU memory.
+This architecture also implies that the user must explicitly decide when to free any buffers it's owning.
+Failure to free buffers will result in errors in the advanced network operators not being able to allocate buffers.
+Rivermax manager supports receiving the same stream from multiple redundant paths.
+Each path is a combination of a source IP address, a destination IPaddress, a destination port, and a local IP address of the receiver device.
+Single path receive supports packet reordering within the NIC, multi-pathreceive also adds recovery of missing packets from other streams.</p>
+<p>To build and run the ANO Dockerfile with <code>Rivermax</code> support, follow these steps:</p>
+<ul>
+<li>Visit the <a href="https://developer.nvidia.com/networking/rivermax-getting-started">Rivermax SDK Page</a> to download the Rivermax Release SDK.</li>
+<li>Obtain a Rivermax developer license from the same page. This is necessary for using the SDK.</li>
+<li>Copy the downloaded SDK tar file (e.g., <code>rivermax_ubuntu2204_1.60.1.tar.gz</code>) into your current working directory.</li>
+<li>You can adjust the path using the <code>RIVERMAX_SDK_ZIP_PATH</code> build argument if needed.</li>
+<li>Modify the version using the <code>RIVERMAX_VERSION</code> build argument if you're using a different SDK version.</li>
+<li>Place the obtained Rivermax developer license file (<code>rivermax.lic</code>) into the <code>/opt/mellanox/rivermax/</code> directory. You can change this path in the run_rivermax.sh script if necessary</li>
+<li>Build the Docker image:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>./dev_container build --docker_file operators/advanced_network/Dockerfile --img holohub:rivermax --build-args &quot;--target rivermax&quot;
+</code></pre></div>
+<ul>
+<li>Launch Rivermax container</li>
+</ul>
+<div class="highlight"><pre><span></span><code># Launch Rivermax container
+./operators/advanced_network/run_rivermax.sh
+
+# To build operator + app from main dir
+./run build adv_networking_bench --configure-args &quot;-DANO_MGR=rivermax&quot;
+
+# Run app
+./build/adv_networking_bench/applications/adv_networking_bench/cpp/adv_networking_bench  adv_networking_bench_rmax_rx.yaml
+</code></pre></div>
+<h4 id="system-tuning">System Tuning<a class="headerlink" href="#system-tuning" title="Permanent link">&para;</a></h4>
+<p>From a high level, tuning the system for a low latency workload prevents latency spikes large enough to cause anomalies
+in the application. This section details how to perform the basic tuning steps needed on both a Clara AGX and Orin IGX systems.</p>
+<h5 id="create-hugepages">Create Hugepages<a class="headerlink" href="#create-hugepages" title="Permanent link">&para;</a></h5>
+<p>Hugepages give the kernel access to a larger page size than the default (usually 4K) which reduces the number of memory
+translations that have to be actively maintained in MMUs. 1GB hugepages are ideal, but 2MB may be used as well if 1GB is not
+available. To configure 1GB hugepages:</p>
+<div class="highlight"><pre><span></span><code>sudo mkdir /mnt/huge
+sudo mount -t hugetlbfs nodev /mnt/huge
+sudo sh -c &quot;echo nodev /mnt/huge hugetlbfs pagesize=1GB 0 0 &gt;&gt; /etc/fstab&quot;
+</code></pre></div>
+<h5 id="linux-boot-command-line">Linux Boot Command Line<a class="headerlink" href="#linux-boot-command-line" title="Permanent link">&para;</a></h5>
+<p>The Linux boot command line allows configuration to be injected into Linux before booting. Some configuration options are
+only available at the boot command since they must be provided before the kernel has started. On the Orin IGX
+editing the boot command can be done with the following configuration:</p>
+<div class="highlight"><pre><span></span><code>sudo vim /etc/default/grub
+# Find the line starting with APPEND and add the following
+
+isolcpus=6-11 nohz_full=6-11 irqaffinity=0-5 rcu_nocbs=6-11 rcu_nocb_poll tsc=reliable audit=0 nosoftlockup default_hugepagesz=1G hugepagesz=1G hugepages=2
+</code></pre></div>
+<p>The settings above isolate CPU cores 6-11 on the Orin and 4-7 on the Clara, and turn 1GB hugepages on.</p>
+<p>For non-IGX or AGX systems please look at the documentation for your system to change the boot command.</p>
+<h5 id="setting-the-cpu-governor">Setting the CPU governor<a class="headerlink" href="#setting-the-cpu-governor" title="Permanent link">&para;</a></h5>
+<p>The CPU governor reduces power consumption by decreasing the clock frequency of the CPU when cores are idle. While this is useful
+in most environments, increasing the clocks from an idle period can cause long latency stalls. To disable frequency scaling:</p>
+<div class="highlight"><pre><span></span><code>sudo apt install cpufrequtils
+sudo sed -i &#39;s/^GOVERNOR=.*/GOVERNOR=&quot;performance&quot;/&#39; /etc/init.d/cpufrequtils
+</code></pre></div>
+<p>Reboot the system after these changes.</p>
+<h5 id="permissions">Permissions<a class="headerlink" href="#permissions" title="Permanent link">&para;</a></h5>
+<p>DPDK typically requires running as a root user. If you wish to run as a non-root user, you may follow the directions here:
+http://doc.dpdk.org/guides/linux_gsg/enable_func.html</p>
+<p>If running in a container, you will need to run in privileged container, and mount your hugepages mount point from above into the container. This
+can be done as part of the <code>docker run</code> command by adding the following flags:</p>
+<div class="highlight"><pre><span></span><code>-v /mnt/huge:/mnt/huge \
+--privileged \
+</code></pre></div>
+<h4 id="configuration-parameters">Configuration Parameters<a class="headerlink" href="#configuration-parameters" title="Permanent link">&para;</a></h4>
+<p>The advanced network operator contains a separate operator for both transmit and receive. This allows applications to choose
+whether they need to handle bidirectional traffic or only unidirectional. Transmit and receive are configured separately in
+a YAML file, and a common configuration contains items used by both directions. Each configuration section is described below.</p>
+<h5 id="common-configuration">Common Configuration<a class="headerlink" href="#common-configuration" title="Permanent link">&para;</a></h5>
+<p>The common configuration container parameters are used by both TX and RX:</p>
+<ul>
+<li><strong><code>version</code></strong>: Version of the config. Only 1 is valid currently.</li>
+<li>type: <code>integer</code></li>
+<li><strong><code>master_core</code></strong>: Master core used to fork and join network threads. This core is not used for packet processing and can be
+bound to a non-isolated core. Should differ from isolated cores in queues below.</li>
+<li>type: <code>integer</code></li>
+<li><strong><code>manager</code></strong>: Backend networking library. default: <code>dpdk</code>. Other: <code>doca</code> (GPUNet IO), <code>rivermax</code></li>
+<li>type: <code>string</code></li>
+<li><strong><code>log_level</code></strong>: Backend log level. default: <code>warn</code>. Other: <code>trace</code> , <code>debug</code>, <code>info</code>, <code>error</code>, <code>critical</code>, <code>off</code></li>
+<li>type: <code>string</code></li>
+</ul>
+<h5 id="memory-regions">Memory regions<a class="headerlink" href="#memory-regions" title="Permanent link">&para;</a></h5>
+<p><code>memory_regions:</code> List of regions where buffers are stored.</p>
+<ul>
+<li><strong><code>name</code></strong>: Memory Region name</li>
+<li>type: <code>string</code></li>
+<li><strong><code>kind</code></strong>: Location. Best options are <code>device</code> (GPU), or <code>huge</code> (pages - CPU). Not recommended: <code>host</code> (CPU), <code>host_pinned</code> (CPU).</li>
+<li>type: <code>string</code></li>
+<li><strong><code>affinity</code></strong>: GPU ID for GPU memory, NUMA Node ID for CPU memory</li>
+<li>type: <code>integer</code></li>
+<li><strong><code>access</code></strong>: Permissions to the rdma memory region ( <code>local</code> or <code>rmda_read</code> or <code>rdma_write</code>)</li>
+<li>type: <code>string</code></li>
+<li><strong><code>num_bufs</code></strong>: Higher value means more time to process, but less space on GPU BAR1.
+Too low means risk of dropped packets from NIC having nowhere to write (Rx) or higher latency from buffering (Tx). Good rule of 👍 : 3x batch_size</li>
+<li>type: <code>integer</code></li>
+<li><strong><code>buf_size</code></strong>: Size of buffer, equal to packet size or less if breaking down packets (ex: header data split)</li>
+<li>type: <code>integer</code></li>
+</ul>
+<h5 id="interfaces">Interfaces<a class="headerlink" href="#interfaces" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong><code>interfaces</code></strong>:  List and configure ethernet interfaces
+    full path: <code>cfg\interfaces\</code><ul>
+<li><strong><code>name</code></strong>: Name of the interfaca</li>
+<li>type: <code>string</code></li>
+<li><strong><code>address</code></strong>: PCIe BDF address (lspci) or linux link name (ip link)</li>
+<li>type: <code>string</code></li>
+<li><strong><code>rx|tx</code></strong> category of queues below
+full path: <code>cfg\interfaces\[rx|tx]</code></li>
+</ul>
 </li>
 </ul>
-</div>
+<h5 id="receive-configuration-rx">Receive Configuration (rx)<a class="headerlink" href="#receive-configuration-rx" title="Permanent link">&para;</a></h5>
+<ul>
+<li>
+<p><strong><code>queues</code></strong>: List of queues on NIC
+    type: <code>list</code>
+    full path: <code>cfg\interfaces\rx\queues</code></p>
+<ul>
+<li><strong><code>name</code></strong>: Name of queue<ul>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+<li><strong><code>id</code></strong>: Integer ID used for flow connection or lookup in operator compute method<ul>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+<li><strong><code>cpu_core</code></strong>: CPU core ID. Should be isolated when CPU polls the NIC for best performance.. <mark>Not in use for Doca GPUNetIO</mark>
+    Rivermax manager can accept coma separated list of CPU IDs<ul>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+<li><strong><code>batch_size</code></strong>: Number of packets in a batch that is passed between the advanced network operator and the user's operator. A
+larger number increases throughput and latency by requiring fewer messages between operators, but takes longer to populate a single
+buffer. A smaller number reduces latency and bandwidth by passing more messages.<ul>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+<li><strong><code>split_boundary</code></strong>: HDS (Header Data Split) Split point in bytes between header and payload. If set to 0 HDS is disabled<ul>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+<li><strong><code>output_port</code></strong>:  Name of the ANO Rx operator output port for aggregator operators to connect to<ul>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+<li><strong><code>memory_regions</code></strong>: List of memory regions where buffers are stored. memory regions names are configured in the <a href="#memory-regions">Memory Regions</a> section
+    type: <code>list</code></li>
+<li><strong><code>timeout_us</code></strong>: Timeout value that a batch will be sent on even if not enough packets to fill a batch were received<ul>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>flows</code></strong>: List of flows - rules to apply to packets, mostly to divert to the right queue. (<mark>Not in use for Rivermax manager</mark>)
+  type: <code>list</code>
+  full path: <code>cfg\interfaces\[rx|tx]\flows</code></p>
+<ul>
+<li><strong><code>name</code></strong>: Name of the flow</li>
+<li>type: <code>string</code></li>
+<li><strong><code>id</code></strong>: ID of the flow</li>
+<li>type: <code>integer</code></li>
+<li><strong><code>action</code></strong>: Action section of flow (what happens. Currently only supports steering to a given queue)</li>
+<li>type: <code>sequence</code><ul>
+<li><strong><code>type</code></strong>: Type of action. Only <code>queue</code> is supported currently.</li>
+<li>type: <code>string</code></li>
+<li><strong><code>id</code></strong>: ID of queue to steer to<ul>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>match</code></strong>: Match section of flow</li>
+<li>type: <code>sequence</code><ul>
+<li><strong><code>udp_src</code></strong>: UDP source port</li>
+<li>type: <code>integer</code></li>
+<li><strong><code>udp_dst</code></strong>: UDP destination port</li>
+<li>type: <code>integer</code></li>
+<li><strong><code>ipv4_len</code></strong>: IPv4 payload length</li>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="extended-receive-configuration-for-rivermax-manager">Extended Receive Configuration for Rivermax manager<a class="headerlink" href="#extended-receive-configuration-for-rivermax-manager" title="Permanent link">&para;</a></h5>
+<ul>
+<li>
+<p><strong><code>rmax_rx_settings</code></strong>: Extended RX settings for Rivermax Manager. Rivermax Manager supports receiving the same stream from multiple redundant paths (IPO - Inline Packet Ordering).
+    Each path is a combination of a source IP address, a destination IP address, a destination port, and a local IP address of the receiver device.
+  type: <code>list</code>
+  full path: <code>cfg\interfaces\rx\queues\rmax_rx_settings</code></p>
+<ul>
+<li><strong><code>memory_registration</code></strong>: Flag, when enabled, reduces the number of memory keys in use by registering all the memory in a single pass on the application side.
+    <mark>Can be used only together with HDS enabled</mark><ul>
+<li>type: <code>boolean</code></li>
+<li>default:<code>false</code></li>
+</ul>
+</li>
+<li><strong><code>max_path_diff_us</code></strong>: Sets the maximum number of microseconds that receiver waits for the same packet to arrive from a different stream (if IPO is enabled)<ul>
+<li>type: <code>integer</code></li>
+<li>default:<code>0</code></li>
+</ul>
+</li>
+<li><strong><code>ext_seq_num</code></strong>: The RTP sequence number is used by the hardware to determine the location of arriving packets in the receive buffer.
+    The application supports two sequence number parsing modes: 16-bit RTP sequence number (default) and 32-bit extended sequence number,
+    consisting of 16 low order RTP sequence number bits and 16 high order bits from the start of RTP payload. When set to <code>true</code> 32-bit ext. sequence number will be used<ul>
+<li>type: <code>boolean</code></li>
+<li>default:<code>true</code></li>
+</ul>
+</li>
+<li><strong><code>sleep_between_operations_us</code></strong>: Specifies the duration, in microseconds, that the receiver will pause or sleep between two consecutive receive (RX) operations.<ul>
+<li>type: <code>integer</code></li>
+<li>default:<code>0</code></li>
+</ul>
+</li>
+<li><strong><code>local_ip_addresses</code></strong>: List of Local NIC IP Addresses (one address per receiving path)<ul>
+<li>type: <code>sequence</code></li>
+</ul>
+</li>
+<li><strong><code>source_ip_addresses</code></strong>: List of Sender IP Addresses (one address per receiving path)<ul>
+<li>type: <code>sequence</code></li>
+</ul>
+</li>
+<li><strong><code>destination_ip_addresses</code></strong>: List of Destination IP Addresses (one address per receiving path), can be multicast<ul>
+<li>type: <code>sequence</code></li>
+</ul>
+</li>
+<li><strong><code>destination_ports</code></strong>: List of Destination IP ports (one port per receiving path)<ul>
+<li>type: <code>sequence</code></li>
+</ul>
+</li>
+<li><strong><code>rx_stats_period_report_ms</code></strong>: Specifies the duration, in milliseconds, that the receiver will display statistics in the log. Set <code>0</code> to disable statistics logging feature<ul>
+<li>type: <code>integer</code></li>
+<li>default:<code>0</code></li>
+</ul>
+</li>
+<li><strong><code>send_packet_ext_info</code></strong>: Enables the transmission of extended metadata for each received packet<ul>
+<li>type: <code>boolean</code></li>
+<li>default:<code>true</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Example of the Rivermax queue configuration for redundant stream using HDS and GPU
+  This example demonstrates receiving a redundant stream sent from a sender with source addresses 192.168.100.4 and 192.168.100.3.
+  The stream is received via NIC which have local IP (same) 192.168.100.5 (listed twice, once per stream).
+  The multicast addresses and UDP ports on which the stream is being received are 224.1.1.1:5001 and 224.1.1.2:5001
+ The incoming packets are of size 1152 bytes. The initial 20 bytes are stripped from the payload as an  application header and placed in buffers allocated in RAM.
+ The remaining 1132 bytes are placed in dedicated payload buffers.  In this case, the payload buffers are allocated in GPU 0 memory.
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">memory_regions</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Data_RX_CPU&quot;</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;huge&quot;</span>
+<span class="w">      </span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">access</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">      </span><span class="nt">num_bufs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">43200</span>
+<span class="w">      </span><span class="nt">buf_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Data_RX_GPU&quot;</span>
+<span class="w">      </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;device&quot;</span>
+<span class="w">      </span><span class="nt">affinity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">access</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">      </span><span class="nt">num_bufs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">43200</span>
+<span class="w">      </span><span class="nt">buf_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1132</span>
+<span class="w">    </span><span class="nt">interfaces</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0005:03:00.0</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data1</span>
+<span class="w">      </span><span class="nt">rx</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">queues</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data1</span>
+<span class="w">          </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">          </span><span class="nt">cpu_core</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;11&#39;</span>
+<span class="w">          </span><span class="nt">batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4320</span>
+<span class="w">          </span><span class="nt">output_port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bench_rx_out_1</span>
+<span class="w">          </span><span class="nt">rmax_rx_settings</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">memory_registration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">max_path_diff_us</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">            </span><span class="nt">ext_seq_num</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">sleep_between_operations_us</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100</span>
+<span class="w">            </span><span class="nt">memory_regions</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Data_RX_CPU&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;Data_RX_GPU&quot;</span>
+<span class="w">            </span><span class="nt">local_ip_addresses</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.100.5</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.100.5</span>
+<span class="w">            </span><span class="nt">source_ip_addresses</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.100.4</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">192.168.100.4</span>
+<span class="w">            </span><span class="nt">destination_ip_addresses</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">224.1.1.1</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">224.1.1.2</span>
+<span class="w">            </span><span class="nt">destination_ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50001</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50001</span>
+<span class="w">            </span><span class="nt">rx_stats_period_report_ms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3000</span>
+<span class="w">            </span><span class="nt">send_packet_ext_info</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div></p>
+</li>
+</ul>
+<h5 id="transmit-configuration-tx">Transmit Configuration (tx)<a class="headerlink" href="#transmit-configuration-tx" title="Permanent link">&para;</a></h5>
+<p>(<mark>Current version of Rivermax manager doesn't support TX</mark>)</p>
+<ul>
+<li><strong><code>queues</code></strong>: List of queues on NIC
+    type: <code>list</code>
+    full path: <code>cfg\interfaces\tx\queues</code><ul>
+<li><strong><code>name</code></strong>: Name of queue<ul>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+<li><strong><code>id</code></strong>: Integer ID used for flow connection or lookup in operator compute method<ul>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+<li><strong><code>cpu_core</code></strong>: CPU core ID. Should be isolated when CPU polls the NIC for best performance.. <mark>Not in use for Doca GPUNet IORivermax manager</mark>
+    Rivermax manager can accept coma separated list of CPU IDs<ul>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+<li><strong><code>batch_size</code></strong>: Number of packets in a batch that is passed between the advanced network operator and the user's operator. A
+larger number increases throughput and latency by requiring fewer messages between operators, but takes longer to populate a single
+buffer. A smaller number reduces latency and bandwidth by passing more messages.<ul>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+<li><strong><code>split_boundary</code></strong>: HDS (Header Data Split) Split point in bytes between header and payload. If set to 0 HDS is disabled<ul>
+<li>type: <code>integer</code></li>
+</ul>
+</li>
+<li><strong><code>memory_regions</code></strong>: List of memory regions where buffers are stored. memory regions names are configured in the <a href="#memory-regions">Memory Regions</a> section
+    type: <code>list</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="api-structures">API Structures<a class="headerlink" href="#api-structures" title="Permanent link">&para;</a></h4>
+<p>Both the transmit and receive operators use a common structure named <code>AdvNetBurstParams</code> to pass data to/from other operators. <code>AdvNetBurstParams</code> provides pointers to packet memory locations (e.g., CPU or GPU) and contains metadata needed by the operator to track allocations. Since the advanced network operator utilizes a generic interface that does not expose the underlying low-level network card library, interacting with <code>AdvNetBurstParams</code> is mostly done with the helper functions described below. A user should never modify any members of <code>AdvNetBurstParams</code> directly, as this may break in future versions. The <code>AdvNetBurstParams</code> is described below:</p>
+<div class="highlight"><pre><span></span><code>struct AdvNetBurstParams {
+  AdvNetBurstHdr hdr;
+
+  std::array&lt;void**, MAX_NUM_SEGS&gt; pkts;
+  std::array&lt;uint32_t*, MAX_NUM_SEGS&gt; pkt_lens;
+  void** pkt_extra_info;
+  cudaEvent_t event;
+};
+</code></pre></div>
+<p>Starting from the top, the <code>hdr</code> field contains metadata about the batch of packets. The <code>pkts</code> array stores opaque pointers to packet memory locations (e.g., CPU or GPU) across multiple segments, and <code>pkt_lens</code> stores the lengths of these packets. <code>pkt_extra_info</code> contains additional metadata about each packet, and <code>event</code> is a CUDA event used for synchronization.</p>
+<p>As mentioned above, the <code>pkts</code> and <code>pkt_lens</code> fields are opaque and should not be accessed directly. Instead, refer to the helper functions in the next section for interacting with these fields to ensure compatibility with future versions.</p>
+<h4 id="example-api-usage">Example API Usage<a class="headerlink" href="#example-api-usage" title="Permanent link">&para;</a></h4>
+<p>For an entire list of API functions, please see the <code>advanced_network/common.h</code> header file.</p>
+<h5 id="receive">Receive<a class="headerlink" href="#receive" title="Permanent link">&para;</a></h5>
+<p>The section below describes a workflowusing GPUDirect to receive packets using header-data split. The job of the user's operator(s)
+is to process and free the buffers as quickly as possible. This might be copying to interim buffers or freeing before the entire
+pipeline is done processing. This allows the networking piece to use relatively few buffers while still achieving very high rates.</p>
+<p>The first step in receiving from the advanced network operator is to tie your operator's input port to the output port of the RX
+network operator's <code>burst_out</code> port.</p>
+<div class="highlight"><pre><span></span><code>auto adv_net_rx    = make_operator&lt;ops::AdvNetworkOpRx&gt;(&quot;adv_network_rx&quot;, from_config(&quot;adv_network_common&quot;), from_config(&quot;adv_network_rx&quot;), make_condition&lt;BooleanCondition&gt;(&quot;is_alive&quot;, true));
+auto my_receiver   = make_operator&lt;ops::MyReceiver&gt;(&quot;my_receiver&quot;, from_config(&quot;my_receiver&quot;));
+add_flow(adv_net_rx, my_receiver, (&#39;burst_out&#39;, &#39;burst_in&#39;));
+</code></pre></div>
+<p>Once the ports are connected, inside the <code>compute()</code> function of your operator you will receive a <code>AdvNetBurstParams</code> structure
+when a batch is complete:</p>
+<div class="highlight"><pre><span></span><code>auto burst = op_input.receive&lt;std::shared_ptr&lt;AdvNetBurstParams&gt;&gt;(&quot;burst_in&quot;).value();
+</code></pre></div>
+<p>The packets arrive in scattered packet buffers. Depending on the application, you may need to iterate through the packets to
+aggregate them into a single buffer. Alternatively the operator handling the packet data can operate on a list of packet
+pointers rather than a contiguous buffer. Below is an example of aggregating separate GPU packet buffers into a single GPU
+buffer:</p>
+<div class="highlight"><pre><span></span><code>  for (int p = 0; p &lt; adv_net_get_num_pkts(burst); p++) {
+    h_dev_ptrs_[aggr_pkts_recv_ + p]   = adv_net_get_cpu_pkt_ptr(burst, p);
+    ttl_bytes_in_cur_batch_           += adv_net_get_gpu_packet_len(burst, p) + sizeof(UDPPkt);
+  }
+
+  simple_packet_reorder(buffer, h_dev_ptrs, packet_len, burst-&gt;hdr.num_pkts);
+</code></pre></div>
+<p>For this example we are tossing the header portion (CPU), so we don't need to examine the packets. Since we launched a reorder
+kernel to aggregate the packets in GPU memory, we are also done with the GPU pointers. All buffers may be freed to the
+advanced network operator at this point:</p>
+<div class="highlight"><pre><span></span><code>adv_net_free_all_burst_pkts_and_burst(burst_bufs_[b]);
+</code></pre></div>
+<h5 id="transmit">Transmit<a class="headerlink" href="#transmit" title="Permanent link">&para;</a></h5>
+<p>Transmitting packets works similar to the receive side, except the user is tasked with filling out the packets as much as it
+needs to. As mentioned above, helper functions are available to fill in most boilerplate header information if that doesn't
+change often.</p>
+<p>Similar to the receive, the transmit operator needs to connect to <code>burst_in</code> on the advanced network operator transmitter:</p>
+<div class="highlight"><pre><span></span><code>auto my_transmitter  = make_operator&lt;ops::MyTransmitter&gt;(&quot;my_transmitter&quot;, from_config(&quot;my_transmitter&quot;), make_condition&lt;BooleanCondition&gt;(&quot;is_alive&quot;, true));
+auto adv_net_tx       = make_operator&lt;ops::AdvNetworkOpTx&gt;(&quot;adv_network_tx&quot;, from_config(&quot;adv_network_common&quot;), from_config(&quot;adv_network_tx&quot;));
+add_flow(my_transmitter, adv_net_tx, (&#39;burst_out&#39;, &#39;burst_in&#39;));
+</code></pre></div>
+<p>Before sending packets, the user's transmit operator must request a buffer from the advanced network operator pool:</p>
+<div class="highlight"><pre><span></span><code>auto msg = std::make_shared&lt;AdvNetBurstParams&gt;();
+msg-&gt;hdr.num_pkts = num_pkts;
+if ((ret = adv_net_get_tx_pkt_burst(msg.get())) != AdvNetStatus::SUCCESS) {
+  HOLOSCAN_LOG_ERROR(&quot;Error returned from adv_net_get_tx_pkt_burst: {}&quot;, static_cast&lt;int&gt;(ret));
+  return;
+}
+</code></pre></div>
+<p>The code above creates a shared <code>AdvNetBurstParams</code> that will be passed to the advanced network operator, and uses
+<code>adv_net_get_tx_pkt_burst</code> to populate the burst buffers with valid packet buffers. On success, the buffers inside the
+burst structure will be allocate and are ready to be filled in. Each packet must be filled in by the user. In this
+example we loop through each packet and populate a buffer:</p>
+<div class="highlight"><pre><span></span><code>for (int num_pkt = 0; num_pkt &lt; msg-&gt;hdr.num_pkts; num_pkt++) {
+  void *payload_src = data_buf + num_pkt * nom_pkt_size;
+  if (adv_net_set_udp_payload(msg-&gt;cpu_pkts[num_pkt], payload_src, nom_pkt_size) != AdvNetStatus::SUCCESS) {
+    HOLOSCAN_LOG_ERROR(&quot;Failed to create packet {}&quot;, num_pkt);
+  }
+}
+</code></pre></div>
+<p>The code iterates over <code>msg-&gt;hdr.num_pkts</code> (defined by the user) and passes a pointer to the payload and the packet
+size to <code>adv_net_set_udp_payload</code>. In this example our configuration is using <code>fill_mode</code> "udp" on the transmitter, so
+<code>adv_net_set_udp_payload</code> will populate the Ethernet, IP, and UDP headers. The payload pointer passed by the user
+is also copied into the buffer. Alternatively a user could use the packet buffers directly as output from a previous stage
+to avoid this extra copy.</p>
+<p>With the <code>AdvNetBurstParams</code> populated, the burst can be sent off to the advanced network operator for transmission:</p>
+<div class="highlight"><pre><span></span><code>op_output.emit(msg, &quot;burst_out&quot;);
+</code></pre></div>
 
 
 
@@ -6606,8 +7368,6 @@ can be used to perform an optimize task.</p>
 
   
 
-
-  
 
 
 
@@ -6631,19 +7391,33 @@ can be used to perform an optimize task.</p>
   
     
       
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" hidden>
+          
+          <a href="../XrTransformRenderOp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: XrTransformRenderOp">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                XrTransformRenderOp
+              </div>
+            </div>
+          </a>
         
         
           
-          <a href="workflows/" class="md-footer__link md-footer__link--next" aria-label="Next: Workflows">
+          <a href="../aja_source/" class="md-footer__link md-footer__link--next" aria-label="Next: aja_source">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Workflows
+                aja_source
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6692,10 +7466,10 @@ can be used to perform an optimize task.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.path", "navigation.instant.prefetch", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.path", "navigation.instant.prefetch", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>

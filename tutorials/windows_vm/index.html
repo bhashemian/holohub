@@ -8,26 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://nvidia-holoscan.github.io/holohub/">
+        <link rel="canonical" href="https://nvidia-holoscan.github.io/holohub/tutorials/windows_vm/">
       
       
+        <link rel="prev" href="../self_supervised_training/">
       
-        <link rel="next" href="workflows/">
+      
+        <link rel="next" href="../../benchmarks/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
-        <title>Holoscan Reference Applications</title>
+        <title>Interoperability between Holoscan and a Windows Application on a Single Machine - Holoscan Reference Applications</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,17 +48,17 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="assets/css/color-schemes.css">
+      <link rel="stylesheet" href="../../assets/css/color-schemes.css">
     
-      <link rel="stylesheet" href="assets/css/fonts.css">
+      <link rel="stylesheet" href="../../assets/css/fonts.css">
     
-      <link rel="stylesheet" href="assets/css/custom-material.css">
+      <link rel="stylesheet" href="../../assets/css/custom-material.css">
     
-      <link rel="stylesheet" href="assets/css/jupyter-themes.css">
+      <link rel="stylesheet" href="../../assets/css/jupyter-themes.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -91,6 +93,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#interoperability-between-holoscan-and-a-windows-application-on-a-single-machine" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -105,7 +112,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Holoscan Reference Applications" class="md-header__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
+    <a href="../.." title="Holoscan Reference Applications" class="md-header__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
       
   
   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -133,7 +140,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Interoperability between Holoscan and a Windows Application on a Single Machine
             
           </span>
         </div>
@@ -240,11 +247,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -263,7 +268,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="workflows/" class="md-tabs__link">
+        <a href="../../workflows/" class="md-tabs__link">
           
   
     
@@ -283,7 +288,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="applications/" class="md-tabs__link">
+        <a href="../../applications/" class="md-tabs__link">
           
   
     
@@ -303,7 +308,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="operators/" class="md-tabs__link">
+        <a href="../../operators/" class="md-tabs__link">
           
   
     
@@ -319,11 +324,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="tutorials/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
     
@@ -343,7 +350,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="benchmarks/" class="md-tabs__link">
+        <a href="../../benchmarks/" class="md-tabs__link">
           
   
     
@@ -367,9 +374,7 @@
           
             
               
-                
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -380,7 +385,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Holoscan Reference Applications" class="md-nav__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
+    <a href="../.." title="Holoscan Reference Applications" class="md-nav__button md-logo" aria-label="Holoscan Reference Applications" data-md-component="logo">
       
   
   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -415,17 +420,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -435,7 +433,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -470,7 +467,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="workflows/" class="md-nav__link ">
+            <a href="../../workflows/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -504,7 +501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="workflows/ai_surgical_video/" class="md-nav__link">
+      <a href="../../workflows/ai_surgical_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -678,7 +675,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="applications/" class="md-nav__link ">
+            <a href="../../applications/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -712,7 +709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/asr_to_llm/" class="md-nav__link">
+      <a href="../../applications/asr_to_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -734,7 +731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/body_pose_estimation/" class="md-nav__link">
+      <a href="../../applications/body_pose_estimation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -756,7 +753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/colonoscopy_segmentation/" class="md-nav__link">
+      <a href="../../applications/colonoscopy_segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -778,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cuda_quantum/" class="md-nav__link">
+      <a href="../../applications/cuda_quantum/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -800,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cunumeric_integration/" class="md-nav__link">
+      <a href="../../applications/cunumeric_integration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -822,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/deltacast_transmitter/" class="md-nav__link">
+      <a href="../../applications/deltacast_transmitter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -844,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/depth_anything_v2/" class="md-nav__link">
+      <a href="../../applications/depth_anything_v2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_depth_estimation/" class="md-nav__link">
+      <a href="../../applications/endoscopy_depth_estimation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -888,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/florence-2-vision/" class="md-nav__link">
+      <a href="../../applications/florence-2-vision/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -910,7 +907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/fm_asr/" class="md-nav__link">
+      <a href="../../applications/fm_asr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -932,7 +929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holochat/" class="md-nav__link">
+      <a href="../../applications/holochat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -954,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/hyperspectral_segmentation/" class="md-nav__link">
+      <a href="../../applications/hyperspectral_segmentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -976,7 +973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/imaging_ai_segmentator/" class="md-nav__link">
+      <a href="../../applications/imaging_ai_segmentator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -998,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/monai_endoscopic_tool_seg/" class="md-nav__link">
+      <a href="../../applications/monai_endoscopic_tool_seg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1020,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/network_radar_pipeline/" class="md-nav__link">
+      <a href="../../applications/network_radar_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1042,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/object_detection_torch/" class="md-nav__link">
+      <a href="../../applications/object_detection_torch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1064,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orthorectification_with_optix/" class="md-nav__link">
+      <a href="../../applications/orthorectification_with_optix/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1086,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/psd_pipeline/" class="md-nav__link">
+      <a href="../../applications/psd_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1108,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/pva_video_filter/" class="md-nav__link">
+      <a href="../../applications/pva_video_filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1130,7 +1127,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/qt_video_replayer/" class="md-nav__link">
+      <a href="../../applications/qt_video_replayer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1152,7 +1149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/realsense_visualizer/" class="md-nav__link">
+      <a href="../../applications/realsense_visualizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1174,7 +1171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/sam2/" class="md-nav__link">
+      <a href="../../applications/sam2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1196,7 +1193,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/sdr_fm_demodulation/" class="md-nav__link">
+      <a href="../../applications/sdr_fm_demodulation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1218,7 +1215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_pdw_pipeline/" class="md-nav__link">
+      <a href="../../applications/simple_pdw_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1240,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/speech_to_text_llm/" class="md-nav__link">
+      <a href="../../applications/speech_to_text_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ssd_detection_endoscopy_tools/" class="md-nav__link">
+      <a href="../../applications/ssd_detection_endoscopy_tools/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1284,7 +1281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/stereo_vision/" class="md-nav__link">
+      <a href="../../applications/stereo_vision/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1306,7 +1303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/synthetic_aperture_radar/" class="md-nav__link">
+      <a href="../../applications/synthetic_aperture_radar/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1328,7 +1325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/tao_peoplenet/" class="md-nav__link">
+      <a href="../../applications/tao_peoplenet/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1350,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/velodyne_lidar_app/" class="md-nav__link">
+      <a href="../../applications/velodyne_lidar_app/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1372,7 +1369,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/video_deidentification/" class="md-nav__link">
+      <a href="../../applications/video_deidentification/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1394,7 +1391,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/vila_live/" class="md-nav__link">
+      <a href="../../applications/vila_live/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1416,7 +1413,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering_xr/" class="md-nav__link">
+      <a href="../../applications/volume_rendering_xr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1438,7 +1435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/vpi_stereo/" class="md-nav__link">
+      <a href="../../applications/vpi_stereo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1460,7 +1457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/webrtc_holoviz_server/" class="md-nav__link">
+      <a href="../../applications/webrtc_holoviz_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1482,7 +1479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/webrtc_video_client/" class="md-nav__link">
+      <a href="../../applications/webrtc_video_client/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1504,7 +1501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/webrtc_video_server/" class="md-nav__link">
+      <a href="../../applications/webrtc_video_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1526,7 +1523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/xr_hello_holoscan/" class="md-nav__link">
+      <a href="../../applications/xr_hello_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1548,7 +1545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/yolo_model_deployment/" class="md-nav__link">
+      <a href="../../applications/yolo_model_deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1615,7 +1612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/adv_networking_bench/cpp/" class="md-nav__link">
+      <a href="../../applications/adv_networking_bench/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1637,7 +1634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/adv_networking_bench/python/" class="md-nav__link">
+      <a href="../../applications/adv_networking_bench/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1712,7 +1709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/aja_video_capture/cpp/" class="md-nav__link">
+      <a href="../../applications/aja_video_capture/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1734,7 +1731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/aja_video_capture/python/" class="md-nav__link">
+      <a href="../../applications/aja_video_capture/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1809,7 +1806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/basic_networking_ping/cpp/" class="md-nav__link">
+      <a href="../../applications/basic_networking_ping/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1831,7 +1828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/basic_networking_ping/python/" class="md-nav__link">
+      <a href="../../applications/basic_networking_ping/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1906,7 +1903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cvcuda_basic/cpp/" class="md-nav__link">
+      <a href="../../applications/cvcuda_basic/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1928,7 +1925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/cvcuda_basic/python/" class="md-nav__link">
+      <a href="../../applications/cvcuda_basic/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2001,7 +1998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/dds/dds_video/" class="md-nav__link">
+      <a href="../../applications/dds/dds_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2121,7 +2118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_h264_endoscopy_tool_tracking/" class="md-nav__link">
+      <a href="../../applications/distributed/grpc/grpc_h264_endoscopy_tool_tracking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2188,7 +2185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/distributed/grpc/grpc_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2210,7 +2207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/grpc/grpc_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/distributed/grpc/grpc_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2338,7 +2335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/distributed/ucx/ucx_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2360,7 +2357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/distributed/ucx/ucx_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2435,7 +2432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2457,7 +2454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/distributed/ucx/ucx_h264_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2548,7 +2545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ehr_query_llm/fhir/" class="md-nav__link">
+      <a href="../../applications/ehr_query_llm/fhir/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2570,7 +2567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ehr_query_llm/lmm/" class="md-nav__link">
+      <a href="../../applications/ehr_query_llm/lmm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2645,7 +2642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_out_of_body_detection/cpp/" class="md-nav__link">
+      <a href="../../applications/endoscopy_out_of_body_detection/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2667,7 +2664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_out_of_body_detection/python/" class="md-nav__link">
+      <a href="../../applications/endoscopy_out_of_body_detection/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2742,7 +2739,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2764,7 +2761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2884,7 +2881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
+      <a href="../../applications/h264/h264_endoscopy_tool_tracking/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2906,7 +2903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_endoscopy_tool_tracking/python/" class="md-nav__link">
+      <a href="../../applications/h264/h264_endoscopy_tool_tracking/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2981,7 +2978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_video_decode/cpp/" class="md-nav__link">
+      <a href="../../applications/h264/h264_video_decode/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3003,7 +3000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/h264/h264_video_decode/python/" class="md-nav__link">
+      <a href="../../applications/h264/h264_video_decode/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3086,7 +3083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/high_speed_endoscopy/cpp/" class="md-nav__link">
+      <a href="../../applications/high_speed_endoscopy/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3108,7 +3105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/high_speed_endoscopy/python/" class="md-nav__link">
+      <a href="../../applications/high_speed_endoscopy/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3189,7 +3186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_hdr/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_hdr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3211,7 +3208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_srgb/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_srgb/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3233,7 +3230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_ui/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_ui/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3255,7 +3252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_vsync/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_vsync/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3277,7 +3274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/holoviz/holoviz_yuv/" class="md-nav__link">
+      <a href="../../applications/holoviz/holoviz_yuv/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3354,7 +3351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/evt_cam_calibration/" class="md-nav__link">
+      <a href="../../applications/laser_detection_latency/evt_cam_calibration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3376,7 +3373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/laser_detection/" class="md-nav__link">
+      <a href="../../applications/laser_detection_latency/laser_detection/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3398,7 +3395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/laser_detection_latency/usb_cam_calibration/" class="md-nav__link">
+      <a href="../../applications/laser_detection_latency/usb_cam_calibration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3473,7 +3470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/matlab_gpu_coder/matlab_beamform/" class="md-nav__link">
+      <a href="../../applications/matlab_gpu_coder/matlab_beamform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3495,7 +3492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/matlab_gpu_coder/matlab_image_processing/" class="md-nav__link">
+      <a href="../../applications/matlab_gpu_coder/matlab_image_processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3570,7 +3567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_endoscopy/cpp/" class="md-nav__link">
+      <a href="../../applications/multiai_endoscopy/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3592,7 +3589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_endoscopy/python/" class="md-nav__link">
+      <a href="../../applications/multiai_endoscopy/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3667,7 +3664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_ultrasound/cpp/" class="md-nav__link">
+      <a href="../../applications/multiai_ultrasound/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3689,7 +3686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/multiai_ultrasound/python/" class="md-nav__link">
+      <a href="../../applications/multiai_ultrasound/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3766,7 +3763,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_chat/" class="md-nav__link">
+      <a href="../../applications/nvidia_nim/nvidia_nim_chat/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3788,7 +3785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_imaging/" class="md-nav__link">
+      <a href="../../applications/nvidia_nim/nvidia_nim_imaging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3810,7 +3807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/nvidia_nim/nvidia_nim_nvclip/" class="md-nav__link">
+      <a href="../../applications/nvidia_nim/nvidia_nim_nvclip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3885,7 +3882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/openigtlink_3dslicer/cpp/" class="md-nav__link">
+      <a href="../../applications/openigtlink_3dslicer/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3907,7 +3904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/openigtlink_3dslicer/python/" class="md-nav__link">
+      <a href="../../applications/openigtlink_3dslicer/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4029,7 +4026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_in_out_body/cpp/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_in_out_body/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4051,7 +4048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_in_out_body/python/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_in_out_body/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4126,7 +4123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_multi_ai_ar/cpp/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_multi_ai_ar/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4148,7 +4145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_multi_ai_ar/python/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_multi_ai_ar/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4223,7 +4220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_segmentation_ar/cpp/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_segmentation_ar/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4245,7 +4242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/orsi/orsi_segmentation_ar/python/" class="md-nav__link">
+      <a href="../../applications/orsi/orsi_segmentation_ar/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4328,7 +4325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/prohawk_video_replayer/cpp/" class="md-nav__link">
+      <a href="../../applications/prohawk_video_replayer/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4350,7 +4347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/prohawk_video_replayer/python/" class="md-nav__link">
+      <a href="../../applications/prohawk_video_replayer/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4425,7 +4422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_radar_pipeline/cpp/" class="md-nav__link">
+      <a href="../../applications/simple_radar_pipeline/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4447,7 +4444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/simple_radar_pipeline/python/" class="md-nav__link">
+      <a href="../../applications/simple_radar_pipeline/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4522,7 +4519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ultrasound_segmentation/cpp/" class="md-nav__link">
+      <a href="../../applications/ultrasound_segmentation/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4544,7 +4541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/ultrasound_segmentation/python/" class="md-nav__link">
+      <a href="../../applications/ultrasound_segmentation/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4619,7 +4616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering/cpp/" class="md-nav__link">
+      <a href="../../applications/volume_rendering/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4641,7 +4638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="applications/volume_rendering/python/" class="md-nav__link">
+      <a href="../../applications/volume_rendering/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4799,7 +4796,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="operators/" class="md-nav__link ">
+            <a href="../../operators/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -4833,7 +4830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/.md/" class="md-nav__link">
+      <a href="../../operators/.md/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4855,7 +4852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrFrameOp/" class="md-nav__link">
+      <a href="../../operators/XrFrameOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4877,7 +4874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformControlOp/" class="md-nav__link">
+      <a href="../../operators/XrTransformControlOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4899,7 +4896,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformOp/" class="md-nav__link">
+      <a href="../../operators/XrTransformOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4921,7 +4918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/XrTransformRenderOp/" class="md-nav__link">
+      <a href="../../operators/XrTransformRenderOp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4943,7 +4940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/advanced_network/" class="md-nav__link">
+      <a href="../../operators/advanced_network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4965,7 +4962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/aja_source/" class="md-nav__link">
+      <a href="../../operators/aja_source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4987,7 +4984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/apriltag_detector/" class="md-nav__link">
+      <a href="../../operators/apriltag_detector/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5009,7 +5006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/base/" class="md-nav__link">
+      <a href="../../operators/base/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5031,7 +5028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/basic_network/" class="md-nav__link">
+      <a href="../../operators/basic_network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5053,7 +5050,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/begin_frame/" class="md-nav__link">
+      <a href="../../operators/begin_frame/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5075,7 +5072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/convert_depth/" class="md-nav__link">
+      <a href="../../operators/convert_depth/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5097,7 +5094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/cvcuda_holoscan_interop/" class="md-nav__link">
+      <a href="../../operators/cvcuda_holoscan_interop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5119,7 +5116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/data_writer/" class="md-nav__link">
+      <a href="../../operators/data_writer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5141,7 +5138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_shapes_subscriber/" class="md-nav__link">
+      <a href="../../operators/dds_shapes_subscriber/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5163,7 +5160,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_video_publisher/" class="md-nav__link">
+      <a href="../../operators/dds_video_publisher/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5185,7 +5182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/dds_video_subscriber/" class="md-nav__link">
+      <a href="../../operators/dds_video_subscriber/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5207,7 +5204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/deltacast_videomaster/" class="md-nav__link">
+      <a href="../../operators/deltacast_videomaster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5229,7 +5226,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/ehr_query_llm/" class="md-nav__link">
+      <a href="../../operators/ehr_query_llm/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5251,7 +5248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/emergent_source/" class="md-nav__link">
+      <a href="../../operators/emergent_source/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5273,7 +5270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/end_frame/" class="md-nav__link">
+      <a href="../../operators/end_frame/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5295,7 +5292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/fft/" class="md-nav__link">
+      <a href="../../operators/fft/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5317,7 +5314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/grpc_operators/" class="md-nav__link">
+      <a href="../../operators/grpc_operators/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5339,7 +5336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/high_rate_psd/" class="md-nav__link">
+      <a href="../../operators/high_rate_psd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5361,7 +5358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/low_rate_psd/" class="md-nav__link">
+      <a href="../../operators/low_rate_psd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5383,7 +5380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/lstm_tensor_rt_inference/" class="md-nav__link">
+      <a href="../../operators/lstm_tensor_rt_inference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5405,7 +5402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/medical_imaging/" class="md-nav__link">
+      <a href="../../operators/medical_imaging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5427,7 +5424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/mesh_to_usd/" class="md-nav__link">
+      <a href="../../operators/mesh_to_usd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5449,7 +5446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/npp_filter/" class="md-nav__link">
+      <a href="../../operators/npp_filter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5471,7 +5468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/openigtlink/" class="md-nav__link">
+      <a href="../../operators/openigtlink/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5493,7 +5490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_format_converter/" class="md-nav__link">
+      <a href="../../operators/orsi_format_converter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5515,7 +5512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_segmentation_postprocessor/" class="md-nav__link">
+      <a href="../../operators/orsi_segmentation_postprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5537,7 +5534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_segmentation_preprocessor/" class="md-nav__link">
+      <a href="../../operators/orsi_segmentation_preprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5559,7 +5556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/orsi_visualizer/" class="md-nav__link">
+      <a href="../../operators/orsi_visualizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5581,7 +5578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/prohawk_video_processing/" class="md-nav__link">
+      <a href="../../operators/prohawk_video_processing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5603,7 +5600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/qt_video/" class="md-nav__link">
+      <a href="../../operators/qt_video/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5625,7 +5622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/realsense_camera/" class="md-nav__link">
+      <a href="../../operators/realsense_camera/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5647,7 +5644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/tensor_to_video_buffer/" class="md-nav__link">
+      <a href="../../operators/tensor_to_video_buffer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5669,7 +5666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/tool_tracking_postprocessor/" class="md-nav__link">
+      <a href="../../operators/tool_tracking_postprocessor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5691,7 +5688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/unzip/" class="md-nav__link">
+      <a href="../../operators/unzip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5713,7 +5710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/video_encoder_request/" class="md-nav__link">
+      <a href="../../operators/video_encoder_request/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5735,7 +5732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/visualizer_icardio/" class="md-nav__link">
+      <a href="../../operators/visualizer_icardio/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5757,7 +5754,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/vita49_psd_packetizer/" class="md-nav__link">
+      <a href="../../operators/vita49_psd_packetizer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5779,7 +5776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/volume_loader/" class="md-nav__link">
+      <a href="../../operators/volume_loader/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5801,7 +5798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/volume_renderer/" class="md-nav__link">
+      <a href="../../operators/volume_renderer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5823,7 +5820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/vtk_renderer/" class="md-nav__link">
+      <a href="../../operators/vtk_renderer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5845,7 +5842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/webrtc_client/" class="md-nav__link">
+      <a href="../../operators/webrtc_client/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5867,7 +5864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/webrtc_server/" class="md-nav__link">
+      <a href="../../operators/webrtc_server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5889,7 +5886,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/xr_basic_render/" class="md-nav__link">
+      <a href="../../operators/xr_basic_render/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5911,7 +5908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="operators/yuan_qcap/" class="md-nav__link">
+      <a href="../../operators/yuan_qcap/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -5937,6 +5934,8 @@
       
   
   
+    
+  
   
   
     
@@ -5977,19 +5976,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="tutorials/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6001,13 +6003,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -6023,7 +6025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/cli_debugging/" class="md-nav__link">
+      <a href="../cli_debugging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6045,7 +6047,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/creating-multi-node-applications/" class="md-nav__link">
+      <a href="../creating-multi-node-applications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6067,7 +6069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/cuda_mps/" class="md-nav__link">
+      <a href="../cuda_mps/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6089,7 +6091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/dicom_to_usd_with_monai_and_holoscan/" class="md-nav__link">
+      <a href="../dicom_to_usd_with_monai_and_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6111,7 +6113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/gpu_direct_storage_on_holoscan/" class="md-nav__link">
+      <a href="../gpu_direct_storage_on_holoscan/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6133,7 +6135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/gui_for_python_applications/" class="md-nav__link">
+      <a href="../gui_for_python_applications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6155,7 +6157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/high_performance_networking/" class="md-nav__link">
+      <a href="../high_performance_networking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6177,7 +6179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan-bootcamp/" class="md-nav__link">
+      <a href="../holoscan-bootcamp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6199,7 +6201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan-playground-on-aws/" class="md-nav__link">
+      <a href="../holoscan-playground-on-aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6221,7 +6223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/holoscan_container_vscode/" class="md-nav__link">
+      <a href="../holoscan_container_vscode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6243,7 +6245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/integrate_external_libs_into_pipeline/" class="md-nav__link">
+      <a href="../integrate_external_libs_into_pipeline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6265,7 +6267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/local-llama/" class="md-nav__link">
+      <a href="../local-llama/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6287,7 +6289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="tutorials/self_supervised_training/" class="md-nav__link">
+      <a href="../self_supervised_training/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6306,10 +6308,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="tutorials/windows_vm/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Interoperability between Holoscan and a Windows Application on a Single Machine
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -6319,6 +6342,229 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-vm-setup-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows VM Setup Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows VM Setup Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software-pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Pre-requisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-passthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Passthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU Passthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-different-gpus-eg-rtx-a4000-and-rtx-a6000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Different GPUs (e.g., RTX A4000 and RTX A6000)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-identical-gpus-eg-2x-rtx-a4000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Identical GPUs (e.g., 2x RTX A4000)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-vm-configuration-for-passed-through-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows VM Configuration for Passed-through GPU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-vnc-display-for-windows-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add VNC Display for Windows VM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Add VNC Display for Windows VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-nvidia-driver-in-windows-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install NVIDIA Driver in Windows VM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replicate-monitor-display-to-vnc-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replicate Monitor Display to VNC Display
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-performance-between-host-and-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication Performance between Host and VM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication Performance between Host and VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iperf3-performance-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      iperf3 Performance Test
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="iperf3 Performance Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host-linux-server-and-windows-vm-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Linux Server and Windows VM Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-linux-client-and-windows-vm-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Linux Client and Windows VM Server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-holoscan-dds-app-and-windows-vm-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Holoscan DDS App and Windows VM App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -6369,7 +6615,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="benchmarks/" class="md-nav__link ">
+            <a href="../../benchmarks/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -6403,7 +6649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/cpp/" class="md-nav__link">
+      <a href="../../benchmarks/cpp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6425,7 +6671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/exclusive_display/" class="md-nav__link">
+      <a href="../../benchmarks/exclusive_display/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6447,7 +6693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/holoscan_flow_benchmarking/" class="md-nav__link">
+      <a href="../../benchmarks/holoscan_flow_benchmarking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6469,7 +6715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/python/" class="md-nav__link">
+      <a href="../../benchmarks/python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6491,7 +6737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="benchmarks/release_benchmarking/" class="md-nav__link">
+      <a href="../../benchmarks/release_benchmarking/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -6521,8 +6767,6 @@
             
             
               
-                
-              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -6534,6 +6778,217 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#windows-vm-setup-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows VM Setup Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows VM Setup Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#software-pre-requisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Pre-requisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpu-passthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Passthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GPU Passthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-different-gpus-eg-rtx-a4000-and-rtx-a6000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Different GPUs (e.g., RTX A4000 and RTX A6000)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#two-identical-gpus-eg-2x-rtx-a4000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Identical GPUs (e.g., 2x RTX A4000)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows-vm-configuration-for-passed-through-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Windows VM Configuration for Passed-through GPU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-vnc-display-for-windows-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add VNC Display for Windows VM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Add VNC Display for Windows VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-nvidia-driver-in-windows-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install NVIDIA Driver in Windows VM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replicate-monitor-display-to-vnc-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Replicate Monitor Display to VNC Display
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication-performance-between-host-and-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication Performance between Host and VM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication Performance between Host and VM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iperf3-performance-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      iperf3 Performance Test
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="iperf3 Performance Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host-linux-server-and-windows-vm-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Linux Server and Windows VM Client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#host-linux-client-and-windows-vm-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Host Linux Client and Windows VM Server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-holoscan-dds-app-and-windows-vm-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Holoscan DDS App and Windows VM App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -6546,52 +7001,325 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <a href="../../tags/#tag:tutorial" class="md-tag">Tutorial</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:vm" class="md-tag">VM</a>
+      
+    
+      
+      
+      
+        <a href="../../tags/#tag:windows" class="md-tag">Windows</a>
+      
+    
+  </nav>
 
 
 
-
-  <h1>Home</h1>
-
-<p><strong>Holoscan Reference Applications</strong> is a central repository for the <a href="https://www.nvidia.com/en-us/clara/holoscan/">NVIDIA Holoscan</a> AI sensor processing community 
-to share reference applications, operators, tutorials and benchmarks.
-The repository hosts a variety of applications that demonstrate how to use Holoscan for streaming, imaging, and other AI-driven tasks across embedded, edge, and cloud environments. These applications serve as reference implementations, providing developers with examples of best practices and efficient coding techniques to build high-performance, low-latency AI applications. The repository is open to contributions from the community, encouraging developers to share their own applications and extensions to enhance the Holoscan ecosystem.</p>
-<div class="grid cards">
+<h1 id="interoperability-between-holoscan-and-a-windows-application-on-a-single-machine"><a href="https://github.com/nvidia-holoscan/holohub/tree/main/tutorials/windows_vm">Interoperability between Holoscan and a Windows Application on a Single Machine</a><a class="headerlink" href="#interoperability-between-holoscan-and-a-windows-application-on-a-single-machine" title="Permanent link">&para;</a></h1>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5M8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0"/></svg></span> <strong>Authors:</strong> NVIDIA (NVIDIA)<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.954 17H2.75A1.75 1.75 0 0 1 1 15.25V3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v11.5A1.75 1.75 0 0 1 21.25 17h-6.204c.171 1.375.805 2.652 1.769 3.757A.752.752 0 0 1 16.25 22h-8.5a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757M21.5 3.75a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h18.5a.25.25 0 0 0 .25-.25ZM13.537 17h-3.074c-.126 1.266-.564 2.445-1.223 3.5h5.52c-.659-1.055-1.098-2.234-1.223-3.5"/></svg></span> <strong>Supported platforms:</strong> amd64<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.5 7.25a.75.75 0 0 0-1.5 0v5.5c0 .27.144.518.378.651l3.5 2a.75.75 0 0 0 .744-1.302L12.5 12.315z"/><path d="M12 1c6.075 0 11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12 5.925 1 12 1M2.5 12a9.5 9.5 0 0 0 9.5 9.5 9.5 9.5 0 0 0 9.5-9.5A9.5 9.5 0 0 0 12 2.5 9.5 9.5 0 0 0 2.5 12"/></svg></span> <strong>Last modified:</strong> March 14, 2025<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.3 8.24a.75.75 0 0 1-.04 1.06L7.352 12l2.908 2.7a.75.75 0 1 1-1.02 1.1l-3.5-3.25a.75.75 0 0 1 0-1.1l3.5-3.25a.75.75 0 0 1 1.06.04m3.44 1.06a.75.75 0 1 1 1.02-1.1l3.5 3.25a.75.75 0 0 1 0 1.1l-3.5 3.25a.75.75 0 1 1-1.02-1.1l2.908-2.7z"/><path d="M2 3.75C2 2.784 2.784 2 3.75 2h16.5c.966 0 1.75.784 1.75 1.75v16.5A1.75 1.75 0 0 1 20.25 22H3.75A1.75 1.75 0 0 1 2 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v16.5c0 .138.112.25.25.25h16.5a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25Z"/></svg></span> <strong>Language:</strong> bash<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.5 1.5 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1m0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> <strong>Latest version:</strong> 1.0<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.063 1.456a1.75 1.75 0 0 1 1.874 0l8.383 5.316a1.75 1.75 0 0 1 0 2.956l-8.383 5.316a1.75 1.75 0 0 1-1.874 0L2.68 9.728a1.75 1.75 0 0 1 0-2.956Zm1.071 1.267a.25.25 0 0 0-.268 0L3.483 8.039a.25.25 0 0 0 0 .422l8.383 5.316a.25.25 0 0 0 .268 0l8.383-5.316a.25.25 0 0 0 0-.422Z"/><path d="M1.867 12.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.75 1.75 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035"/><path d="M1.867 16.324a.75.75 0 0 1 1.035-.232l8.964 5.685a.25.25 0 0 0 .268 0l8.964-5.685a.75.75 0 0 1 .804 1.267l-8.965 5.685a1.75 1.75 0 0 1-1.874 0l-8.965-5.685a.75.75 0 0 1-.231-1.035"/></svg></span> <strong>Minimum Holoscan SDK version:</strong> 2.6.0<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 8.807V3.5h-.563a.75.75 0 0 1 0-1.5h9.125a.75.75 0 0 1 0 1.5H16v5.307l5.125 9.301c.964 1.75-.302 3.892-2.299 3.892H5.174c-1.998 0-3.263-2.142-2.3-3.892ZM4.189 18.832a1.123 1.123 0 0 0 .985 1.668h13.652a1.123 1.123 0 0 0 .985-1.668L17.7 15H6.3ZM14.5 3.5h-5V9a.75.75 0 0 1-.093.362L7.127 13.5h9.746l-2.28-4.138A.75.75 0 0 1 14.5 9Z"/></svg></span> <strong>Tested Holoscan SDK versions:</strong> 2.6.0<br><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.296 1.924c.24-.656 1.168-.656 1.408 0l.717 1.958a11.25 11.25 0 0 0 6.697 6.697l1.958.717c.657.24.657 1.168 0 1.408l-1.958.717a11.25 11.25 0 0 0-6.697 6.697l-.717 1.958c-.24.657-1.168.657-1.408 0l-.717-1.958a11.25 11.25 0 0 0-6.697-6.697l-1.958-.717c-.656-.24-.656-1.168 0-1.408l1.958-.717a11.25 11.25 0 0 0 6.697-6.697z"/></svg></span> <strong>Contribution metric:</strong> Level 1 - Highly Reliable<br></p>
+<p><img alt="setup" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/Windows_Linux_Holoscan.png?raw=true" /></p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This tutorial enables Holoscan and Windows applications to run concurrently on the same machine or node.</p>
+<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m8 17 4-4h3.2c.4 1.2 1.5 2 2.8 2 1.7 0 3-1.3 3-3s-1.3-3-3-3c-1.3 0-2.4.8-2.8 2H12L8 7V3H3v5h3l4.2 4L6 16H3v5h5z"/></svg></span> <strong>Workflows</strong> (1)</p>
-<hr />
-<p>Reference workflows demonstrate how capabilities from applications and operators can be combined
-to achieve complex tasks.</p>
-<p><a class="md-button md-button" href="workflows">Browse Workflows</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 20h4v-4h-4m0-2h4v-4h-4m-6-2h4V4h-4m6 4h4V4h-4m-6 10h4v-4h-4m-6 4h4v-4H4m0 10h4v-4H4m6 4h4v-4h-4M4 8h4V4H4z"/></svg></span> <strong>Applications</strong> (78)</p>
-<hr />
-<p>Reference applications demonstrate a specific capability of Holoscan or how a specific operator
-can be used to perform an optimize task.</p>
-<p><a class="md-button md-button" href="applications">Browse Applications</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.41 7.41 15 12l-4.59 4.6L9 15.18 12.18 12 9 8.82M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"/></svg></span> <strong>Operators</strong> (50)</p>
-<hr />
-<p>Operators perform a specific task.</p>
-<p><a class="md-button md-button" href="operators">Browse Operators</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.5c-1.35-.85-3.8-1.5-5.5-1.5-1.65 0-3.35.3-4.75 1.05-.1.05-.15.05-.25.05-.25 0-.5-.25-.5-.5V6c.6-.45 1.25-.75 2-1 1.11-.35 2.33-.5 3.5-.5 1.95 0 4.05.4 5.5 1.5 1.45-1.1 3.55-1.5 5.5-1.5 1.17 0 2.39.15 3.5.5.75.25 1.4.55 2 1v14.6c0 .25-.25.5-.5.5-.1 0-.15 0-.25-.05-1.4-.75-3.1-1.05-4.75-1.05-1.7 0-4.15.65-5.5 1.5m-1-14c-1.36-.6-3.16-1-4.5-1-1.2 0-2.4.15-3.5.5v11.5c1.1-.35 2.3-.5 3.5-.5 1.34 0 3.14.4 4.5 1zM13 19c1.36-.6 3.16-1 4.5-1 1.2 0 2.4.15 3.5.5V7c-1.1-.35-2.3-.5-3.5-.5-1.34 0-3.14.4-4.5 1zm1-2.65c.96-.35 2.12-.52 3.5-.52 1.04 0 1.88.08 2.5.24v-1.5a13.9 13.9 0 0 0-6 .19zm0-2.66c.96-.35 2.12-.53 3.5-.53 1.04 0 1.88.08 2.5.24v-1.5c-.87-.16-1.71-.23-2.5-.23-1.28 0-2.45.15-3.5.45zM14 11c.96-.33 2.12-.5 3.5-.5.91 0 1.76.09 2.5.28V9.23c-.87-.15-1.71-.23-2.5-.23-1.32 0-2.5.15-3.5.46z"/></svg></span> <strong>Tutorials</strong> (14)</p>
-<hr />
-<p>Tutorials provide hands-on experience.</p>
-<p><a class="md-button md-button" href="tutorials">Browse Tutorials</a></p>
-</li>
-<li>
-<p><span class="twemoji lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 17H7v-7h2zm4 0h-2V7h2zm4 0h-2v-4h2zm2 2H5V5h14v14.1M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2"/></svg></span> <strong>Benchmarks</strong> (5)</p>
-<hr />
-<p>Benchmarks provide tools for assessing performance of Holoscan pipelines as well as reference benchmarks for specific releases</p>
-<p><a class="md-button md-button" href="benchmarks">Browse Benchmarks</a></p>
-</li>
+<li><a href="#description">Description</a></li>
+<li><a href="#platform-requirements">Platform Requirements</a></li>
+<li><a href="#windows-vm-setup-instructions">Windows VM Setup Instructions</a></li>
+<li><a href="#software-pre-requisites">Software Pre-requisites</a></li>
+<li><a href="#gpu-passthrough">GPU Passthrough</a><ul>
+<li><a href="#two-different-gpus-eg-rtx-a4000-and-rtx-a6000">Two Different GPUs (e.g., RTX A4000 and RTX A6000)</a></li>
+<li><a href="#two-identical-gpus-eg-2x-rtx-a4000">Two Identical GPUs (e.g., 2x RTX A4000)</a></li>
 </ul>
-</div>
+</li>
+<li><a href="#windows-vm-configuration-for-passed-through-gpu">Windows VM Configuration for Passed-through GPU</a><ul>
+<li><a href="#install-nvidia-driver-in-windows-vm">Install NVIDIA Driver in Windows VM</a></li>
+</ul>
+</li>
+<li><a href="#communication-performance-between-host-and-vm">Communication Performance between Linux Host and Windows VM</a></li>
+<li><a href="#running-holoscan-dds-app-and-windows-vm-app">Running Holoscan DDS App and Windows VM App</a></li>
+</ul>
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Many legacy graphics applications, particularly in medical devices, are developed and operated on
+the Windows platform. A significant number of these medical devices rely on Windows OS for their
+functionality. To integrate AI/ML and sensor processing capabilities from NVIDIA Holoscan into such
+Windows-based systems, we previously introduced a "sidecar" architecture. This architecture involved
+an AI compute node running Holoscan interoperating with a Windows node via a DDS link, showcased in
+the <a href="../../applications/dds/dds_video/">Holoscan DDS reference application</a>.
+This tutorial extends the options for such use-cases by providing developers with a straightforward
+and clear system design to enable interoperability between Holoscan applications and Windows
+applications running on the same physical machine. It demonstrates how to achieve efficient
+communication and processing without the need for separate hardware nodes.</p>
+<p><img alt="windows options" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/windows_options.png?raw=true" /></p>
+<p>In this tutorial, Holoscan runs on an x86_64 workstation hosting Ubuntu 22.04. Two RTX A4000 GPUs
+are plugged into the x86_64 workstation. Using Linux KVM, a Windows VM is created on the host Ubuntu Linux. One RTX A4000 GPU is passed through to the Windows VM using
+<a href="https://docs.kernel.org/driver-api/vfio.html">VFIO</a>. The other RTX A4000 GPU is reserved for the
+host Ubuntu OS and used by Holoscan. We provide a step-by-step guide on how to achieve
+this setup. Furthermore, we also demonstrate how a Holoscan application reads USB-based camera
+frames and sends the frames via DDS to an application running on the Windows VM. Finally, the
+Windows VM application renders the camera frames on the screen using its dedicated RTX A4000 GPU.</p>
+<h2 id="platform-requirements">Platform Requirements<a class="headerlink" href="#platform-requirements" title="Permanent link">&para;</a></h2>
+<p>The setup described in this tutorial requires an x86_64 workstation and
+<a href="https://www.nvidia.com/en-us/design-visualization/desktop-graphics/">ProViz class of NVIDIA GPUs</a>.
+The exact platform details are provided below:</p>
+<ul>
+<li><strong>CPU</strong>: AMD Ryzen 9 7950X 16-Core Processor</li>
+<li><strong>OS</strong>: Ubuntu 22.04</li>
+<li><strong>Kernel Version</strong>: 6.8.0-48-generic</li>
+<li><strong>GPU</strong>: 2x <a href="https://www.nvidia.com/en-us/design-visualization/rtx-a4000/">NVIDIA RTX A4000</a></li>
+</ul>
+<p>Although we used two same GPUs in this tutorial, combinations of two different GPUs, for example,
+RTX A4000 and RTX A6000, can also be used.</p>
+<p>Since x86_64 workstations are very much diverse, the steps to enable the setup described in this
+tutorial may not work as-is on all x86_64 workstations. Performances may also vary across different
+x86_64 workstations.</p>
+<h2 id="windows-vm-setup-instructions">Windows VM Setup Instructions<a class="headerlink" href="#windows-vm-setup-instructions" title="Permanent link">&para;</a></h2>
+<h3 id="software-pre-requisites">Software Pre-requisites<a class="headerlink" href="#software-pre-requisites" title="Permanent link">&para;</a></h3>
+<p>Install the
+<a href="https://docs.nvidia.com/holoscan/sdk-user-guide/sdk_installation.html">NVIDIA Holoscan SDK</a> and the
+<a href="https://www.nvidia.com/en-in/drivers/">NVIDIA GPU driver</a> on the host Ubuntu 22.04.</p>
+<p><strong>Install KVM and QEMU</strong></p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>qemu-kvm<span class="w"> </span>libvirt-clients<span class="w"> </span>libvirt-daemon-system<span class="w"> </span>bridge-utils<span class="w"> </span>virt-manager<span class="w"> </span>ovmf
+</code></pre></div>
+<p><strong>Check if KVM works</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kvm-ok
+INFO:<span class="w"> </span>/dev/kvm<span class="w"> </span>exists
+KVM<span class="w"> </span>acceleration<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used
+</code></pre></div>
+<p>If KVM does not work, kindly figure out how KVM can be enabled for your specific Linux kernel version.</p>
+<h3 id="gpu-passthrough">GPU Passthrough<a class="headerlink" href="#gpu-passthrough" title="Permanent link">&para;</a></h3>
+<p>A GPU can be passed through to a virtual machine using Linux's VFIO driver. The VM
+is, then, capable of using the passed through GPU directly without any host operating system
+intervention. If a machine has two different GPUs, then it is much more straightforward to
+passthrough one of the GPUs to a VM. A bit more configuration is required if two GPUs are same. We
+show how one of the two identical GPUs can be passed through to a VM with the VFIO driver.</p>
+<h4 id="two-different-gpus-eg-rtx-a4000-and-rtx-a6000">Two Different GPUs (e.g., RTX A4000 and RTX A6000)<a class="headerlink" href="#two-different-gpus-eg-rtx-a4000-and-rtx-a6000" title="Permanent link">&para;</a></h4>
+<h5 id="identify-the-gpu-to-be-passed-through">Identify the GPU to be Passed Through<a class="headerlink" href="#identify-the-gpu-to-be-passed-through" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lspci<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>NVIDIA
+<span class="m">17</span>:00.0<span class="w"> </span>VGA<span class="w"> </span>compatible<span class="w"> </span>controller<span class="w"> </span><span class="o">[</span><span class="m">0300</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>Device<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:24b0<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="m">17</span>:00.1<span class="w"> </span>Audio<span class="w"> </span>device<span class="w"> </span><span class="o">[</span><span class="m">0403</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>Device<span class="w"> </span><span class="o">[</span>10de:228b<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="m">65</span>:00.0<span class="w"> </span>VGA<span class="w"> </span>compatible<span class="w"> </span>controller<span class="w"> </span><span class="o">[</span><span class="m">0300</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>Device<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A6000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:2230<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="m">65</span>:00.1<span class="w"> </span>Audio<span class="w"> </span>device<span class="w"> </span><span class="o">[</span><span class="m">0403</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>Device<span class="w"> </span><span class="o">[</span>10de:1aef<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+</code></pre></div>
+<p>Let's assume that we want to passthrough the RTX A4000 GPU to a VM (in this tutorial it's a Windows
+VM). We note the PCI ID of RTX A4000 as <code>10de:24b0</code>.</p>
+<blockquote>
+<p><strong>Note</strong>: Make sure that the RTX A4000 GPU to be passed through is not currently used for
+displaying to the monitor.</p>
+</blockquote>
+<h5 id="update-grub-configuration">Update GRUB Configuration<a class="headerlink" href="#update-grub-configuration" title="Permanent link">&para;</a></h5>
+<p>Open the <code>/etc/default/grub</code> file and find the following line:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;quiet splash&quot;</span>
+</code></pre></div>
+<p>Update the above line to the following to add the previously noted PCI ID of RTX A4000 for the VFIO
+driver:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;quiet splash intel_iommu=on amd_iommu=on iommu=pt vfio-pci.ids=10de:24b0&quot;</span>
+</code></pre></div>
+<p>The above line enables IOMMU and passes the PCI ID of RTX A4000 to the VFIO driver for Linux kernel.</p>
+<h5 id="update-linux-kernel-module-configuration">Update Linux Kernel Module Configuration<a class="headerlink" href="#update-linux-kernel-module-configuration" title="Permanent link">&para;</a></h5>
+<p>Create a new file <code>/etc/modprobe.d/vfio.conf</code> and add the following lines:</p>
+<div class="highlight"><pre><span></span><code>options<span class="w"> </span>vfio-pci<span class="w"> </span><span class="nv">ids</span><span class="o">=</span>10de:24b0
+softdep<span class="w"> </span>nvidia<span class="w"> </span>pre:<span class="w"> </span>vfio-pci
+</code></pre></div>
+<p>The above lines ensure that the NVIDIA driver is loaded after the VFIO driver. Therefore, VFIO takes
+over the RTX A4000 GPU, and the RTX A6000 GPU is used by the default NVIDIA driver.</p>
+<h5 id="update-initial-ramfs-and-grub">Update Initial RAMFS and GRUB<a class="headerlink" href="#update-initial-ramfs-and-grub" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>update-initramfs<span class="w"> </span>-u<span class="w"> </span><span class="c1"># optionally add -k all to update all kernels</span>
+sudo<span class="w"> </span>update-grub
+</code></pre></div>
+<h5 id="check-if-vfio-is-loaded-for-passed-through-gpu">Check if VFIO is loaded for Passed-through GPU<a class="headerlink" href="#check-if-vfio-is-loaded-for-passed-through-gpu" title="Permanent link">&para;</a></h5>
+<p>Reboot the system: <code>sudo reboot</code>. Now, check the loaded driver for RTX A4000:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lspci<span class="w"> </span>-nnk<span class="w"> </span>-d<span class="w"> </span>10de:24b0
+<span class="m">17</span>:00.0<span class="w"> </span>VGA<span class="w"> </span>compatible<span class="w"> </span>controller<span class="w"> </span><span class="o">[</span><span class="m">0300</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:24b0<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="w">    </span>Subsystem:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:14ad<span class="o">]</span>
+<span class="w">    </span>Kernel<span class="w"> </span>driver<span class="w"> </span><span class="k">in</span><span class="w"> </span>use:<span class="w"> </span>vfio-pci
+<span class="w">    </span>Kernel<span class="w"> </span>modules:<span class="w"> </span>nvidiafb,<span class="w"> </span>nouveau,<span class="w"> </span>nvidia_drm,<span class="w"> </span>nvidia
+</code></pre></div>
+<h4 id="two-identical-gpus-eg-2x-rtx-a4000">Two Identical GPUs (e.g., 2x RTX A4000)<a class="headerlink" href="#two-identical-gpus-eg-2x-rtx-a4000" title="Permanent link">&para;</a></h4>
+<p>In case of two identical GPUs, the PCI IDs of the GPUs are the same.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lspci<span class="w"> </span>-nn<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;NVIDIA&quot;</span>
+<span class="m">01</span>:00.0<span class="w"> </span>VGA<span class="w"> </span>compatible<span class="w"> </span>controller<span class="w"> </span><span class="o">[</span><span class="m">0300</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>GA104GL<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:24b0<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="m">01</span>:00.1<span class="w"> </span>Audio<span class="w"> </span>device<span class="w"> </span><span class="o">[</span><span class="m">0403</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>GA104<span class="w"> </span>High<span class="w"> </span>Definition<span class="w"> </span>Audio<span class="w"> </span>Controller<span class="w"> </span><span class="o">[</span>10de:228b<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="m">09</span>:00.0<span class="w"> </span>VGA<span class="w"> </span>compatible<span class="w"> </span>controller<span class="w"> </span><span class="o">[</span><span class="m">0300</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>GA104GL<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:24b0<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="m">09</span>:00.1<span class="w"> </span>Audio<span class="w"> </span>device<span class="w"> </span><span class="o">[</span><span class="m">0403</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>GA104<span class="w"> </span>High<span class="w"> </span>Definition<span class="w"> </span>Audio<span class="w"> </span>Controller<span class="w"> </span><span class="o">[</span>10de:228b<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+</code></pre></div>
+<p>Therefore, we cannot just pass PCI ID <code>10de:24b0</code> to the VFIO driver to pass through one RTX A4000
+to a VM and keep the other one for the host Linux.</p>
+<p>To mitigate the issue, we force the Linux kernel to load the VFIO driver for one of the RTX A4000 GPUs by identifying the
+GPU by its PCI bus address at the time of booting Linux. Let's assume that we want to pass through
+the RTX A4000 GPU at PCI bus address <code>01:00.0</code> to a VM.</p>
+<blockquote>
+<p><strong>Note</strong>: Make sure that the RTX A4000 GPU to be passed through is not currently used for
+displaying to the monitor. <code>nvidia-smi</code> can be used to figure out which GPU is being used for
+display.</p>
+</blockquote>
+<p>The following instructions are only verified for Ubuntu 22.04 and Linux kernel 6.8.0-48-generic. For
+other Ubuntu and Linux kernel versions, the instructions may not work.</p>
+<h5 id="update-grub-configuration_1">Update GRUB Configuration<a class="headerlink" href="#update-grub-configuration_1" title="Permanent link">&para;</a></h5>
+<p>Open the <code>/etc/default/grub</code> file and find the following line:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;quiet splash&quot;</span>
+</code></pre></div>
+<p>Update the above line to the following to enable IOMMU:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;quiet splash intel_iommu=on amd_iommu=on iommu=pt vfio-pci.ids=&quot;</span>
+</code></pre></div>
+<h5 id="create-a-script-to-bind-the-rtx-a4000-gpu-to-vfio-driver">Create a script to bind the RTX A4000 GPU to VFIO driver<a class="headerlink" href="#create-a-script-to-bind-the-rtx-a4000-gpu-to-vfio-driver" title="Permanent link">&para;</a></h5>
+<p>Create a script <code>/usr/local/bin/vfio-pci-override.sh</code> with the following content:</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;vfio-pci&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/0000<span class="se">\:</span><span class="m">01</span><span class="se">\:</span><span class="m">00</span>.0/driver_override
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;vfio-pci&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/0000<span class="se">\:</span><span class="m">01</span><span class="se">\:</span><span class="m">00</span>.0/iommu_group/devices/0000<span class="se">\:</span><span class="m">01</span><span class="se">\:</span><span class="m">00</span>.0/driver_override
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;vfio-pci&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/sys/bus/pci/devices/0000<span class="se">\:</span><span class="m">01</span><span class="se">\:</span><span class="m">00</span>.0/iommu_group/devices/0000<span class="se">\:</span><span class="m">01</span><span class="se">\:</span><span class="m">00</span>.1/driver_override
+modprobe<span class="w"> </span>-i<span class="w"> </span>vfio-pci
+</code></pre></div>
+<p>Kindly, note that we are using the PCI bus address <code>0000:01:00.0</code> of the RTX A4000 in the above
+script. In specific cases, the PCI bus address may be different and needs to be updated.</p>
+<h5 id="install-vfio-driver-with-the-above-script">Install VFIO driver with the above script<a class="headerlink" href="#install-vfio-driver-with-the-above-script" title="Permanent link">&para;</a></h5>
+<p>Create a new file <code>/etc/modprobe.d/vfio.conf</code> and add the following lines:</p>
+<div class="highlight"><pre><span></span><code>install<span class="w"> </span>vfio-pci<span class="w"> </span>/usr/local/bin/vfio-pci-override.sh
+softdep<span class="w"> </span>nvidia<span class="w"> </span>pre:<span class="w"> </span>vfio-pci
+</code></pre></div>
+<h5 id="update-initial-ramfs-and-grub_1">Update Initial RAMFS and GRUB<a class="headerlink" href="#update-initial-ramfs-and-grub_1" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>update-initramfs<span class="w"> </span>-u<span class="w"> </span><span class="c1"># optionally add -k all to update all kernels</span>
+sudo<span class="w"> </span>update-grub
+</code></pre></div>
+<h5 id="check-if-vfio-is-loaded-for-passed-through-gpu_1">Check if VFIO is loaded for Passed-through GPU<a class="headerlink" href="#check-if-vfio-is-loaded-for-passed-through-gpu_1" title="Permanent link">&para;</a></h5>
+<p>Reboot the system: <code>sudo reboot</code>. Now, check the loaded driver for RTX A4000:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lspci<span class="w"> </span>-nnk<span class="w"> </span>-d<span class="w"> </span>10de:24b0
+<span class="m">01</span>:00.0<span class="w"> </span>VGA<span class="w"> </span>compatible<span class="w"> </span>controller<span class="w"> </span><span class="o">[</span><span class="m">0300</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>GA104GL<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:24b0<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="w">    </span>Subsystem:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>GA104GL<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:14ad<span class="o">]</span>
+<span class="w">    </span>Kernel<span class="w"> </span>driver<span class="w"> </span><span class="k">in</span><span class="w"> </span>use:<span class="w"> </span>vfio-pci
+<span class="w">    </span>Kernel<span class="w"> </span>modules:<span class="w"> </span>nvidiafb,<span class="w"> </span>nouveau,<span class="w"> </span>nvidia_drm,<span class="w"> </span>nvidia
+<span class="m">09</span>:00.0<span class="w"> </span>VGA<span class="w"> </span>compatible<span class="w"> </span>controller<span class="w"> </span><span class="o">[</span><span class="m">0300</span><span class="o">]</span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>GA104GL<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:24b0<span class="o">]</span><span class="w"> </span><span class="o">(</span>rev<span class="w"> </span>a1<span class="o">)</span>
+<span class="w">    </span>Subsystem:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation<span class="w"> </span>GA104GL<span class="w"> </span><span class="o">[</span>RTX<span class="w"> </span>A4000<span class="o">]</span><span class="w"> </span><span class="o">[</span>10de:14ad<span class="o">]</span>
+<span class="w">    </span>Kernel<span class="w"> </span>driver<span class="w"> </span><span class="k">in</span><span class="w"> </span>use:<span class="w"> </span>nvidia
+<span class="w">    </span>Kernel<span class="w"> </span>modules:<span class="w"> </span>nvidiafb,<span class="w"> </span>nouveau,<span class="w"> </span>nvidia_drm,<span class="w"> </span>nvidia
+</code></pre></div>
+<p>In the above output, we can see that different kernel drivers are loaded for the two RTX A4000 GPUs.</p>
+<h3 id="windows-vm-configuration-for-passed-through-gpu">Windows VM Configuration for Passed-through GPU<a class="headerlink" href="#windows-vm-configuration-for-passed-through-gpu" title="Permanent link">&para;</a></h3>
+<p>A Windows VM can be created using <code>virt-manager</code> or <code>virsh</code>
+(see <a href="#references">references</a> if needed). We assume that the Windows VM is
+already created and running. We show how to assign the passed-through RTX A4000 GPU to the Windows
+VM.</p>
+<p>In the "Hardware Details" tab of <code>virt-manager</code> GUI, add a new PCI device by selecting
+<code>Add Hardware -&gt; PCI Host Device</code> option. Select the RTX A4000 GPU at PCI bus address <code>01:00.0</code> (and
+also other functions of the PCI device such as <code>01:00.1</code>).</p>
+<p><img alt="VM GPU Assignment" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/vm_pci_assignment.png?raw=true" /></p>
+<p>If the GPU is assigned to the VM correctly, then the left panel of the VM hardware details and the
+XML of the assigned GPU in <code>virt-manager</code> window should look like the following:</p>
+<p><img alt="VM PCI Details" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/windows_vm_pci_details.png?raw=true" /></p>
+<h3 id="add-vnc-display-for-windows-vm">Add VNC Display for Windows VM<a class="headerlink" href="#add-vnc-display-for-windows-vm" title="Permanent link">&para;</a></h3>
+<p>Add VNC display server via "Add Hardware" option in <code>virt-manager</code> so that the Windows VM display
+can be controlled via VNC server running on Linux host.</p>
+<p><img alt="vnc_display" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/vnc_display.png?raw=true" /></p>
+<h4 id="install-nvidia-driver-in-windows-vm">Install NVIDIA Driver in Windows VM<a class="headerlink" href="#install-nvidia-driver-in-windows-vm" title="Permanent link">&para;</a></h4>
+<p>Download the NVIDIA driver for RTX A4000 GPU from the
+<a href="https://www.nvidia.com/en-us/drivers/">NVIDIA website</a>.</p>
+<p>After installing the NVIDIA driver, reboot the Windows VM. Then, open command-prompt by typing <code>cmd</code> in the Windows search bar
+and type <code>nvidia-smi</code>. The following output should be displayed:</p>
+<p><img alt="nvidia-smi output in windows vm" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/nvidia-smi-windows-vm.png?raw=true" /></p>
+<h4 id="replicate-monitor-display-to-vnc-display">Replicate Monitor Display to VNC Display<a class="headerlink" href="#replicate-monitor-display-to-vnc-display" title="Permanent link">&para;</a></h4>
+<p>Right now, we have two screen for the Windows VM: physical monitor (VGA) and VNC display. It could be
+difficult to control mouse and keyboard with both the displays. Therefore, the monitor display can
+be replicated to the monitor display so that the Windows VM's physical monitor display can be
+controlled via the VNC display.</p>
+<p>The following configuration shows that the screens are replicated in Windows VM:</p>
+<p><img alt="duplicate_display" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/duplicate_display.png?raw=true" /></p>
+<h2 id="communication-performance-between-host-and-vm">Communication Performance between Host and VM<a class="headerlink" href="#communication-performance-between-host-and-vm" title="Permanent link">&para;</a></h2>
+<p>The performance of a Windows VM running on a Linux under KVM-based virtualization is well-studied in
+the research literature. The performance is dependent on specific hardware and applications. In this
+tutorial, we provide the data-transfer performance in our hardware configuration.</p>
+<blockquote>
+<p><strong>Note</strong>: Firewalls in both Windows VM and Linux host need to be properly configured to allow
+network traffic between the two OS. Configuring exact firewall rules is out-of-scope of this
+tutorial. However, we provide a few tips below as guiding help on this topic.</p>
+</blockquote>
+<p><strong>Allowing Network Traffic between VM and Host</strong></p>
+<p>Use a "bridge device" for the VM's network configuration.</p>
+<p><img alt="vm_network_config" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/vm_network_config.png?raw=true" /></p>
+<p>In Windows VM search bar, type "Windows Defender Firewall with Advanced Security" and open the
+application. For both "Inbound Rules" and "Outbound Rules", add new rules to allow TCP and UDP
+traffic on common (or all) port numbers.</p>
+<p><img alt="windows_firewall_rules" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/windows_firewall_rules.png?raw=true" /></p>
+<p>In the host Linux, it may not be needed to configure the firewall to allow network traffic between
+VM and host. However, in case it does not work, <code>iptables</code> or <code>ufw</code> can be used to configure traffic
+on specific ports.</p>
+<p><strong>Configuring firewall</strong></p>
+<p>Turning off the firewall, either in Windows VM, or in host Linux, is not recommended. However, to
+test the setup in this tutorial, firewalls can be turned off. In Windows, type "firewall" in the
+search bar and turn off the firewall. The setting will look like below:</p>
+<p><img alt="windows_firewall" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/windows_firewall.png?raw=true" /></p>
+<h3 id="iperf3-performance-test">iperf3 Performance Test<a class="headerlink" href="#iperf3-performance-test" title="Permanent link">&para;</a></h3>
+<p>Install iperf3 in both Windows VM and host Linux.</p>
+<p>We need the IP address of the Windows VM and the host Linux. In our setup, the Linux server IP is
+<code>192.168.122.1</code> and the Windows VM client IP is <code>192.168.122.147</code>. To check the host Linux IP
+address, run <code>ifconfig</code> and the IP address of the <code>virbr0</code> interface is the IP address of the host.
+The Windows VM IP address can be checked in <code>virt-manager</code> GUI in the NIC setting, or by running
+<code>ipconfig</code> in the Command Prompt.</p>
+<h4 id="host-linux-server-and-windows-vm-client">Host Linux Server and Windows VM Client<a class="headerlink" href="#host-linux-server-and-windows-vm-client" title="Permanent link">&para;</a></h4>
+<p>In host Linux, run the following command:</p>
+<div class="highlight"><pre><span></span><code>iperf3<span class="w"> </span>-s<span class="w"> </span>-B<span class="w"> </span><span class="m">192</span>.168.122.1
+</code></pre></div>
+<p>In the Windows VM, run the following command for a 5 second test:
+<div class="highlight"><pre><span></span><code>iperf3.exe -c 192.168.122.1 -t 5
+</code></pre></div></p>
+<p>Output in Linux should look like below:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>iperf3<span class="w"> </span>-s<span class="w"> </span>-B<span class="w"> </span><span class="m">192</span>.168.122.1
+-----------------------------------------------------------
+Server<span class="w"> </span>listening<span class="w"> </span>on<span class="w"> </span><span class="m">5201</span>
+-----------------------------------------------------------
+Accepted<span class="w"> </span>connection<span class="w"> </span>from<span class="w"> </span><span class="m">192</span>.168.122.147,<span class="w"> </span>port<span class="w"> </span><span class="m">50807</span>
+<span class="o">[</span><span class="w">  </span><span class="m">5</span><span class="o">]</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span><span class="m">192</span>.168.122.1<span class="w"> </span>port<span class="w"> </span><span class="m">5201</span><span class="w"> </span>connected<span class="w"> </span>to<span class="w"> </span><span class="m">192</span>.168.122.147<span class="w"> </span>port<span class="w"> </span><span class="m">50808</span>
+<span class="o">[</span><span class="w"> </span>ID<span class="o">]</span><span class="w"> </span>Interval<span class="w">           </span>Transfer<span class="w">     </span>Bitrate
+<span class="o">[</span><span class="w">  </span><span class="m">5</span><span class="o">]</span><span class="w">   </span><span class="m">0</span>.00-1.00<span class="w">   </span>sec<span class="w">  </span><span class="m">1</span>.98<span class="w"> </span>GBytes<span class="w">  </span><span class="m">17</span>.0<span class="w"> </span>Gbits/sec
+<span class="o">[</span><span class="w">  </span><span class="m">5</span><span class="o">]</span><span class="w">   </span><span class="m">1</span>.00-2.00<span class="w">   </span>sec<span class="w">  </span><span class="m">1</span>.88<span class="w"> </span>GBytes<span class="w">  </span><span class="m">16</span>.1<span class="w"> </span>Gbits/sec
+<span class="o">[</span><span class="w">  </span><span class="m">5</span><span class="o">]</span><span class="w">   </span><span class="m">2</span>.00-3.00<span class="w">   </span>sec<span class="w">  </span><span class="m">2</span>.01<span class="w"> </span>GBytes<span class="w">  </span><span class="m">17</span>.3<span class="w"> </span>Gbits/sec
+<span class="o">[</span><span class="w">  </span><span class="m">5</span><span class="o">]</span><span class="w">   </span><span class="m">3</span>.00-4.00<span class="w">   </span>sec<span class="w">  </span><span class="m">2</span>.01<span class="w"> </span>GBytes<span class="w">  </span><span class="m">17</span>.3<span class="w"> </span>Gbits/sec
+<span class="o">[</span><span class="w">  </span><span class="m">5</span><span class="o">]</span><span class="w">   </span><span class="m">4</span>.00-5.00<span class="w">   </span>sec<span class="w">  </span><span class="m">2</span>.00<span class="w"> </span>GBytes<span class="w">  </span><span class="m">17</span>.2<span class="w"> </span>Gbits/sec
+<span class="o">[</span><span class="w">  </span><span class="m">5</span><span class="o">]</span><span class="w">   </span><span class="m">5</span>.00-5.02<span class="w">   </span>sec<span class="w">  </span><span class="m">46</span>.6<span class="w"> </span>MBytes<span class="w">  </span><span class="m">16</span>.0<span class="w"> </span>Gbits/sec
+-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span>-
+<span class="o">[</span><span class="w"> </span>ID<span class="o">]</span><span class="w"> </span>Interval<span class="w">           </span>Transfer<span class="w">     </span>Bitrate
+<span class="o">[</span><span class="w">  </span><span class="m">5</span><span class="o">]</span><span class="w">   </span><span class="m">0</span>.00-5.02<span class="w">   </span>sec<span class="w">  </span><span class="m">9</span>.93<span class="w"> </span>GBytes<span class="w">  </span><span class="m">17</span>.0<span class="w"> </span>Gbits/sec<span class="w">                  </span>receiver
+</code></pre></div></p>
+<p>Output in Windows VM should look like below:</p>
+<p><img alt="iperf_windows_output" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/iperf_windows_output.png?raw=true" /></p>
+<p>For Linux host to Windows, we have observed <strong>21.9 Gbits/sec</strong> transfer rate for a 1 minute test.</p>
+<h4 id="host-linux-client-and-windows-vm-server">Host Linux Client and Windows VM Server<a class="headerlink" href="#host-linux-client-and-windows-vm-server" title="Permanent link">&para;</a></h4>
+<p>The above commands are reversed for host Linux client and Windows VM server. In the Windows VM, run
+the following command:</p>
+<div class="highlight"><pre><span></span><code>iperf3.exe -s -B 192.168.122.147
+</code></pre></div>
+<p>In the host Linux, run the following command for a 5 second test:</p>
+<div class="highlight"><pre><span></span><code>iperf3<span class="w"> </span>-c<span class="w"> </span><span class="m">192</span>.168.122.147<span class="w"> </span>-t<span class="w"> </span><span class="m">60</span>
+</code></pre></div>
+<p>For a 1 minute test, we have observed <strong>4.33 Gbits/sec</strong> transfer rate from Windows VM to host.</p>
+<h2 id="running-holoscan-dds-app-and-windows-vm-app">Running Holoscan DDS App and Windows VM App<a class="headerlink" href="#running-holoscan-dds-app-and-windows-vm-app" title="Permanent link">&para;</a></h2>
+<p>If the above configurations are done correctly, then interoperating between a Holoscan application
+and Windows VM application is straightforward. For this tutorial, we will use the
+<a href="../../applications/dds/dds_video/">Holoscan DDS app</a> and a simple Windows application. The Holoscan DDS
+app is used in <code>publisher</code> mode where it reads frames from a USB camera and sends the frames via
+DDS. The Windows application (available upon request) receives the frames via DDS and renders the
+frame on the screen using the RTX A4000 GPU with the help of OpenGL.</p>
+<p>In Linux host, run the Holoscan DDS app in <code>publisher</code> mode:</p>
+<div class="highlight"><pre><span></span><code>./run<span class="w"> </span>launch<span class="w"> </span>dds_video<span class="w"> </span>--extra_args<span class="w"> </span><span class="s2">&quot;-p&quot;</span>
+</code></pre></div>
+<p>In Windows VM, running the renderer application shows the camera input from Linux host:</p>
+<p><img alt="windows_vm_dds_renderer" src="https://github.com/nvidia-holoscan/holohub/blob/main/tutorials/windows_vm/windows_vm_dds_renderer.png?raw=true" /></p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li>https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF</li>
+<li>https://www.makeuseof.com/create-windows-virtual-machine-in-linux-with-kvm/</li>
+</ul>
 
 
 
@@ -6606,8 +7334,6 @@ can be used to perform an optimize task.</p>
 
   
 
-
-  
 
 
 
@@ -6631,19 +7357,33 @@ can be used to perform an optimize task.</p>
   
     
       
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" hidden>
+          
+          <a href="../self_supervised_training/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Self-Supervised Contrastive Learning for Surgical videos">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Self-Supervised Contrastive Learning for Surgical videos
+              </div>
+            </div>
+          </a>
         
         
           
-          <a href="workflows/" class="md-footer__link md-footer__link--next" aria-label="Next: Workflows">
+          <a href="../../benchmarks/" class="md-footer__link md-footer__link--next" aria-label="Next: Benchmarks">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Workflows
+                Benchmarks
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -6692,10 +7432,10 @@ can be used to perform an optimize task.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.path", "navigation.instant.prefetch", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tabs", "navigation.indexes", "navigation.instant", "navigation.path", "navigation.instant.prefetch", "navigation.top", "navigation.footer", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
     
   </body>
