@@ -197,8 +197,7 @@ class RequestTests(unittest.TestCase):
             ({**new, "name": "../escape"}, "Name must use lowercase letters"),
             ({**new, "url": "http://example.org/new.git"}, "Source URL must be an HTTPS URL"),
             ({**new, "url": "https://example.org/new.git?branch=main"}, "a Git URL cannot include ? or #"),
-            ({**new, "ref": ""}, "looks like a Git repository; add a Git revision"),
-            ({**new, "url": "https://github.com/owner/new", "ref": ""}, "looks like a Git repository"),
+            ({"kind": "application", "name": "camera", "ref": "none", "reason": "x"}, "looks like a Git repository, which needs a Git revision"),
             ({**new, "url": "https://example.org/metadata.json", "ref": "", "path": "apps"}, "applies only to Git sources"),
             ({**new, "path": "../apps"}, "Repository path must be a relative directory"),
             ({**new, "ref": "-v1"}, "Git revision must be a branch, tag, or commit"),
@@ -223,6 +222,75 @@ class RequestTests(unittest.TestCase):
                 self.assertIn(message, result["message"])
                 self.assertNotIn("(?!", result["message"])
                 self.assertEqual(before, self.snapshot())
+
+    def test_blank_revision_takes_the_default_branch_of_a_git_repository(self):
+        asked = []
+
+        def resolve(url):
+            asked.append(url)
+            return "develop"
+
+        for name, url in (("new", "https://example.org/new.git"), ("page", "https://github.com/owner/new")):
+            with self.subTest(url=url):
+                result = registry_requests.prepare(self.root, render({
+                    "kind": "application", "name": name, "url": url, "path": "apps/new", "reason": "New.",
+                }), resolve)
+                self.assertEqual("ready", result["status"])
+                self.assertEqual([url], asked)
+                self.assertEqual({"type": "git", "url": url, "ref": "develop", "path": "apps/new"}, self.registered(name=name)["source"])
+                self.assertIn("Git revision: develop", result["changes"])
+                asked.clear()
+        # Hosted content and explicit revisions never ask.
+        registry_requests.prepare(self.root, render({"kind": "module", "name": "hosted", "url": "https://example.org/mod/metadata.json", "reason": "x"}), resolve)
+        registry_requests.prepare(self.root, render({"kind": "module", "name": "pinned", "url": "https://example.org/pinned.git", "ref": "v1", "reason": "x"}), resolve)
+        self.assertEqual([], asked)
+        # An update that switches hosted content to a Git repository asks too; one that keeps a revision does not.
+        self.seed({"name": "hosted", "kind": "module", "source": {"type": "url", "url": "https://example.org/mod/metadata.json"}})
+        result = registry_requests.prepare(self.root, render({"kind": "module", "name": "hosted", "url": "https://example.org/mod.git", "reason": "x"}), resolve)
+        self.assertEqual("ready", result["status"])
+        self.assertEqual({"type": "git", "url": "https://example.org/mod.git", "ref": "develop"}, self.registered("module", "hosted")["source"])
+        asked.clear()
+        self.seed()
+        registry_requests.prepare(self.root, render({"kind": "application", "name": "camera", "path": "apps/other", "reason": "x"}), resolve)
+        self.assertEqual([], asked)
+
+    def test_unresolvable_default_branch_is_reported_to_the_requester(self):
+        def resolve(url):
+            raise registry_requests.RequestError(f"Could not find the default branch of {url}.")
+
+        before = self.snapshot()
+        with self.assertRaisesRegex(registry_requests.RequestError, "Could not find the default branch of https://example.org/new.git"):
+            registry_requests.prepare(self.root, render({"kind": "application", "name": "new", "url": "https://example.org/new.git", "reason": "x"}), resolve)
+        self.assertEqual(before, self.snapshot())
+
+    def test_default_branch_reads_the_symbolic_head_without_prompts(self):
+        calls = []
+
+        def run(command, **options):
+            calls.append((command, options))
+            if "missing" in command[-2]:
+                raise subprocess.CalledProcessError(128, command)
+            return subprocess.CompletedProcess(command, 0, stdout="ref: refs/heads/release-1.0\tHEAD\nabc123\tHEAD\n", stderr="")
+
+        original = registry_requests.subprocess.run
+        registry_requests.subprocess.run = run
+        self.addCleanup(setattr, registry_requests.subprocess, "run", original)
+        self.assertEqual("release-1.0", registry_requests.default_branch("https://example.org/new.git"))
+        command, options = calls[0]
+        self.assertEqual(["ls-remote", "--symref", "--", "https://example.org/new.git", "HEAD"], command[-5:])
+        self.assertIn("protocol.allow=never", command)
+        self.assertEqual("0", options["env"]["GIT_TERMINAL_PROMPT"])
+        self.assertTrue(options["check"])
+        with self.assertRaisesRegex(registry_requests.RequestError, "Check that the repository is public, or enter a Git revision"):
+            registry_requests.default_branch("https://example.org/missing.git")
+
+    def test_git_repository_detection_requires_https(self):
+        self.assertTrue(registry_requests.looks_like_git_repository("https://example.org/new.git"))
+        self.assertTrue(registry_requests.looks_like_git_repository("https://github.com/owner/new"))
+        self.assertFalse(registry_requests.looks_like_git_repository("https://github.com/owner/new/blob/main/metadata.json"))
+        self.assertFalse(registry_requests.looks_like_git_repository("https://example.org/new/metadata.json"))
+        self.assertFalse(registry_requests.looks_like_git_repository("ext::sh -c touch% /tmp/pwned"))
+        self.assertFalse(registry_requests.looks_like_git_repository("git@github.com:owner/new.git"))
 
     def test_reason_is_free_text_and_never_executed(self):
         marker = self.root / "unexpected"

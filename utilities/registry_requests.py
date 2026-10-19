@@ -98,14 +98,40 @@ def build(kind, name, fields):
     return record
 
 
-def new_record(kind, name, fields):
+def looks_like_git_repository(url):
+    """An HTTPS clone URL: it ends in .git, or it is a GitHub owner/repository page."""
+    parts = urlsplit(url)
+    return parts.scheme == "https" and (parts.path.endswith(".git") or (parts.hostname == "github.com" and parts.path.strip("/").count("/") == 1))
+
+
+def default_branch(url):
+    """Ask the repository which branch HEAD points to, without credentials or prompts."""
+    command = ["git", "-c", "protocol.allow=never", "-c", "protocol.https.allow=always", "ls-remote", "--symref", "--", url, "HEAD"]
+    try:
+        result = subprocess.run(command, env={**os.environ, "GIT_TERMINAL_PROMPT": "0"}, text=True, capture_output=True, timeout=60, check=True)
+        found = re.search(r"^ref: refs/heads/(\S+)\tHEAD$", result.stdout, re.MULTILINE)
+    except (OSError, subprocess.SubprocessError):
+        found = None
+    if found is None:
+        raise RequestError(f"Could not find the default branch of {url}. Check that the repository is public, or enter a Git revision.")
+    return found[1]
+
+
+def complete(fields, resolve):
+    """A Git repository URL without a revision takes the repository's default branch."""
+    if fields["url"] and not fields["ref"] and looks_like_git_repository(fields["url"]):
+        fields = {**fields, "ref": resolve(fields["url"])}
+    return fields
+
+
+def new_record(kind, name, fields, resolve=default_branch):
     fields = {field: None if value.lower() == "none" else value or None for field, value in fields.items()}
     if not fields["url"]:
         raise RequestError(f"{kind}/{name} is not registered yet. Check its kind and name, or add a Source URL to register it.")
-    return build(kind, name, fields)
+    return build(kind, name, complete(fields, resolve))
 
 
-def updated_record(current, fields):
+def updated_record(current, fields, resolve=default_branch):
     """Blank fields keep their registered values, and none removes an optional value."""
     merged = flatten(current)
     for field, value in fields.items():
@@ -115,6 +141,8 @@ def updated_record(current, fields):
             merged[field] = None
         elif value:
             merged[field] = value
+    if fields["ref"].lower() != "none":
+        merged = complete(merged, resolve)
     if not merged["ref"] and not fields["path"]:
         merged["path"] = None  # Hosted content has no repository path.
     return build(current["kind"], current["name"], merged)
@@ -132,10 +160,10 @@ def check(root, record, others):
         problems.append(GUIDANCE.get(pointer, f"{pointer or 'record'}: {error.message}"))
     if problems:
         raise RequestError("\n".join(dict.fromkeys(problems)))
-    url = urlsplit(source["url"])
-    if source["type"] == "url" and (url.path.endswith(".git") or (url.hostname == "github.com" and url.path.strip("/").count("/") == 1)):
-        raise RequestError("Source URL looks like a Git repository; add a Git revision (branch, tag, or commit).")
-    if source["type"] == "git" and url.path.endswith(("/metadata.json", "/SKILL.md")):
+    if source["type"] == "url" and looks_like_git_repository(source["url"]):
+        raise RequestError("Source URL looks like a Git repository, which needs a Git revision; "
+                           "leave the field blank to use its default branch.")
+    if source["type"] == "git" and urlsplit(source["url"]).path.endswith(("/metadata.json", "/SKILL.md")):
         raise RequestError("Source URL links to a hosted metadata.json or SKILL.md, which takes no Git revision. "
                            "Leave Git revision blank for a new source, or enter none to switch a registered one.")
     identity = source_identity(record)
@@ -164,7 +192,7 @@ def load_records(root):
     return records
 
 
-def prepare(root, body):
+def prepare(root, body, resolve=default_branch):
     """Apply a valid request to the working tree; an invalid one changes nothing."""
     request = parse_issue(body)
     kind, name = request["kind"], request["name"]
@@ -177,9 +205,9 @@ def prepare(root, body):
             raise RequestError(f"{key} is not registered, so there is nothing to remove.")
         action, record = "Remove", None
     elif current is None:
-        action, record = "Register", new_record(kind, name, request["fields"])
+        action, record = "Register", new_record(kind, name, request["fields"], resolve)
     else:
-        action, record = "Update", updated_record(current, request["fields"])
+        action, record = "Update", updated_record(current, request["fields"], resolve)
         if record == current:
             return {"status": "noop", "registration": key}
     if record is not None:

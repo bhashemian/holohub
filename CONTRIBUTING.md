@@ -19,8 +19,10 @@ every kind:
 - **Remove:** choose the source and tick **Remove**. Only the HoloHub record is
   deleted; the upstream project is not changed.
 
-A Git revision makes the source a Git repository; without one, the URL must
-point to hosted `metadata.json` or `SKILL.md` content. The kind and name
+A Git revision makes the source a Git repository; a clone URL (ending in
+`.git`, or a GitHub repository page) left without one takes the repository's
+default branch. Any other URL without a revision must point to hosted
+`metadata.json` or `SKILL.md` content. The kind and name
 identify a registration. To rename one, remove it, and after that pull request
 merges, register the new name.
 
