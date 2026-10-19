@@ -267,10 +267,10 @@ is documented in the script.
 
 ## Validation and indexing
 
-Use Python 3.12 or later. `requirement.txt` pins Holoscan CLI 5.0.0 and its
-bundled metadata schemas, installed from PyPI without an additional package
-index. This targets the upcoming 5.0.0 release and requires its package to be
-published before installing the validation dependencies. Registry validation
+Use Python 3.12 or later. `requirement.txt` pins Holoscan CLI 5.0.0rc3 and its
+bundled metadata schemas. The release candidate comes from NVIDIA's package
+index, `https://pypi.nvidia.com`, which the file adds as an extra index; the
+other dependencies come from PyPI. Registry validation
 does not require the Holoscan SDK or a GPU.
 
 ```bash
