@@ -216,12 +216,8 @@ def form_url(**fields):
 
 
 def source_links(records):
-    """Markdown lines that open the form for a new source of each kind, or prefilled for a registered one."""
-    kinds = " · ".join(f"[{kind}]({form_url(kind=kind)})" for kind in KIND_DIRECTORIES)
-    lines = [
-        f"**Register** a new {kinds}, or fill in the fields below.", "",
-        "**Update or remove** a registered source; choose it to fill in its current values:",
-    ]
+    """Markdown lines that open the form prefilled for each registered source."""
+    lines = ["**Update or remove** a registered source; choose it to fill in its current values:"]
     for kind, folder in KIND_DIRECTORIES.items():
         links = []
         for record in sorted((record for record in records if record["kind"] == kind), key=lambda record: record["name"]):

@@ -28,9 +28,9 @@ def form_elements(root=ROOT):
 
 
 def form_links(root=ROOT):
-    """Prefill parameters of every link in the form's introduction."""
+    """Prefill parameters of every link in the form's introduction that opens the form."""
     markdown = form_elements(root)[0]["attributes"]["value"]
-    return [dict(parse_qsl(urlsplit(url).query)) for url in re.findall(r"\]\((https://[^)]+)\)", markdown)]
+    return [dict(parse_qsl(urlsplit(url).query)) for url in re.findall(r"\]\((https://[^)]+/issues/new\?[^)]+)\)", markdown)]
 
 
 def render(values, root=ROOT):
@@ -106,9 +106,7 @@ class RequestTests(unittest.TestCase):
         self.assertEqual(list(registry_requests.LABELS), [element["attributes"]["label"] for element in fields])
         text_ids = {element["id"] for element in fields if element["type"] in ("input", "textarea")}
         self.assertLessEqual(set(registry_requests.FIELDS) | {"kind", "name"}, text_ids)
-        links = form_links()
-        self.assertEqual([{"template": FORM.name, "kind": kind} for kind in KINDS], links[:len(KINDS)])
-        for values in links:
+        for values in form_links():
             self.assertLessEqual(values.keys(), text_ids | {"template", "title"})
 
     def test_workflow_recognizes_the_form_headings(self):
@@ -189,7 +187,7 @@ class RequestTests(unittest.TestCase):
         result = self.request({**values, "remove": True, "reason": "Retired upstream."})
         self.assertEqual("Remove application/camera", result["title"])
         self.assertIsNone(self.registered())
-        self.assertEqual(KINDS, tuple(values["kind"] for values in form_links(self.root)))
+        self.assertEqual([], form_links(self.root))
 
     def test_unchanged_request_is_noop(self):
         self.seed()
