@@ -34,7 +34,6 @@ GUIDANCE = {
 FEEDBACK = "<!-- holohub-registry-feedback -->"
 TITLE_MARK = "🗂️"
 BOT = "github-actions[bot]"
-BOT_AUTHOR = f"{BOT} <41898282+{BOT}@users.noreply.github.com>"
 
 
 class RequestError(ValueError):
@@ -300,16 +299,17 @@ def issue_title(root, body):
     return f"{TITLE_MARK} [{action}] {kind}: {name[:200]}"
 
 
-def commit_author(issue):
-    """Credit the requester as the commit author through their GitHub noreply address.
+def commit_message(title, issue):
+    """The proposal's commit message, crediting the requester as a co-author.
 
-    The login and numeric id come from GitHub, not the form; anything unexpected falls back to the bot.
+    The bot stays the author because the DCO check exempts bot-authored commits. The requester's login
+    and numeric id come from GitHub, not the form, and anything other than a regular user is left out.
     """
     user = issue.get("user") or {}
     login, number = user.get("login") or "", user.get("id")
     if user.get("type") != "User" or type(number) is not int or not re.fullmatch(r"[A-Za-z0-9](?:-?[A-Za-z0-9]){0,38}", login):
-        return BOT_AUTHOR
-    return f"{login} <{number}+{login}@users.noreply.github.com>"
+        return title
+    return f"{title}\n\nCo-authored-by: {login} <{number}+{login}@users.noreply.github.com>"
 
 
 def pull_request_body(result, number):
@@ -429,8 +429,9 @@ def main(argv=None):
                 for key in ("status", "title", "directory"):
                     if key in result:
                         print(f"{key}={result[key]}", file=stream)
-                if issue["state"] != "closed":
-                    print(f"author={commit_author(issue)}", file=stream)
+                if result["status"] == "ready":
+                    # Multiline output syntax; the message holds only the title and a validated trailer.
+                    print(f"commit_message<<END_OF_MESSAGE\n{commit_message(result['title'], issue)}\nEND_OF_MESSAGE", file=stream)
         return 0
 
     try:

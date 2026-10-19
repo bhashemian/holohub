@@ -423,17 +423,20 @@ class RequestTests(unittest.TestCase):
         self.assertNotIn("issue_title", self.request({**new, "kind": "plugin"}))
         self.assertNotIn("issue_title", self.request("", state="closed"))
 
-    def test_requester_authors_the_proposal_commit(self):
+    def test_requester_is_credited_as_co_author(self):
         user = {"login": "octo-cat", "id": 583231, "type": "User"}
-        self.assertEqual("octo-cat <583231+octo-cat@users.noreply.github.com>", registry_requests.commit_author({"user": user}))
+        self.assertEqual(
+            "Register application/new\n\nCo-authored-by: octo-cat <583231+octo-cat@users.noreply.github.com>",
+            registry_requests.commit_message("Register application/new", {"user": user}),
+        )
         for odd in (
             {}, {"user": None}, {"user": {**user, "type": "Bot", "login": "renovate[bot]"}},
             {"user": {**user, "login": "a>b <x@y>"}}, {"user": {**user, "login": "-lead"}}, {"user": {**user, "id": "583231"}},
-            {"user": {**user, "login": "evil\nauthor=x"}},
+            {"user": {**user, "login": "evil\nEND_OF_MESSAGE"}},
         ):
             with self.subTest(issue=odd):
-                self.assertEqual(registry_requests.BOT_AUTHOR, registry_requests.commit_author(odd))
-        # The workflow reads the author from the prepare step's outputs.
+                self.assertEqual("Register application/new", registry_requests.commit_message("Register application/new", odd))
+        # The workflow reads the message from the prepare step's outputs and keeps the bot as author.
         issue, output = self.root / "issue.json", self.root / "output"
         issue.write_text(json.dumps({"number": 42, "state": "open", "title": "x", "user": user, "body": render({
             "kind": "application", "name": "new", "url": "https://example.org/new.git", "ref": "v1", "reason": "x",
@@ -442,9 +445,14 @@ class RequestTests(unittest.TestCase):
             sys.executable, str(SCRIPT), "prepare", "--root", str(self.root), "--issue", str(issue),
             "--result", str(self.root / "result.json"), "--pull-request-body", str(self.root / "pr.md"),
         ], check=True, env={**os.environ, "GITHUB_OUTPUT": str(output)})
-        self.assertIn("author=octo-cat <583231+octo-cat@users.noreply.github.com>\n", output.read_text())
-        workflow = (ROOT / ".github/workflows/registry-request.yml").read_text(encoding="utf-8")
-        self.assertIn("author: ${{ steps.prepare.outputs.author }}", workflow)
+        self.assertIn(
+            "commit_message<<END_OF_MESSAGE\nRegister application/new\n\n"
+            "Co-authored-by: octo-cat <583231+octo-cat@users.noreply.github.com>\nEND_OF_MESSAGE\n", output.read_text(),
+        )
+        workflow = yaml.safe_load((ROOT / ".github/workflows/registry-request.yml").read_text(encoding="utf-8"))
+        step = next(step for step in workflow["jobs"]["request"]["steps"] if step.get("id") == "request")
+        self.assertEqual("github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>", step["with"]["author"])
+        self.assertEqual("${{ steps.prepare.outputs.commit_message }}", step["with"]["commit-message"])
 
     def test_reason_is_free_text_and_never_executed(self):
         marker = self.root / "unexpected"
