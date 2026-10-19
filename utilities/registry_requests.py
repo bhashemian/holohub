@@ -8,7 +8,8 @@ from pathlib import Path
 import re
 import subprocess
 import sys
-from urllib.parse import urlencode, urlsplit
+from urllib.parse import quote, urlencode, urlsplit
+from urllib.request import Request, urlopen
 
 from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry
@@ -117,21 +118,67 @@ def default_branch(url):
     return found[1]
 
 
-def complete(fields, resolve):
+def hosted_project(url):
+    """The host and project path of a github.com or gitlab.com repository URL, or None for anything else."""
+    parts = urlsplit(url)
+    if parts.scheme != "https" or parts.hostname not in ("github.com", "gitlab.com") or parts.port or parts.query or parts.fragment:
+        return None
+    segments = parts.path.strip("/").removesuffix(".git").split("/")
+    if any(not re.fullmatch(r"[A-Za-z0-9_.-]+", segment) or segment in (".", "..", "-") for segment in segments):
+        return None  # "-" marks GitLab pages such as /-/tree/main, not a project.
+    if len(segments) != 2 and (parts.hostname == "github.com" or len(segments) < 2):
+        return None
+    return parts.hostname, "/".join(segments)
+
+
+def fetch_json(url, token=None):
+    request = Request(url, headers={"Accept": "application/json", "User-Agent": "holohub-registry"})
+    if token:
+        # An unredirected header is never forwarded if the API redirects elsewhere.
+        request.add_unredirected_header("Authorization", f"Bearer {token}")
+    with urlopen(request, timeout=30) as response:
+        return json.load(response)
+
+
+def issue_tracker(url):
+    """The public issue tracker of a GitHub or GitLab repository, or None when it is off or cannot be checked."""
+    project = hosted_project(url)
+    if project is None:
+        return None
+    host, path = project
+    try:
+        if host == "github.com":
+            data = fetch_json(f"https://api.github.com/repos/{path}", os.environ.get("GH_TOKEN"))
+            page, open_ = data["html_url"], data.get("has_issues") and not data.get("archived") and not data.get("private")
+            tracker = f"{page}/issues"
+        else:
+            # Anonymous project responses omit the issue settings, so ask for the public issue list itself;
+            # GitLab refuses it when issues are disabled or limited to members.
+            project_api = f"https://gitlab.com/api/v4/projects/{quote(path, safe='')}"
+            data = fetch_json(project_api)
+            page, open_ = data["web_url"], not data.get("archived") and isinstance(fetch_json(f"{project_api}/issues?per_page=1"), list)
+            tracker = f"{page}/-/issues"
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+    return tracker if open_ and isinstance(page, str) and page.startswith(f"https://{host}/") else None
+
+
+def complete(fields, resolve, notes):
     """A Git repository URL without a revision takes the repository's default branch."""
     if fields["url"] and not fields["ref"] and looks_like_git_repository(fields["url"]):
         fields = {**fields, "ref": resolve(fields["url"])}
+        notes.append(f"Git revision: {fields['ref']} (the repository's default branch)")
     return fields
 
 
-def new_record(kind, name, fields, resolve=default_branch):
+def new_record(kind, name, fields, resolve=default_branch, notes=None):
     fields = {field: None if value.lower() == "none" else value or None for field, value in fields.items()}
     if not fields["url"]:
         raise RequestError(f"{kind}/{name} is not registered yet. Check its kind and name, or add a Source URL to register it.")
-    return build(kind, name, complete(fields, resolve))
+    return build(kind, name, complete(fields, resolve, [] if notes is None else notes))
 
 
-def updated_record(current, fields, resolve=default_branch):
+def updated_record(current, fields, resolve=default_branch, notes=None):
     """Blank fields keep their registered values, and none removes an optional value."""
     merged = flatten(current)
     for field, value in fields.items():
@@ -142,7 +189,7 @@ def updated_record(current, fields, resolve=default_branch):
         elif value:
             merged[field] = value
     if fields["ref"].lower() != "none":
-        merged = complete(merged, resolve)
+        merged = complete(merged, resolve, [] if notes is None else notes)
     if not merged["ref"] and not fields["path"]:
         merged["path"] = None  # Hosted content has no repository path.
     return build(current["kind"], current["name"], merged)
@@ -192,26 +239,37 @@ def load_records(root):
     return records
 
 
-def prepare(root, body, resolve=default_branch):
-    """Apply a valid request to the working tree; an invalid one changes nothing."""
+def prepare(root, body, resolve=default_branch, tracker=issue_tracker):
+    """Apply a valid request to the working tree; an invalid one changes nothing.
+
+    Blank fields that the source can answer are filled in, and each is noted for the requester.
+    """
     request = parse_issue(body)
     kind, name = request["kind"], request["name"]
     key = f"{kind}/{name}"
     records = load_records(root)
     current = next((record for record in records if record["kind"] == kind and record["name"] == name), None)
     others = [record for record in records if record is not current]
+    notes = []
     if request["remove"]:
         if current is None:
             raise RequestError(f"{key} is not registered, so there is nothing to remove.")
         action, record = "Remove", None
     elif current is None:
-        action, record = "Register", new_record(kind, name, request["fields"], resolve)
+        action, record = "Register", new_record(kind, name, request["fields"], resolve, notes)
     else:
-        action, record = "Update", updated_record(current, request["fields"], resolve)
+        action, record = "Update", updated_record(current, request["fields"], resolve, notes)
         if record == current:
             return {"status": "noop", "registration": key}
     if record is not None:
         check(root, record, others)
+        # Only a valid request reaches the network, and only for a new or moved Git source left without a tracker.
+        moved = current is None or record["source"]["url"] != current["source"]["url"]
+        if moved and record["source"]["type"] == "git" and "issues_url" not in record and not request["fields"]["issues-url"]:
+            if found := tracker(record["source"]["url"]):
+                record = build(kind, name, {**flatten(record), "issues-url": found})
+                check(root, record, others)
+                notes.append(f"Issue tracker URL: {found} (the repository's issue tracker)")
     # The name is validated or already registered, so it always maps inside its kind's directory.
     path = root / KIND_DIRECTORIES[kind] / f"{name}.json"
     if record is None:
@@ -223,7 +281,7 @@ def prepare(root, body, resolve=default_branch):
         path.write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return {
         "status": "ready", "registration": key, "title": f"{action} {key}",
-        "directory": KIND_DIRECTORIES[kind], "changes": summarize(current, record),
+        "directory": KIND_DIRECTORIES[kind], "changes": summarize(current, record), "notes": notes,
     }
 
 
@@ -264,6 +322,10 @@ def report(repository, number, result, branch, pull_url="", run_url="", failed=F
         if result["changes"]:
             # Indented code keeps requester-supplied values from rendering as Markdown or mentions.
             parts.append("\n".join(f"    {line}" for line in result["changes"]))
+        if result.get("notes"):
+            parts.append("These fields were blank, so they were filled in from the source. "
+                         "To use different values, edit this issue:")
+            parts.append("\n".join(f"    {line}" for line in result["notes"]))
         parts.append("The change takes effect when a maintainer merges the pull request. "
                      "To revise the request, edit this issue.")
     elif status == "noop":

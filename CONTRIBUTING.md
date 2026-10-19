@@ -22,7 +22,9 @@ every kind:
 A Git revision makes the source a Git repository; a clone URL (ending in
 `.git`, or a GitHub repository page) left without one takes the repository's
 default branch. Any other URL without a revision must point to hosted
-`metadata.json` or `SKILL.md` content. The kind and name
+`metadata.json` or `SKILL.md` content. A new or moved GitHub or GitLab
+repository left without an issue tracker URL takes the repository's issue
+tracker when it is public. The bot's comment lists every value it filled in. The kind and name
 identify a registration. To rename one, remove it, and after that pull request
 merges, register the new name.
 

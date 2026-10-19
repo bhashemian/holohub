@@ -51,7 +51,7 @@ body:
     id: issues-url
     attributes:
       label: Issue tracker URL
-      description: Optional HTTPS page where users report problems with this source.
+      description: Optional HTTPS page where users report problems with this source. Leave blank to use the issue tracker of a GitHub or GitLab repository when it has one.
       placeholder: https://github.com/owner/project/issues
   - type: checkboxes
     id: remove

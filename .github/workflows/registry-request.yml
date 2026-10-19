@@ -73,7 +73,7 @@ jobs:
 
       - name: Install offline registry validation dependencies
         # Upstream sources are fetched only by the read-only Registry workflow; prepare
-        # asks a Git repository for nothing more than its default branch.
+        # asks a Git repository only for its default branch and public issue tracker.
         run: python -m pip install --disable-pip-version-check -c requirement.txt jsonschema rfc3986-validator
 
       - name: Read the current issue
@@ -84,6 +84,9 @@ jobs:
 
       - name: Prepare the registry change
         id: prepare
+        env:
+          # Read-only use: the GitHub API lookup of a source repository's issue tracker.
+          GH_TOKEN: ${{ github.token }}
         run: >-
           python utilities/registry_requests.py prepare
           --issue "$RUNNER_TEMP/issue.json"

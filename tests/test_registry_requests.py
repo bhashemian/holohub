@@ -234,24 +234,25 @@ class RequestTests(unittest.TestCase):
             with self.subTest(url=url):
                 result = registry_requests.prepare(self.root, render({
                     "kind": "application", "name": name, "url": url, "path": "apps/new", "reason": "New.",
-                }), resolve)
+                }), resolve, tracker=lambda url: None)
                 self.assertEqual("ready", result["status"])
                 self.assertEqual([url], asked)
+                self.assertEqual(["Git revision: develop (the repository's default branch)"], result["notes"])
                 self.assertEqual({"type": "git", "url": url, "ref": "develop", "path": "apps/new"}, self.registered(name=name)["source"])
                 self.assertIn("Git revision: develop", result["changes"])
                 asked.clear()
         # Hosted content and explicit revisions never ask.
-        registry_requests.prepare(self.root, render({"kind": "module", "name": "hosted", "url": "https://example.org/mod/metadata.json", "reason": "x"}), resolve)
-        registry_requests.prepare(self.root, render({"kind": "module", "name": "pinned", "url": "https://example.org/pinned.git", "ref": "v1", "reason": "x"}), resolve)
+        registry_requests.prepare(self.root, render({"kind": "module", "name": "hosted", "url": "https://example.org/mod/metadata.json", "reason": "x"}), resolve, tracker=lambda url: None)
+        registry_requests.prepare(self.root, render({"kind": "module", "name": "pinned", "url": "https://example.org/pinned.git", "ref": "v1", "reason": "x"}), resolve, tracker=lambda url: None)
         self.assertEqual([], asked)
         # An update that switches hosted content to a Git repository asks too; one that keeps a revision does not.
         self.seed({"name": "hosted", "kind": "module", "source": {"type": "url", "url": "https://example.org/mod/metadata.json"}})
-        result = registry_requests.prepare(self.root, render({"kind": "module", "name": "hosted", "url": "https://example.org/mod.git", "reason": "x"}), resolve)
+        result = registry_requests.prepare(self.root, render({"kind": "module", "name": "hosted", "url": "https://example.org/mod.git", "reason": "x"}), resolve, tracker=lambda url: None)
         self.assertEqual("ready", result["status"])
         self.assertEqual({"type": "git", "url": "https://example.org/mod.git", "ref": "develop"}, self.registered("module", "hosted")["source"])
         asked.clear()
         self.seed()
-        registry_requests.prepare(self.root, render({"kind": "application", "name": "camera", "path": "apps/other", "reason": "x"}), resolve)
+        registry_requests.prepare(self.root, render({"kind": "application", "name": "camera", "path": "apps/other", "reason": "x"}), resolve, tracker=lambda url: None)
         self.assertEqual([], asked)
 
     def test_unresolvable_default_branch_is_reported_to_the_requester(self):
@@ -291,6 +292,113 @@ class RequestTests(unittest.TestCase):
         self.assertFalse(registry_requests.looks_like_git_repository("https://example.org/new/metadata.json"))
         self.assertFalse(registry_requests.looks_like_git_repository("ext::sh -c touch% /tmp/pwned"))
         self.assertFalse(registry_requests.looks_like_git_repository("git@github.com:owner/new.git"))
+
+    def test_blank_issue_tracker_takes_the_repository_tracker(self):
+        asked = []
+
+        def tracker(url):
+            asked.append(url)
+            return "https://github.com/owner/new/issues"
+
+        def prepare(values):
+            return registry_requests.prepare(self.root, render({"kind": "application", "reason": "x", **values}), lambda url: "main", tracker)
+
+        result = prepare({"name": "new", "url": "https://github.com/owner/new.git"})
+        self.assertEqual("ready", result["status"])
+        self.assertEqual(["https://github.com/owner/new.git"], asked)
+        self.assertEqual("https://github.com/owner/new/issues", self.registered(name="new")["issues_url"])
+        self.assertEqual(["name", "kind", "issues_url", "source"], list(self.registered(name="new")))
+        self.assertEqual([
+            "Git revision: main (the repository's default branch)",
+            "Issue tracker URL: https://github.com/owner/new/issues (the repository's issue tracker)",
+        ], result["notes"])
+        self.assertIn("Issue tracker URL: https://github.com/owner/new/issues", result["changes"])
+        # Moving a registered source to a repository without a tracker asks again.
+        self.seed({"name": "moved", "kind": "application", "source": {"type": "git", "url": "https://example.org/old.git", "ref": "v1"}})
+        asked.clear()
+        self.assertEqual("ready", prepare({"name": "moved", "url": "https://gitlab.com/group/moved.git"})["status"])
+        self.assertEqual(["https://gitlab.com/group/moved.git"], asked)
+
+    def test_issue_tracker_is_not_inferred_when_the_request_settles_it(self):
+        self.seed()
+        self.seed({"name": "old", "kind": "application", "source": {"type": "git", "url": "https://example.org/old.git", "ref": "v1"}})
+        asked = []
+
+        def tracker(url):
+            asked.append(url)
+            return "https://example.org/issues"
+
+        cases = [
+            {"name": "given", "url": "https://github.com/owner/given.git", "ref": "v1", "issues-url": "https://example.org/help"},
+            {"name": "cleared", "url": "https://github.com/owner/cleared.git", "ref": "v1", "issues-url": "none"},
+            {"name": "hosted", "url": "https://example.org/hosted/metadata.json"},
+            {"name": "old", "path": "apps"},  # Same URL: blank keeps the registered value.
+            {"name": "camera", "url": "https://github.com/owner/camera.git", "ref": "v1"},  # Keeps its tracker.
+        ]
+        for values in cases:
+            with self.subTest(name=values["name"]):
+                result = registry_requests.prepare(self.root, render({"kind": "application", "reason": "x", **values}), lambda url: "main", tracker)
+                self.assertEqual("ready", result["status"])
+                self.assertEqual([], result["notes"])
+        with self.assertRaisesRegex(registry_requests.RequestError, "Repository path must be a relative directory"):
+            registry_requests.prepare(self.root, render({
+                "kind": "application", "name": "bad", "url": "https://github.com/owner/bad.git", "ref": "v1", "path": "../x", "reason": "x",
+            }), lambda url: "main", tracker)
+        self.assertEqual([], asked)
+
+    def test_hosted_project_accepts_only_github_and_gitlab_repositories(self):
+        self.assertEqual(("github.com", "owner/new"), registry_requests.hosted_project("https://github.com/owner/new.git"))
+        self.assertEqual(("github.com", "owner/new"), registry_requests.hosted_project("https://github.com/owner/new/"))
+        self.assertEqual(("gitlab.com", "group/sub/new"), registry_requests.hosted_project("https://gitlab.com/group/sub/new.git"))
+        for url in (
+            "https://github.com/owner", "https://github.com/owner/new/tree/main", "https://gitlab.com/group",
+            "https://gitlab.com/group/new/-/tree/main", "https://example.org/owner/new.git", "http://github.com/owner/new",
+            "https://github.com:8443/owner/new", "https://github.com/owner/..", "https://github.com/owner/new?tab=issues",
+        ):
+            with self.subTest(url=url):
+                self.assertIsNone(registry_requests.hosted_project(url))
+
+    def test_issue_tracker_reads_whether_issues_are_open(self):
+        responses = {}
+        requests = []
+
+        def fetch(url, token=None):
+            requests.append((url, token))
+            response = responses[url]
+            if isinstance(response, Exception):
+                raise response
+            return response
+
+        original = registry_requests.fetch_json
+        registry_requests.fetch_json = fetch
+        self.addCleanup(setattr, registry_requests, "fetch_json", original)
+        github = "https://api.github.com/repos/owner/new"
+        gitlab = "https://gitlab.com/api/v4/projects/group%2Fsub%2Fnew"
+        gitlab_issues = f"{gitlab}/issues?per_page=1"
+        cases = [
+            (github, {"html_url": "https://github.com/Owner/New", "has_issues": True}, "https://github.com/Owner/New/issues"),
+            (github, {"html_url": "https://github.com/owner/new", "has_issues": False}, None),
+            (github, {"html_url": "https://github.com/owner/new", "has_issues": True, "archived": True}, None),
+            (github, {"html_url": "https://evil.example/owner/new", "has_issues": True}, None),
+            (github, OSError("HTTP Error 404"), None),
+            (github, {"message": "Not Found"}, None),
+            (gitlab, {"web_url": "https://gitlab.com/group/sub/new"}, "https://gitlab.com/group/sub/new/-/issues"),
+            (gitlab, {"web_url": "https://gitlab.com/group/sub/new", "archived": True}, None),
+            (gitlab, ValueError("not JSON"), None),
+            (gitlab_issues, OSError("HTTP Error 403: Forbidden"), None),  # Issues disabled or members only.
+            (gitlab_issues, {"message": "403 Forbidden"}, None),
+        ]
+        responses[gitlab_issues] = []
+        for endpoint, response, expected in cases:
+            with self.subTest(response=response):
+                responses[endpoint] = response
+                if endpoint == gitlab_issues:
+                    responses[gitlab] = {"web_url": "https://gitlab.com/group/sub/new"}
+                url = "https://github.com/owner/new.git" if endpoint == github else "https://gitlab.com/group/sub/new"
+                self.assertEqual(expected, registry_requests.issue_tracker(url))
+        self.assertIsNone(registry_requests.issue_tracker("https://example.org/new.git"))
+        self.assertEqual({github, gitlab, gitlab_issues}, {url for url, _ in requests})
+        self.assertEqual({None}, {token for url, token in requests if url.startswith("https://gitlab.com/")})
 
     def test_reason_is_free_text_and_never_executed(self):
         marker = self.root / "unexpected"
@@ -365,6 +473,14 @@ class ReportTests(unittest.TestCase):
         self.assertIn("**Update application/camera** is ready for review in https://github.com/owner/repo/pull/12.", self.comment["body"])
         self.assertIn("\n    Git revision: v1 → @maintainers\n", self.comment["body"])
         self.assertEqual([("PATCH", "repos/owner/repo/issues/comments/8")], self.writes())
+
+    def test_ready_request_lists_the_values_filled_in(self):
+        notes = ["Git revision: main (the repository's default branch)", "Issue tracker URL: https://github.com/o/r/issues (the repository's issue tracker)"]
+        self.report({"status": "ready", "title": "Register application/camera", "changes": [], "notes": notes}, "https://github.com/owner/repo/pull/12")
+        self.assertIn("These fields were blank, so they were filled in from the source.", self.comment["body"])
+        self.assertIn("\n    Git revision: main (the repository's default branch)\n", self.comment["body"])
+        self.report({"status": "ready", "title": "Register application/camera", "changes": []}, "https://github.com/owner/repo/pull/12")
+        self.assertNotIn("filled in", self.comment["body"])
 
     def test_invalid_edit_withdraws_the_pull_request(self):
         self.report({"status": "error", "message": "Source URL must be an HTTPS URL.\nThanks @maintainers"})
