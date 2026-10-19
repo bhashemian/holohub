@@ -39,7 +39,7 @@ body:
     id: ref
     attributes:
       label: Git revision
-      description: Required for a Git repository; a branch, a tag, or (most reproducible) a full commit SHA. Leave blank for a hosted metadata.json or SKILL.md, or enter none to switch a registered source to one.
+      description: Required for a Git repository; a branch, a tag, or (most reproducible) a full commit SHA. Leave blank for a hosted metadata.json or SKILL.md. When changing a registered Git repository to a hosted file, enter `none` to clear the stored revision.
       placeholder: 0123456789abcdef0123456789abcdef01234567
   - type: input
     id: path
