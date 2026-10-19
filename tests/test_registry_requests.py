@@ -2,6 +2,7 @@
 
 import copy
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -421,6 +422,29 @@ class RequestTests(unittest.TestCase):
         self.assertNotIn("issue_title", self.request("Please register my project."))
         self.assertNotIn("issue_title", self.request({**new, "kind": "plugin"}))
         self.assertNotIn("issue_title", self.request("", state="closed"))
+
+    def test_requester_authors_the_proposal_commit(self):
+        user = {"login": "octo-cat", "id": 583231, "type": "User"}
+        self.assertEqual("octo-cat <583231+octo-cat@users.noreply.github.com>", registry_requests.commit_author({"user": user}))
+        for odd in (
+            {}, {"user": None}, {"user": {**user, "type": "Bot", "login": "renovate[bot]"}},
+            {"user": {**user, "login": "a>b <x@y>"}}, {"user": {**user, "login": "-lead"}}, {"user": {**user, "id": "583231"}},
+            {"user": {**user, "login": "evil\nauthor=x"}},
+        ):
+            with self.subTest(issue=odd):
+                self.assertEqual(registry_requests.BOT_AUTHOR, registry_requests.commit_author(odd))
+        # The workflow reads the author from the prepare step's outputs.
+        issue, output = self.root / "issue.json", self.root / "output"
+        issue.write_text(json.dumps({"number": 42, "state": "open", "title": "x", "user": user, "body": render({
+            "kind": "application", "name": "new", "url": "https://example.org/new.git", "ref": "v1", "reason": "x",
+        })}))
+        subprocess.run([
+            sys.executable, str(SCRIPT), "prepare", "--root", str(self.root), "--issue", str(issue),
+            "--result", str(self.root / "result.json"), "--pull-request-body", str(self.root / "pr.md"),
+        ], check=True, env={**os.environ, "GITHUB_OUTPUT": str(output)})
+        self.assertIn("author=octo-cat <583231+octo-cat@users.noreply.github.com>\n", output.read_text())
+        workflow = (ROOT / ".github/workflows/registry-request.yml").read_text(encoding="utf-8")
+        self.assertIn("author: ${{ steps.prepare.outputs.author }}", workflow)
 
     def test_reason_is_free_text_and_never_executed(self):
         marker = self.root / "unexpected"

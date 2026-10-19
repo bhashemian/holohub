@@ -100,8 +100,9 @@ jobs:
         with:
           base: ${{ github.event.repository.default_branch }}
           branch: ${{ env.BRANCH }}
-          # The DCO check exempts bot-authored commits; the linked issue credits the requester.
-          author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          # The requester authors the commit and the bot commits it. The DCO check exempts only
+          # bot-authored commits, so these need the requester's sign-off or a maintainer override.
+          author: ${{ steps.prepare.outputs.author }}
           title: ${{ steps.prepare.outputs.title }}
           commit-message: ${{ steps.prepare.outputs.title }}
           body-path: ${{ runner.temp }}/pull-request.md

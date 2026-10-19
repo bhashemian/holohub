@@ -34,6 +34,7 @@ GUIDANCE = {
 FEEDBACK = "<!-- holohub-registry-feedback -->"
 TITLE_MARK = "🗂️"
 BOT = "github-actions[bot]"
+BOT_AUTHOR = f"{BOT} <41898282+{BOT}@users.noreply.github.com>"
 
 
 class RequestError(ValueError):
@@ -299,6 +300,18 @@ def issue_title(root, body):
     return f"{TITLE_MARK} [{action}] {kind}: {name[:200]}"
 
 
+def commit_author(issue):
+    """Credit the requester as the commit author through their GitHub noreply address.
+
+    The login and numeric id come from GitHub, not the form; anything unexpected falls back to the bot.
+    """
+    user = issue.get("user") or {}
+    login, number = user.get("login") or "", user.get("id")
+    if user.get("type") != "User" or type(number) is not int or not re.fullmatch(r"[A-Za-z0-9](?:-?[A-Za-z0-9]){0,38}", login):
+        return BOT_AUTHOR
+    return f"{login} <{number}+{login}@users.noreply.github.com>"
+
+
 def pull_request_body(result, number):
     changes = "".join(f"    {line}\n" for line in result["changes"])
     return (f"{changes}\n" if changes else "") + f"Closes #{number}.\n"
@@ -416,6 +429,8 @@ def main(argv=None):
                 for key in ("status", "title", "directory"):
                     if key in result:
                         print(f"{key}={result[key]}", file=stream)
+                if issue["state"] != "closed":
+                    print(f"author={commit_author(issue)}", file=stream)
         return 0
 
     try:
