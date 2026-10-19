@@ -5,7 +5,7 @@
   "source": {
     "type": "git",
     "url": "https://github.com/nvidia-holoscan/holoscan-sdk.git",
-    "ref": "main",
+    "ref": "v5.0.0-rc5",
     "path": "modules"
   }
 }
