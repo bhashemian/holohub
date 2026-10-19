@@ -40,9 +40,6 @@ jobs:
       - name: Validate all registrations and generate index
         run: python utilities/validate_registry.py --index dist/sources.json
 
-      - name: Check the registration form's source links
-        run: python utilities/registry_requests.py links --check
-
       - name: Validate source metadata, CLI discovery, and skills
         run: python utilities/validate_sources.py
 

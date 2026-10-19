@@ -71,16 +71,14 @@ discovers local source projects and does not register them in HoloHub.
    tracker or support form so users know where to report problems.
 5. Keep entity descriptions, tags, operator lists, ratings, and execution details
    in the target's own metadata. All kinds use the same registration fields.
-6. Update the registration form's source links, run the checks below, and
-   submit the registration for review. Requests made through the form do this
-   automatically.
+6. Run the checks below and submit the registration for review. Requests made
+   through the form do this automatically.
 
 ```bash
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirement.txt
 .venv/bin/python -m unittest discover -s tests -v
 .venv/bin/python utilities/validate_registry.py --index dist/sources.json
-.venv/bin/python utilities/registry_requests.py links
 .venv/bin/python utilities/validate_sources.py
 ```
 
@@ -112,8 +110,7 @@ metadata. The schema's `$id` identifies its version. For incompatible changes,
 update the schema and all registry records together.
 
 Registry CI validates declarations, source descriptors, and CLI discovery, and
-builds a derived index. It also checks that the registration form links every
-registered source with its current values. The source check requires network
+builds a derived index. The source check requires network
 access and fails for
 unavailable repositories, revisions, paths, or hosted descriptors. It retrieves
 descriptors without executing registered source code. Do not add entity

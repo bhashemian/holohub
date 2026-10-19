@@ -44,11 +44,10 @@ a bot opens the pull request. To edit the record yourself:
    python3 -m venv .venv
    .venv/bin/python -m pip install -r requirement.txt
    .venv/bin/python utilities/validate_registry.py --index dist/sources.json
-   .venv/bin/python utilities/registry_requests.py links
    .venv/bin/python utilities/validate_sources.py
    ```
 
-5. Submit the JSON change and the regenerated registration form in a pull
+5. Submit the JSON change in a pull
    request to the HoloHub registry branch you are contributing to. See
    [CONTRIBUTING.md](../CONTRIBUTING.md) for the full checks. Keep generated
    indexes and application files out of the change.

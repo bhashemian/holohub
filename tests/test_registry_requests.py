@@ -1,4 +1,4 @@
-"""Registration issues change only validated records, and the form's links prefill real fields."""
+"""Registration issues change only validated records, and the form matches what the bot parses."""
 
 import copy
 import json
@@ -9,7 +9,6 @@ import subprocess
 import sys
 import tempfile
 import unittest
-from urllib.parse import parse_qsl, urlsplit
 
 import yaml
 
@@ -18,25 +17,19 @@ from utilities import registry_requests
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "utilities" / "registry_requests.py"
-FORM = registry_requests.FORM
+FORM = Path(".github/ISSUE_TEMPLATE/registry.yml")
 KINDS = ("application", "module", "tutorial", "skill", "benchmark")
 BOT = registry_requests.BOT
 
 
-def form_elements(root=ROOT):
-    return yaml.safe_load((root / FORM).read_text(encoding="utf-8"))["body"]
+def form_elements():
+    return yaml.safe_load((ROOT / FORM).read_text(encoding="utf-8"))["body"]
 
 
-def form_links(root=ROOT):
-    """Prefill parameters of every link in the form's introduction that opens the form."""
-    markdown = form_elements(root)[0]["attributes"]["value"]
-    return [dict(parse_qsl(urlsplit(url).query)) for url in re.findall(r"\]\((https://[^)]+/issues/new\?[^)]+)\)", markdown)]
-
-
-def render(values, root=ROOT):
+def render(values):
     """Render an issue body the way GitHub does when the form is submitted."""
     sections = []
-    for element in form_elements(root):
+    for element in form_elements():
         if element["type"] == "markdown":
             continue
         attributes = element["attributes"]
@@ -56,8 +49,6 @@ class RequestTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         (self.root / "utilities").mkdir()
         shutil.copyfile(ROOT / "utilities/source.schema.json", self.root / "utilities/source.schema.json")
-        (self.root / FORM).parent.mkdir(parents=True)
-        shutil.copyfile(ROOT / FORM, self.root / FORM)
         for kind in KINDS:
             (self.root / f"{kind}s").mkdir()
         self.path = self.root / "applications/camera.json"
@@ -78,7 +69,7 @@ class RequestTests(unittest.TestCase):
     def request(self, values, state="open"):
         """Prepare an issue the way the workflow does and return the outcome."""
         issue = self.root / "issue.json"
-        body = render(values, self.root) if isinstance(values, dict) else values
+        body = render(values) if isinstance(values, dict) else values
         issue.write_text(json.dumps({"number": 42, "state": state, "body": body}))
         result = self.root / "result.json"
         process = subprocess.run([
@@ -88,26 +79,17 @@ class RequestTests(unittest.TestCase):
         self.assertEqual(0, process.returncode, process.stderr)
         return json.loads(result.read_text())
 
-    def link(self, key):
-        """Prefill values from the form's link for a registered source."""
-        for values in form_links(self.root):
-            if f"{values.get('kind')}/{values.get('name')}" == key and "url" in values:
-                return values
-        self.fail(f"The form has no link for {key}.")
-
     def snapshot(self):
-        """Contents of every registry record and the form."""
-        paths = [self.root / FORM, *(path for kind in KINDS for path in (self.root / f"{kind}s").iterdir())]
+        """Contents of every registry record."""
+        paths = [*(path for kind in KINDS for path in (self.root / f"{kind}s").iterdir())]
         return {path: path.read_bytes() for path in paths}
 
-    def test_form_has_no_dropdowns_and_links_prefill_its_fields(self):
+    def test_form_has_no_dropdowns_and_matches_the_parsed_fields(self):
         fields = [element for element in form_elements() if element["type"] != "markdown"]
         self.assertNotIn("dropdown", {element["type"] for element in fields})
         self.assertEqual(list(registry_requests.LABELS), [element["attributes"]["label"] for element in fields])
         text_ids = {element["id"] for element in fields if element["type"] in ("input", "textarea")}
         self.assertLessEqual(set(registry_requests.FIELDS) | {"kind", "name"}, text_ids)
-        for values in form_links():
-            self.assertLessEqual(values.keys(), text_ids | {"template", "title"})
 
     def test_workflow_recognizes_the_form_headings(self):
         workflow = yaml.safe_load((ROOT / ".github/workflows/registry-request.yml").read_text(encoding="utf-8"))
@@ -172,22 +154,16 @@ class RequestTests(unittest.TestCase):
         self.assertEqual("ready", self.request({"kind": "application", "name": "camera", "url": url, "ref": "none", "reason": "Hosted."})["status"])
         self.assertEqual({"type": "url", "url": url}, self.registered()["source"])
 
-    def test_prefilled_links_round_trip(self):
-        result = self.request({"kind": "application", "name": "camera", "url": "https://example.org/camera.git", "ref": "v1", "reason": "New."})
+    def test_register_update_and_remove_round_trip(self):
+        values = {"kind": "application", "name": "camera"}
+        result = self.request({**values, "url": "https://example.org/camera.git", "ref": "v1", "reason": "New."})
         self.assertEqual("ready", result["status"])
-        values = self.link("application/camera")
-        self.assertEqual({
-            "template": FORM.name, "title": "[Registry] application/camera", "kind": "application", "name": "camera",
-            "url": "https://example.org/camera.git", "ref": "v1",
-        }, values)
         result = self.request({**values, "ref": "v2", "reason": "New release."})
         self.assertEqual(["Git revision: v1 → v2"], result["changes"])
-        values = self.link("application/camera")
-        self.assertEqual("v2", values["ref"])
+        self.assertEqual("v2", self.registered()["source"]["ref"])
         result = self.request({**values, "remove": True, "reason": "Retired upstream."})
         self.assertEqual("Remove application/camera", result["title"])
         self.assertIsNone(self.registered())
-        self.assertEqual([], form_links(self.root))
 
     def test_unchanged_request_is_noop(self):
         self.seed()
@@ -213,7 +189,7 @@ class RequestTests(unittest.TestCase):
         self.seed()
         before = self.snapshot()
         new = {"kind": "application", "name": "new", "url": "https://example.org/new.git", "ref": "v1", "reason": "New."}
-        valid = render(new, self.root)
+        valid = render(new)
         cases = [
             ({**new, "kind": "plugin"}, "Kind must be one of: application, module"),
             ({**new, "url": ""}, "application/new is not registered yet. Check its kind and name, or add a Source URL"),
@@ -261,24 +237,8 @@ class RequestTests(unittest.TestCase):
         self.assertEqual({"status": "closed"}, self.request("", state="closed"))
         self.assertEqual(before, self.snapshot())
 
-    def test_links_check_detects_an_outdated_form(self):
-        def links(*args):
-            return subprocess.run([sys.executable, str(SCRIPT), "links", "--root", str(self.root), *args], capture_output=True, text=True)
-
-        self.seed()
-        self.assertEqual(1, links("--check").returncode)
-        self.assertEqual(0, links().returncode)
-        self.assertEqual(0, links("--check").returncode)
-        self.assertEqual("v1", self.link("application/camera")["ref"])
-        self.record["source"]["ref"] = "v3"
-        self.seed()
-        stale = links("--check")
-        self.assertEqual(1, stale.returncode)
-        self.assertIn("Run: python utilities/registry_requests.py links", stale.stderr)
-
     def test_proposal_stages_only_registry_paths(self):
         self.seed()
-        registry_requests.main(["links", "--root", str(self.root)])
 
         def git(*args):
             return subprocess.run(["git", *args], cwd=self.root, check=True, capture_output=True, text=True)
@@ -287,9 +247,9 @@ class RequestTests(unittest.TestCase):
         git("add", ".")
         git("-c", "user.name=Test", "-c", "user.email=test@example.invalid", "commit", "--quiet", "-m", "Registry")
         result = self.request({"kind": "application", "name": "camera", "remove": True, "reason": "Retired."})
-        git("add", "--", result["directory"], FORM.as_posix())
+        git("add", "--", result["directory"])
         self.assertEqual([
-            f"M\t{FORM.as_posix()}", "A\tapplications/.gitkeep", "D\tapplications/camera.json",
+            "A\tapplications/.gitkeep", "D\tapplications/camera.json",
         ], git("diff", "--cached", "--name-status").stdout.splitlines())
 
 
