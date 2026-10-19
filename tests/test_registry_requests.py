@@ -66,11 +66,11 @@ class RequestTests(unittest.TestCase):
         path = self.root / f"{kind}s/{name}.json"
         return json.loads(path.read_text()) if path.exists() else None
 
-    def request(self, values, state="open"):
+    def request(self, values, state="open", title="🗂️ Registry request"):
         """Prepare an issue the way the workflow does and return the outcome."""
         issue = self.root / "issue.json"
         body = render(values) if isinstance(values, dict) else values
-        issue.write_text(json.dumps({"number": 42, "state": state, "body": body}))
+        issue.write_text(json.dumps({"number": 42, "state": state, "title": title, "body": body}))
         result = self.root / "result.json"
         process = subprocess.run([
             sys.executable, str(SCRIPT), "prepare", "--root", str(self.root), "--issue", str(issue),
@@ -171,7 +171,8 @@ class RequestTests(unittest.TestCase):
         prefilled = {"kind": "application", "name": "camera", **registry_requests.flatten(self.record)}
         for values in ({"kind": "application", "name": "camera"}, prefilled):
             with self.subTest(values=values):
-                self.assertEqual({"status": "noop", "registration": "application/camera"}, self.request({**values, "reason": "Check."}))
+                result = self.request({**values, "reason": "Check."}, title="🗂️ [UPDATE] application: camera")
+                self.assertEqual({"status": "noop", "registration": "application/camera"}, result)
                 self.assertEqual(before, self.snapshot())
 
     def test_remove_keeps_other_records_and_only_empty_directories(self):
@@ -400,6 +401,27 @@ class RequestTests(unittest.TestCase):
         self.assertEqual({github, gitlab, gitlab_issues}, {url for url, _ in requests})
         self.assertEqual({None}, {token for url, token in requests if url.startswith("https://gitlab.com/")})
 
+    def test_issue_is_named_after_its_request(self):
+        self.seed()
+        new = {"kind": "Applications", "name": "New", "url": "https://example.org/new.git", "ref": "v1", "reason": "x"}
+        cases = [
+            (new, "🗂️ [NEW] application: new"),
+            ({"kind": "application", "name": "camera", "ref": "v2", "reason": "x"}, "🗂️ [UPDATE] application: camera"),
+            ({"kind": "application", "name": "camera", "remove": True, "reason": "x"}, "🗂️ [REMOVE] application: camera"),
+            ({**new, "ref": "-bad"}, "🗂️ [NEW] application: new"),  # Named even while it needs a fix.
+            ({"kind": "application", "name": "camera", "reason": "x"}, "🗂️ [UPDATE] application: camera"),  # No-op.
+        ]
+        for values, title in cases:
+            with self.subTest(title=title):
+                self.assertEqual(title, self.request(values)["issue_title"])
+                (self.root / "applications/new.json").unlink(missing_ok=True)
+                self.seed()
+        self.assertNotIn("issue_title", self.request(new, title="🗂️ [NEW] application: new"))
+        self.assertTrue((self.root / "applications/new.json").exists())  # Proposed, and still titled NEW above.
+        self.assertNotIn("issue_title", self.request("Please register my project."))
+        self.assertNotIn("issue_title", self.request({**new, "kind": "plugin"}))
+        self.assertNotIn("issue_title", self.request("", state="closed"))
+
     def test_reason_is_free_text_and_never_executed(self):
         marker = self.root / "unexpected"
         reason = f"Release notes\n### Details\n$(touch {marker}) `echo bad`"
@@ -454,6 +476,9 @@ class ReportTests(unittest.TestCase):
         if method == "POST" and endpoint == "repos/owner/repo/issues/42/comments":
             self.comments.append({"id": 9, **data, "user": {"login": BOT}})
             return self.comments[-1]
+        if method == "PATCH" and endpoint == "repos/owner/repo/issues/42":
+            self.title = data["title"]
+            return {}
         if method == "DELETE" and endpoint == "repos/owner/repo/git/refs/heads/automation/registry-issue-42":
             return None
         self.fail(f"Unexpected API request: {method} {endpoint} {data}")
@@ -473,6 +498,13 @@ class ReportTests(unittest.TestCase):
         self.assertIn("**Update application/camera** is ready for review in https://github.com/owner/repo/pull/12.", self.comment["body"])
         self.assertIn("\n    Git revision: v1 → @maintainers\n", self.comment["body"])
         self.assertEqual([("PATCH", "repos/owner/repo/issues/comments/8")], self.writes())
+
+    def test_report_renames_the_issue_only_when_asked(self):
+        self.report({"status": "error", "message": "Fix it.", "issue_title": "🗂️ [NEW] application: camera"})
+        self.assertEqual("🗂️ [NEW] application: camera", self.title)
+        self.calls.clear()
+        self.report({"status": "error", "message": "Fix it."})
+        self.assertNotIn(("PATCH", "repos/owner/repo/issues/42"), self.calls)
 
     def test_ready_request_lists_the_values_filled_in(self):
         notes = ["Git revision: main (the repository's default branch)", "Issue tracker URL: https://github.com/o/r/issues (the repository's issue tracker)"]

@@ -29,7 +29,9 @@ identify a registration. To rename one, remove it, and after that pull request
 merges, register the new name.
 
 A bot validates the request, opens a pull request, and keeps one comment on the
-issue with the result or what to correct. Edit the issue to revise the request;
+issue with the result or what to correct. It also names the issue after the
+request, such as `🗂️ [NEW] application: my-application`, using `NEW`,
+`UPDATE`, or `REMOVE`. Edit the issue to revise the request;
 the bot rewrites its pull request branch, so do not push to it. When the
 registry changes, the bot rebuilds open pull requests on the latest default
 branch. Closing the issue withdraws an unmerged pull request, and reopening

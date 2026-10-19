@@ -32,6 +32,7 @@ GUIDANCE = {
     "source/path": "Repository path must be a relative directory such as applications/my-app, or . for the root.",
 }
 FEEDBACK = "<!-- holohub-registry-feedback -->"
+TITLE_MARK = "🗂️"
 BOT = "github-actions[bot]"
 
 
@@ -285,6 +286,19 @@ def prepare(root, body, resolve=default_branch, tracker=issue_tracker):
     }
 
 
+def issue_title(root, body):
+    """Name the issue after its request, such as "🗂️ [NEW] application: camera"; None when the form cannot be read."""
+    try:
+        request = parse_issue(body)
+    except RequestError:
+        return None
+    kind, name = request["kind"], request["name"]
+    registered = any(record["kind"] == kind and record["name"] == name for record in load_records(root))
+    action = "REMOVE" if request["remove"] else "UPDATE" if registered else "NEW"
+    # GitHub limits titles to 256 characters; a name that long fails validation anyway.
+    return f"{TITLE_MARK} [{action}] {kind}: {name[:200]}"
+
+
 def pull_request_body(result, number):
     changes = "".join(f"    {line}\n" for line in result["changes"])
     return (f"{changes}\n" if changes else "") + f"Closes #{number}.\n"
@@ -305,6 +319,9 @@ def github_api(endpoint, method="GET", data=None):
 def report(repository, number, result, branch, pull_url="", run_url="", failed=False, api=github_api):
     """Keep one feedback comment on the issue, and withdraw a proposal that no longer matches it."""
     status = result.get("status", "error")
+    if result.get("issue_title"):
+        # The workflow token's edits start no new run, so this cannot loop.
+        api(f"repos/{repository}/issues/{number}", "PATCH", {"title": result["issue_title"]})
     failed = failed or (status == "ready" and not pull_url)
     withdrawn = []
     if not failed and status in ("noop", "error", "closed"):
@@ -383,12 +400,16 @@ def main(argv=None):
         if issue["state"] == "closed":
             result = {"status": "closed"}
         else:
+            # Name the issue from the registry before prepare applies the request to it.
+            title = issue_title(args.root, issue["body"])
             try:
                 result = prepare(args.root, issue["body"])
             except RequestError as error:
                 result = {"status": "error", "message": str(error)}
             if result["status"] == "ready":
                 args.pull_request_body.write_text(pull_request_body(result, int(issue["number"])), encoding="utf-8")
+            if title and title != issue.get("title"):
+                result["issue_title"] = title
         args.result.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         if output := os.environ.get("GITHUB_OUTPUT"):
             with open(output, "a", encoding="utf-8") as stream:
