@@ -7,6 +7,9 @@ applications. Register its external source here; keep its implementation,
 `metadata.json`, build files, tests, and packages in the module's repository.
 An existing module does not need to be recreated with the CLI to be registered.
 
+To register without editing JSON, [open a registration request](https://github.com/nvidia-holoscan/holohub/issues/new?template=registry.yml&kind=module);
+a bot opens the pull request. To edit the record yourself:
+
 1. Check the JSON records in this directory for the same repository and source
    path. A module containing several operators needs one source registration,
    not one per operator or release. Update an existing record for a new revision.
@@ -42,12 +45,14 @@ An existing module does not need to be recreated with the CLI to be registered.
    python3 -m venv .venv
    .venv/bin/python -m pip install -r requirement.txt
    .venv/bin/python utilities/validate_registry.py --index dist/sources.json
+   .venv/bin/python utilities/registry_requests.py links
    .venv/bin/python utilities/validate_sources.py
    ```
 
-5. Submit the JSON change in a pull request to the HoloHub registry branch you
-   are contributing to. Follow [CONTRIBUTING.md](../CONTRIBUTING.md) for the
-   full checks. Do not commit `dist/` or the module implementation here.
+5. Submit the JSON change and the regenerated registration form in a pull
+   request to the HoloHub registry branch you are contributing to. Follow
+   [CONTRIBUTING.md](../CONTRIBUTING.md) for the full checks. Do not commit
+   `dist/` or the module implementation here.
 
 The Holoscan CLI has no HoloHub registration command. `holoscan list` discovers
 projects in a source checkout; it does not submit a registration. CI validates
